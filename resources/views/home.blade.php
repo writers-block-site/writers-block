@@ -1,3 +1,10 @@
 @extends('layouts._master')
 
-<div>Hello World!</div>
+@section('content')
+    <link rel='stylesheet' href='/css/app.css'></link>
+    <div id='home'>
+        <div class='title'>
+            Hello World!
+        </div>
+    </div>
+@endsection

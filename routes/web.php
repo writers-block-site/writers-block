@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/search', function () {
     return view('reactApp');
 });
+
+Route::get('/users/login', function() {
+    return view('login');
+});
