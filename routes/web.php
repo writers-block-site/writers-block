@@ -22,3 +22,7 @@ Route::get('/search', function () {
 Route::get('/users/login', function() {
     return view('login');
 });
+
+Route::get('/users/signup', function(){
+    return view('signup');
+});

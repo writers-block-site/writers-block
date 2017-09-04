@@ -1,5 +1,6 @@
 <?php
     $login = '/users/login';
+    $signup = '/users/signup';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +35,7 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="{{ $signup }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href='{{ $login }}'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>

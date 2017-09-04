@@ -2,7 +2,9 @@
 
 @section('content')
     <div id='login'>
-        {!! csrf_field() !!}
-        
+        <div class='content'>
+            {!! csrf_field() !!}
+            <h1>Login!</h1>
+        </div>
     </div>
 @endsection
