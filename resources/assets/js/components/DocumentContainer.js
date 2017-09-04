@@ -1,11 +1,29 @@
 import React, {Component} from 'react';
-
+import SearchDocument from './SearchDocument';
 
 export default class DocumentContainer extends Component {
+    constructor(props){
+        super(props);
+    }
     render() {
+        if (this.props.documentsArr) {
+            var documents = this.props.documentsArr.map((document) => {
+                return(
+                    <div>
+                        <SearchDocument
+                        previewDocument={this.props.previewDocument}
+                        key={document.index}
+                        index={document.index}
+                        title={document.title}
+                        genre={document.genre}
+                         />
+                    </div>
+                );
+            });
+        }
         return(
             <div>
-                Hello!
+                <h1>{documents}</h1>
             </div>
         )
     }

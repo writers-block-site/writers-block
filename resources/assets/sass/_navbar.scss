@@ -1,5 +1,9 @@
 .navbar {
+    // background: #4c5c68;
     position: fixed;
     width: 100%;
     z-index: 3;
+    * {
+        color: #dcdcdd;
+    }
 }
