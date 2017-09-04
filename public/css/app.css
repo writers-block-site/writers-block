@@ -1,6 +1,22 @@
-#home > div {
+#home {
+  margin-top: -25px;
+}
+
+#home > .title-container {
   width: 100%;
-  background: #222;
-  height: 300px;
+  background: #48be34;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+#home > .title-container > .title {
+  color: #FEFEFE;
+  font-size: 5em;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+#home > .title-container > .title > .book {
+  padding-top: 2px;
 }
 

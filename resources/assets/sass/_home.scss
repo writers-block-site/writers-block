@@ -1,7 +1,26 @@
 #home {
-    >div {
+    margin: {
+        top: -25px;
+    }
+    >.title-container {
         width: 100%;
-        background: #222;
-        height: 300px;
+        background: rgb(72, 190, 52);
+        // height: 300px;
+        padding: {
+            top: 50px;
+            bottom: 50px;
+        }
+        text-align: center;
+
+        >.title{
+            color: #FEFEFE;
+            font: { 
+                size: 5em;
+                family: $title-font;
+            }
+            >.book{
+                // padding-top: 2px;
+            }
+        }
     }
 }
