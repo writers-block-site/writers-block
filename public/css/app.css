@@ -1,11 +1,7 @@
-#home {
-  margin-top: -25px;
-}
-
 #home > .title-container {
   width: 100%;
   background: #48be34;
-  padding-top: 50px;
+  padding-top: 100px;
   padding-bottom: 50px;
   text-align: center;
 }
@@ -19,5 +15,17 @@
   color: #FEFEFE;
   font-size: 5em;
   font-family: "Josefin Sans", sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+  #home > .title-container > .title {
+    font-size: 2em;
+  }
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 3;
 }
 
