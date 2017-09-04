@@ -1,6 +1,6 @@
-@extends('layouts._master')
+@extends('layouts.app')
 
 @section('content')
-    <div id='example'></div>
+    <div id='react'></div>
     <script src='/js/app.js'></script>
 @stop
