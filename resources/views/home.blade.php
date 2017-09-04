@@ -1,22 +1,23 @@
-@extends('layouts._master')
-
-<?php
-    $test = 'Hello!';
-?>
+@extends('layouts.app')
 
 @section('content')
-    <link rel='stylesheet' href='/css/app.css'></link>
-    <div id='home'>
-        <div class='title-container'>
-            <span class='title' >Writer's Block  <span class="glyphicon glyphicon-book book"></span></span>
-        </div>
-        <div>
-            <div class='container-fluid'> 
-                <span class='col-sm-4 text-center'>{{ $test }}</span>
-                <span class='col-sm-4 text-center'>{{ $test }}</span>
-                <span class='col-sm-4 text-center'>{{ $test }}</span>
-                
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Dashboard</div>
+
+                <div class="panel-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    You are logged in!
+                </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

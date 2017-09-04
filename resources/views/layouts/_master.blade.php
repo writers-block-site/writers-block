@@ -11,7 +11,7 @@
     <title>Writer's Block</title>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel='stylesheet' href='/css/app.css'
+    <link rel='stylesheet' href='/css/app.css'>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
