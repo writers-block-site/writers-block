@@ -1,0 +1,40 @@
+#home {
+    // margin: {
+    //     top: -25px;
+    // }
+    >.title-container {
+        width: 100%;
+        background: rgb(72, 190, 52);
+        // height: 300px;
+        padding: {
+            top: 100px;
+            bottom: 50px;
+        }
+        text-align: center;
+
+        >.title{
+            cursor: default;
+            user-select: none;
+            color: #FEFEFE;
+            font: { 
+                size: 5em;
+                family: $title-font;
+            }
+            // >.book{
+            //     // padding-top: 2px;
+            // }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #home{
+        >.title-container{
+            >.title{
+                font: {
+                    size: 2em;
+                }
+            }
+        }
+    }
+}

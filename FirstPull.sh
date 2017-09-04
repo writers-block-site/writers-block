@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Only run this after you've done a git init followed by git pull origin master!
+# If you run a second time, it may clear your DB connections
+
 CYAN="\033[1;36m"
 LBLUE="\033[1;34m"
 GREEN="\033[0;32m"
