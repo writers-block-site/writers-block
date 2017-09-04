@@ -4,7 +4,7 @@
 
 #home > .title-container {
   width: 100%;
-  background: #48be34;
+  background: #4AC035;
   padding-top: 50px;
   padding-bottom: 50px;
   text-align: center;
@@ -31,5 +31,15 @@
   position: fixed;
   width: 100%;
   z-index: 3;
+}
+
+.documents {
+  height: 100vh;
+  background: #FEFEFE;
+}
+
+.comments {
+  height: 100vh;
+  background: #4AC035;
 }
 
