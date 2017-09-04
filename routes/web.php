@@ -12,17 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
-Route::get('/search', function () {
-    return view('reactApp');
-});
+Auth::routes();
 
-Route::get('/users/login', function() {
-    return view('login');
-});
-
-Route::get('/users/signup', function(){
-    return view('signup');
-});
+Route::get('/home', 'HomeController@index')->name('home');
