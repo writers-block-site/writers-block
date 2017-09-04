@@ -8,7 +8,7 @@
     <link rel='stylesheet' href='/css/app.css'></link>
     <div id='home'>
         <div class='title-container'>
-            <span class='title' >Writer's Block <span class="glyphicon glyphicon-book book"></span></span>
+            <span class='title' >Writer's Block  <span class="glyphicon glyphicon-book book"></span></span>
         </div>
         <div>
             <div class='container-fluid'> 

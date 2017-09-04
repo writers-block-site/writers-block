@@ -13,6 +13,8 @@
         text-align: center;
 
         >.title{
+            cursor: default;
+            user-select: none;
             color: #FEFEFE;
             font: { 
                 size: 5em;

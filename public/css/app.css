@@ -11,12 +11,13 @@
 }
 
 #home > .title-container > .title {
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   color: #FEFEFE;
   font-size: 5em;
   font-family: "Josefin Sans", sans-serif;
-}
-
-#home > .title-container > .title > .book {
-  padding-top: 2px;
 }
 
