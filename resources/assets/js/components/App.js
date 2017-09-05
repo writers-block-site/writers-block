@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, withRouter} from 'react-router-dom';
 import DocumentContainer from './DocumentContainer';
 import CommentsContainer from './CommentsContainer';
 
@@ -40,10 +40,10 @@ var documentsArr = [
     }
 ]
 
-export default class Example extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
-
+        console.log('App:', this.props);
         this.previewDocument = this.previewDocument.bind(this);
         this.selectDocument = this.selectDocument.bind(this);
 
@@ -70,7 +70,7 @@ export default class Example extends Component {
         return (
             <BrowserRouter>
                 <div>
-                <Route path='/docs'>
+                <Route path='/docs/:id?'>
                     <div>
                         <div className='col-md-8 text-center documents' >
                             <DocumentContainer
@@ -95,5 +95,5 @@ export default class Example extends Component {
 }
 
 if (document.getElementById('react')) {
-    ReactDOM.render(<Example />, document.getElementById('react'));
+    ReactDOM.render(<App />, document.getElementById('react'));
 }
