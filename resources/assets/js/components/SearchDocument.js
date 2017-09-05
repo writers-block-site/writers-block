@@ -18,7 +18,7 @@ export default class SearchItem extends Component {
                     this.props.previewDocument(index);
                 }
             }
-            className='document'>
+            className='document col-md-6'>
                 <h1>{this.props.title}</h1>
                 <h3>{this.props.genre}</h3>
             </div>
