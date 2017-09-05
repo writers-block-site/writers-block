@@ -41287,7 +41287,7 @@ var SearchItem = function (_Component) {
                         var index = _this2.props.index;
                         _this2.props.previewDocument(index);
                     },
-                    className: 'document' },
+                    className: 'document col-md-6' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
