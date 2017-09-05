@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get('/react', function(){
     return view('reactApp');
 });
+
+Route::resource('docs','DocsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
