@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
+import {Route, withRouter} from 'react-router-dom';
 import SearchItem from './SearchDocument';
 
 class DocumentContainer extends Component {

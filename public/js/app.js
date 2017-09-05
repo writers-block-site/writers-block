@@ -11763,7 +11763,7 @@ module.exports = getHostComponentFromComposite;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(248);
 /* unused harmony reexport Redirect */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(107);
-/* unused harmony reexport Route */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(60);
 /* unused harmony reexport Router */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(254);
@@ -11773,7 +11773,7 @@ module.exports = getHostComponentFromComposite;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(258);
 /* unused harmony reexport matchPath */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(259);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
 
 
 
@@ -30530,22 +30530,30 @@ var Example = function (_Component) {
                     'div',
                     null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'col-md-8 text-center documents' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__DocumentContainer__["a" /* default */], {
-                            selectDocument: this.selectDocument,
-                            selectedDocument: documentsArr[this.state.selectedDocument],
-                            documentsArr: documentsArr,
-                            previewDocument: this.previewDocument
-                        })
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'col-md-4 text-center comments' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__CommentsContainer__["a" /* default */], {
-                            selectedDocument: documentsArr[this.state.selectedDocument],
-                            previewedDocument: documentsArr[this.state.previewedDocument]
-                        })
+                        __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */],
+                        { path: '/docs' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'col-md-8 text-center documents' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__DocumentContainer__["a" /* default */], {
+                                    selectDocument: this.selectDocument,
+                                    selectedDocument: documentsArr[this.state.selectedDocument],
+                                    documentsArr: documentsArr,
+                                    previewDocument: this.previewDocument
+                                })
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'col-md-4 text-center comments' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__CommentsContainer__["a" /* default */], {
+                                    selectedDocument: documentsArr[this.state.selectedDocument],
+                                    previewedDocument: documentsArr[this.state.previewedDocument]
+                                })
+                            )
+                        )
                     )
                 )
             );
@@ -45750,7 +45758,7 @@ var DocumentContainer = function (_Component) {
     return DocumentContainer;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* withRouter */])(DocumentContainer));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* withRouter */])(DocumentContainer));
 
 /***/ }),
 /* 263 */
