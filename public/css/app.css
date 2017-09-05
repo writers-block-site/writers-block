@@ -4,7 +4,7 @@
 
 #home > .title-container {
   width: 100%;
-  background: #4AC035;
+  background: #1e9cbc;
   padding-top: 50px;
   padding-bottom: 50px;
   text-align: center;
@@ -33,13 +33,22 @@
   z-index: 3;
 }
 
+.navbar * {
+  color: #dcdcdd;
+}
+
 .documents {
   height: 100vh;
   background: #FEFEFE;
 }
 
+.document {
+  text-align: left;
+  cursor: pointer;
+}
+
 .comments {
   height: 100vh;
-  background: #4AC035;
+  background: #1e9cbc;
 }
 
