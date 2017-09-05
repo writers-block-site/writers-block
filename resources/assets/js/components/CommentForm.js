@@ -14,8 +14,9 @@ export default class CommentForm extends Component {
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     this.test();
-                }} className='form-group-lg'>
-                    <textarea className='form-control' type='text' />
+                    console.log($);
+                }} className='form-group-md'>
+                    <textarea className='form-control' rows='10' type='text' placeholder='Leave a comment' />
                     <button
                     className='btn btn-danger'>Submit</button>
                 </form>

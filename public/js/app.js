@@ -41609,8 +41609,9 @@ var CommentForm = function (_Component) {
                     { onSubmit: function onSubmit(e) {
                             e.preventDefault();
                             _this2.test();
-                        }, className: 'form-group-lg' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control', type: 'text' }),
+                            console.log($);
+                        }, className: 'form-group-md' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control', rows: '10', type: 'text', placeholder: 'Leave a comment' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
                         {
