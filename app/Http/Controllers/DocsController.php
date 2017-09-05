@@ -55,6 +55,14 @@ class DocsController extends Controller
         return redirect()->action('DocsController@show');
     }
 
+    public function edit($id){
+        $doc = Docs::findOrfail($id);
+
+        $data['doc'] = $doc;
+
+        $return view('docs.edit',$data);
+    }
+
     public function destroy($id)
     {
         return redirect()->action('DocsController@index');
