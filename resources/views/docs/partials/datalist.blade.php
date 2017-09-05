@@ -3,7 +3,7 @@
 $genres = ['Fiction','Comedy','Drama','Satire','Romantic','Non-fiction','Horror']
 
 ?>
-<datalist id="genre">
+<datalist id="genres">
     @foreach ($genres as $genre)
         <option value="{{$genre}}">
     @endforeach
