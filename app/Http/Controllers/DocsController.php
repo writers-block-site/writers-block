@@ -25,6 +25,9 @@ class DocsController extends Controller
         return view('/docs/create');
     }
     public function show($id){
+        $doc = findOrfail($id);
+        $doc->view_count += 1;
+        $doc->save();
         return view('/docs/reactApp');
     }
     public function store(Request $request)
@@ -42,8 +45,13 @@ class DocsController extends Controller
         return redirect()->action('DocsController@index');
     }
 
-    public function update($id)
+    public function update(Request $request,$id)
     {
+        $doc = Docs::findOrfail($id);
+        $doc->title = $request->title;
+        $doc->title = $request->genre;
+        $doc->handles = $doc->handles .",". $request->handle;
+        $this->validate($request,Docs::$rules);
         return redirect()->action('DocsController@show');
     }
 

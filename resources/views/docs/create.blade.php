@@ -25,11 +25,8 @@
                                 <label for="genre" class="col-md-4 control-label">Genre</label>
                                 <div class="col-md-6">
                                     {!!$errors->first('genre', '<span class="help-block">:message</span>')!!}
-                                    <input id="genre" type="text" class="form-control" name="genre" value="{{ old('genre') }}" required autofocus>
-                                    <datalist id="genres">
-                                      <option value="Boston">
-                                      <option value="Cambridge">
-                                    </datalist>
+                                    <input list="genres" type="text" class="form-control" name="genre" value="{{ old('genre') }}" required autofocus>
+                                    @include('docs.partials.datalist')
                                 </div>
                             </div>
                             <div class="form-group">
