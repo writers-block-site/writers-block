@@ -11,7 +11,12 @@ export default class SearchItem extends Component {
 
     render() {
         return(
-            <div 
+            <div
+            onClick={
+                (e) => {
+                    this.props.selectDocument(this.props.index);
+                }
+            }
             onMouseOver={
                 (e) => {
                     var index = this.props.index;
