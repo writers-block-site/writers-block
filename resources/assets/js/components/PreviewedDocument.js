@@ -9,12 +9,15 @@ export default class PreviewedDocument extends Component {
     render() {
         if (!this.props.previewedDocument) {
             return(
-                <h1>Hover over a document to see a preview!</h1>
+                <h1>Hover over a result to see a preview!</h1>
             );
         }
         return(
             <div>
-                <h1>{this.props.previewedDocument.title}</h1>
+                <h1>Preview:</h1>
+                <h2>{this.props.previewedDocument.title}</h2>
+                <h3>{this.props.previewedDocument.genre}</h3>
+                <p>{this.props.previewedDocument.excerpt}</p>
             </div>
         );
     }

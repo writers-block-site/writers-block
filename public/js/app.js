@@ -53904,13 +53904,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var SearchDocument = function (_Component) {
-    _inherits(SearchDocument, _Component);
+var SearchItem = function (_Component) {
+    _inherits(SearchItem, _Component);
 
-    function SearchDocument(props) {
-        _classCallCheck(this, SearchDocument);
+    function SearchItem(props) {
+        _classCallCheck(this, SearchItem);
 
-        var _this = _possibleConstructorReturn(this, (SearchDocument.__proto__ || Object.getPrototypeOf(SearchDocument)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (SearchItem.__proto__ || Object.getPrototypeOf(SearchItem)).call(this, props));
 
         _this.state = {
             index: _this.props.index
@@ -53918,7 +53918,7 @@ var SearchDocument = function (_Component) {
         return _this;
     }
 
-    _createClass(SearchDocument, [{
+    _createClass(SearchItem, [{
         key: 'render',
         value: function render() {
             var _this2 = this;
@@ -53945,10 +53945,10 @@ var SearchDocument = function (_Component) {
         }
     }]);
 
-    return SearchDocument;
+    return SearchItem;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (SearchDocument);
+/* harmony default export */ __webpack_exports__["a"] = (SearchItem);
 
 /***/ }),
 /* 220 */
@@ -54032,7 +54032,7 @@ var PreviewedDocument = function (_Component) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
-                    'Hover over a document to see a preview!'
+                    'Hover over a result to see a preview!'
                 );
             }
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -54041,7 +54041,22 @@ var PreviewedDocument = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
+                    'Preview:'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h2',
+                    null,
                     this.props.previewedDocument.title
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h3',
+                    null,
+                    this.props.previewedDocument.genre
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'p',
+                    null,
+                    this.props.previewedDocument.excerpt
                 )
             );
         }

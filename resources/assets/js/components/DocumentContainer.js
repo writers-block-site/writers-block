@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SearchDocument from './SearchDocument';
+import SearchItem from './SearchDocument';
 
 export default class DocumentContainer extends Component {
     constructor(props){
@@ -10,7 +10,7 @@ export default class DocumentContainer extends Component {
             var documents = this.props.documentsArr.map((document) => {
                 return(
                     <div>
-                        <SearchDocument
+                        <SearchItem
                         previewDocument={this.props.previewDocument}
                         key={document.index}
                         index={document.index}
