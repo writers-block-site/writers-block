@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Route, withRouter} from 'react-router-dom';
 import DocumentContainer from './DocumentContainer';
 import CommentsContainer from './CommentsContainer';
 
@@ -40,10 +40,10 @@ var documentsArr = [
     }
 ]
 
-export default class Example extends Component {
+export default class App extends Component {
     constructor(props) {
         super(props);
-
+        console.log('App:', this.props);
         this.previewDocument = this.previewDocument.bind(this);
         this.selectDocument = this.selectDocument.bind(this);
 
@@ -70,20 +70,24 @@ export default class Example extends Component {
         return (
             <BrowserRouter>
                 <div>
-                    <div className='col-md-8 text-center documents' >
-                        <DocumentContainer
-                        selectDocument={this.selectDocument}
-                        selectedDocument={documentsArr[this.state.selectedDocument]}
-                        documentsArr={documentsArr}
-                        previewDocument={this.previewDocument}
-                        />
+                <Route path='/docs/:id?'>
+                    <div>
+                        <div className='col-md-8 text-center documents' >
+                            <DocumentContainer
+                            selectDocument={this.selectDocument}
+                            selectedDocument={documentsArr[this.state.selectedDocument]}
+                            documentsArr={documentsArr}
+                            previewDocument={this.previewDocument}
+                            />
+                        </div>
+                        <div className='col-md-4 text-center comments' >
+                            <CommentsContainer
+                            selectedDocument={documentsArr[this.state.selectedDocument]}
+                            previewedDocument={documentsArr[this.state.previewedDocument]}
+                            />
+                        </div>
                     </div>
-                    <div className='col-md-4 text-center comments' >
-                        <CommentsContainer
-                        selectedDocument={documentsArr[this.state.selectedDocument]}
-                        previewedDocument={documentsArr[this.state.previewedDocument]}
-                        />
-                    </div>
+                    </Route>
                 </div>
             </BrowserRouter>
         );
@@ -91,5 +95,5 @@ export default class Example extends Component {
 }
 
 if (document.getElementById('react')) {
-    ReactDOM.render(<Example />, document.getElementById('react'));
+    ReactDOM.render(<App />, document.getElementById('react'));
 }

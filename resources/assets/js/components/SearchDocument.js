@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 
-export default class SearchItem extends Component {
+class SearchItem extends Component {
     constructor(props){
         super(props);
 
+        console.log(this.props);
         this.state = {
             index: this.props.index
         }
@@ -14,7 +16,8 @@ export default class SearchItem extends Component {
             <div
             onClick={
                 (e) => {
-                    this.props.selectDocument(this.props.index);
+                    // this.props.selectDocument(this.props.index);
+                    this.props.history.push(`/docs/${this.props.index}`);
                 }
             }
             onMouseOver={
@@ -30,3 +33,5 @@ export default class SearchItem extends Component {
         )
     }
 }
+
+export default withRouter(SearchItem);
