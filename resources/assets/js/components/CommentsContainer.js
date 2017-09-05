@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PreviewedDocument from './PreviewedDocument';
 import Comment from './Comment';
+import CommentForm from './CommentForm';
 
 export default class CommentsContainer extends Component {
     render() {
@@ -11,6 +12,7 @@ export default class CommentsContainer extends Component {
                 return(
                     <div>
                         <h1>No comments yet! Make one below</h1>
+                        <CommentForm />
                     </div>
                 );
             }
@@ -27,8 +29,7 @@ export default class CommentsContainer extends Component {
             return(
                 <div>
                     <div>{comments}</div>
-                    <div>
-                    </div>
+                    <CommentForm />
                 </div>
             );
         }
