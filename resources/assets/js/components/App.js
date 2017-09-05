@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
 import DocumentContainer from './DocumentContainer';
 import CommentsContainer from './CommentsContainer';
 
@@ -67,22 +68,24 @@ export default class Example extends Component {
     }
     render() {
         return (
-            <div>
-                <div className='col-md-8 text-center documents' >
-                    <DocumentContainer
-                    selectDocument={this.selectDocument}
-                    selectedDocument={documentsArr[this.state.selectedDocument]}
-                    documentsArr={documentsArr}
-                    previewDocument={this.previewDocument}
-                     />
+            <BrowserRouter>
+                <div>
+                    <div className='col-md-8 text-center documents' >
+                        <DocumentContainer
+                        selectDocument={this.selectDocument}
+                        selectedDocument={documentsArr[this.state.selectedDocument]}
+                        documentsArr={documentsArr}
+                        previewDocument={this.previewDocument}
+                        />
+                    </div>
+                    <div className='col-md-4 text-center comments' >
+                        <CommentsContainer
+                        selectedDocument={documentsArr[this.state.selectedDocument]}
+                        previewedDocument={documentsArr[this.state.previewedDocument]}
+                        />
+                    </div>
                 </div>
-                <div className='col-md-4 text-center comments' >
-                    <CommentsContainer
-                    selectedDocument={documentsArr[this.state.selectedDocument]}
-                    previewedDocument={documentsArr[this.state.previewedDocument]}
-                     />
-                </div>
-            </div>
+            </BrowserRouter>
         );
     }
 }

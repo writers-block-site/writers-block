@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import SearchItem from './SearchDocument';
 
-export default class DocumentContainer extends Component {
+class DocumentContainer extends Component {
     constructor(props){
         super(props);
+
+        console.log('Document Props', this.props);
     }
     render() {
         if(this.props.selectedDocument){
@@ -38,3 +41,5 @@ export default class DocumentContainer extends Component {
         )
     }
 }
+
+export default withRouter(DocumentContainer);
