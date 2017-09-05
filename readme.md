@@ -7,8 +7,6 @@ Writer's Block Capstone Guide
 
 * $ `cd [your project clone folder]`
 * $ `bash FirstPull.sh `
-
-```
 	
 
 ## Contents
