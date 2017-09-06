@@ -10,7 +10,7 @@
                     <div class="panel-heading">Upload</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" action="{{action('DocsController@store')}}" method="post">
+                        <form class="form-horizontal" action="{{action('DocsController@store')}}" method="post" enctype="multipart/form-data">
                             {!! csrf_field() !!}
 
                             <div class="form-group">
@@ -30,7 +30,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="id" id="selected" class="col-md-4 control-label">No Document selected</label>
+                                <input type="file" name="file" value="Choose file">
+                                {{-- <label for="id" id="selected" class="col-md-4 control-label">No Document selected</label>
                                 <div class="col-md-6">
                                     <input type="button"id="doc"class="btn btn-primary" value="Choose document">
                                 </div>
@@ -38,7 +39,7 @@
                             {!!$errors->first('handle', '<span class="help-block">Document must be selected</span>')!!}
                             <input id="doc_handle"type="hidden" name="handle" value="">
                             <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
+                                <div class="col-md-8 col-md-offset-4"> --}}
                                     <button type="submit" class="btn btn-primary">
                                         Upload
                                     </button>
