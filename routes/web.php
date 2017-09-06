@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/react', function(){
-    return view('reactApp');
-});
-
 Route::resource('docs','DocsController');
 Auth::routes();
 
