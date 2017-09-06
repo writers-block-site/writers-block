@@ -57,7 +57,7 @@
     (function() {
         'use strict';
 
-        var client = filestack.init('Aj3SaA9lWT0WlrREr0zRxz');
+        var client = filestack.init('Arm3f7HJReOkjrR25yPiwz');
         document.getElementById('doc').addEventListener("click",picker);
 
 

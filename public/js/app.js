@@ -45748,6 +45748,12 @@ var DocumentContainer = function (_Component) {
                 'div',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { type: 'filepicker-preview', 'data-fp-url': 'https://www.filestackapi.com/api/file/7cSeLSlZSmCk3k8CQtAv', width: '750', height: '500' },
+                    ' '
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('script', { src: 'https://api.filestackapi.com/filestack.js' }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
                     documents
