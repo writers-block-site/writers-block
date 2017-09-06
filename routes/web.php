@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/api/test', function() {
-    header('Access-Control-Allow-Origin: *');
-    print(json_encode(['test' => 'Hello from Laravel!']));
-});
 Route::resource('docs','DocsController');
 Auth::routes();
 
