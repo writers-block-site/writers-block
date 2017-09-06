@@ -8,6 +8,7 @@ class DocumentContainer extends Component {
 
         console.log('Document Props', this.props);
     }
+    
     render() {
         if(this.props.selectedDocument){
             var doc = this.props.selectedDocument;
@@ -36,8 +37,7 @@ class DocumentContainer extends Component {
         }
         return(
             <div>
-            <iframe className='doc-viewer' src='https://docs.google.com/gview?url=http://www.picssel.com/demos/downloads/Fancybox.doc&embedded=true' />
-                <h1>{documents}</h1>
+                <iframe className='doc-viewer' src='https://docs.google.com/gview?url=http://www.picssel.com/demos/downloads/Fancybox.doc&embedded=true' /> 
             </div>
         )
     }
