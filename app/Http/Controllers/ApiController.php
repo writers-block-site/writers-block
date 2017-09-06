@@ -20,8 +20,6 @@ class ApiController extends Controller
     {
         $docs = Docs::Paginate(6);
 
-        dd(response()->json($docs));
-
         return response()->json($docs);
     }
 
