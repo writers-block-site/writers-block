@@ -50,7 +50,10 @@ class DocsController extends Controller
         $doc = Docs::findOrfail($id);
         $doc->title = $request->title;
         $doc->genre = $request->genre;
-        $doc->handles = $doc->handles .",". $request->handle;
+        if ($request->handle)
+        {
+            $doc->handles = $doc->handles .",". $request->handle;
+        }
         $this->validate($request,Docs::$rules);
         $doc->save();
         return redirect()->action('DocsController@show',$doc->id);

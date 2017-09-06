@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             {!!$errors->first('handle', '<span class="help-block">Document must be selected</span>')!!}
-                            <input id="doc_handle"type="hidden" name="handle" value="{{$doc->handles}}" required>
+                            <input id="doc_handle"type="hidden" name="handle" value="{{$doc->handles}}">
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     {{ method_field('PUT') }}
@@ -77,4 +77,3 @@
     }());
     </script>
 @endsection
-
