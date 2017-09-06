@@ -37,7 +37,7 @@ class DocumentContainer extends Component {
         }
         return(
             <div>
-                <iframe className='doc-viewer' src='https://docs.google.com/gview?url=http://www.picssel.com/demos/downloads/Fancybox.doc&embedded=true' /> 
+                <iframe className='doc-viewer' src='/ViewerJS/#https://www.filestackapi.com/api/file/wEEsdv9USP6pAsabHLio' /> 
             </div>
         )
     }

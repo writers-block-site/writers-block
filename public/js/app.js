@@ -45747,7 +45747,7 @@ var DocumentContainer = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('iframe', { className: 'doc-viewer', src: 'https://docs.google.com/gview?url=http://www.picssel.com/demos/downloads/Fancybox.doc&embedded=true' })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('iframe', { className: 'doc-viewer', src: '/ViewerJS/#https://www.filestackapi.com/api/file/wEEsdv9USP6pAsabHLio' })
             );
         }
     }]);
