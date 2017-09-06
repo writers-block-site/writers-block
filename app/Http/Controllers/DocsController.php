@@ -25,7 +25,7 @@ class DocsController extends Controller
         return view('/docs/create');
     }
     public function show($id){
-        $doc = findOrfail($id);
+        $doc = Docs::findOrfail($id);
         $doc->view_count += 1;
         $doc->save();
         return view('/docs/reactApp');
@@ -49,10 +49,19 @@ class DocsController extends Controller
     {
         $doc = Docs::findOrfail($id);
         $doc->title = $request->title;
-        $doc->title = $request->genre;
+        $doc->genre = $request->genre;
         $doc->handles = $doc->handles .",". $request->handle;
         $this->validate($request,Docs::$rules);
-        return redirect()->action('DocsController@show');
+        $doc->save();
+        return redirect()->action('DocsController@show',$doc->id);
+    }
+
+    public function edit($id){
+        $doc = Docs::findOrfail($id);
+
+        $data['doc'] = $doc;
+
+        return view('docs.edit',$data);
     }
 
     public function edit($id){
