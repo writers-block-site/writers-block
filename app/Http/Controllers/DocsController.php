@@ -33,9 +33,8 @@ class DocsController extends Controller
     public function store(Request $request)
     {
         $doc = new Docs();
-
         $doc->title = $request->title;
-        $doc->handles = $request->handle;
+        $doc->handles = $request->file->store('public');
         $doc->genre = $request->genre;
         $doc->view_count = 0;
         $doc->uploaded_by = Auth::id();
