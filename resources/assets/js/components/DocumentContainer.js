@@ -36,6 +36,8 @@ class DocumentContainer extends Component {
         }
         return(
             <div>
+        <div type="filepicker-preview" data-fp-url="https://www.filestackapi.com/api/preview/7cSeLSlZSmCk3k8CQtAv" width='750' height='500'> </div>
+        <script src="https://api.filestackapi.com/filestack.js"></script>
                 <h1>{documents}</h1>
             </div>
         )
