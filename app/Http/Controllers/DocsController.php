@@ -69,7 +69,7 @@ class DocsController extends Controller
 
         $data['doc'] = $doc;
 
-        $return view('docs.edit',$data);
+        return view('docs.edit',$data);
     }
 
     public function destroy($id)
