@@ -52,7 +52,9 @@ class ApiController extends Controller
      */
     public function show($id)
     {
-        //
+        $docs = Docs::findOrfail($id);
+
+        return response()->json($docs);
     }
 
     /**
