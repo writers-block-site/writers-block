@@ -41,15 +41,11 @@ class ApiController extends Controller
         $doc->genre = $request->genre;
         $doc->view_count = 0;
         $doc->uploaded_by = Auth::id();
+
         $this->validate($request,Docs::$rules);
-        try {
 
-            $doc->save();
+        $doc->save();
 
-        } catch (Exception $e) {
-            $data['error'] = 'could not save';
-            return response()->json($data);
-        }
         $data['success'] = "Your upload has been saved";
 
         return response()->json($data);
@@ -82,13 +78,13 @@ class ApiController extends Controller
     public function update(Request $request, $id)
     {
         $doc = Docs::findOrfail($id);
+        $this->validate($request,Docs::$update);
         $doc->title = $request->title;
         $doc->genre = $request->genre;
         if ($request->handle !== "")
         {
             $doc->handles = $doc->handles .",". $request->handle;
         }
-        $this->validate($request,Docs::$update);
         $doc->save();
         return redirect()->action('DocsController@show',$doc->id);
     }
