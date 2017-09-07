@@ -16,8 +16,10 @@ class Docs extends Model
 
     public static $update =
     [
-
-    ]
+        'title' => 'required|min:2|max:200',
+        'handle' => 'nullable',
+        'genre'=> 'required',
+    ];
 
 
     public static function parse($url)

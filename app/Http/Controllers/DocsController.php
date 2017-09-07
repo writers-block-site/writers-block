@@ -34,7 +34,7 @@ class DocsController extends Controller
     {
         $doc = new Docs();
         $doc->title = $request->title;
-        $doc->handles = serialize($request->handle);
+        $doc->handles = $request->handle;
         $doc->genre = $request->genre;
         $doc->view_count = 0;
         $doc->uploaded_by = Auth::id();
