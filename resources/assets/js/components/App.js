@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, withRouter} from 'react-router-dom';
+import PrimaryLayout from './PrimaryLayout';
 
 var documentsArr = [
     {
@@ -41,7 +42,6 @@ var documentsArr = [
 export default class App extends Component {
     constructor(props) {
         super(props);
-        console.log('App:', this.props);
         this.previewDocument = this.previewDocument.bind(this);
         this.selectDocument = this.selectDocument.bind(this);
 
@@ -67,7 +67,7 @@ export default class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                
+                <PrimaryLayout />
             </BrowserRouter>
         );
     }
