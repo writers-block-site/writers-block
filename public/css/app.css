@@ -39,7 +39,7 @@
 
 .documents {
   height: 95vh;
-  background: #222;
+  background: #FEFEFE;
 }
 
 .document {
@@ -50,6 +50,11 @@
 .doc-viewer {
   width: 100%;
   height: 95vh;
+}
+
+.test {
+  height: 95vh;
+  background: #888;
 }
 
 .comments {

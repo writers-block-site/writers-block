@@ -3,10 +3,21 @@ import {withRouter} from 'react-router-dom';
 import SearchDocuments from './components/SearchDocuments';
 
 class SearchView extends Component {
+    constructor(props){
+        super(props);
+
+        console.log(props);
+    }
+    componentWillMount() {
+       
+    }
     render() {
         return(
             <div>
-                <SearchDocuments />
+                <SearchDocuments posts={this.props.posts} />
+                <div className='test col-sm-4 text-center'>
+                    <h2>(Preview to be added)</h2>
+                </div>
             </div>
         )
     }
