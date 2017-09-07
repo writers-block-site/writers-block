@@ -12,10 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('reactApp');
+});
+
+Route::get('/home', function(){
+    return redirect('/');
 });
 
 Route::resource('docs','DocsController');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/{any}', function(){
+    return view('reactApp');
+})->where('any', '.+');
