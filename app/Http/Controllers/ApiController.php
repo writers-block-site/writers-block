@@ -10,6 +10,11 @@ use Log;
 
 class ApiController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('ajax');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,16 +25,6 @@ class ApiController extends Controller
         $docs = Docs::Paginate(6);
 
         return response()->json($docs);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -70,20 +65,12 @@ class ApiController extends Controller
     public function show($id)
     {
         $docs = Docs::findOrfail($id);
+        $docs->handle = explode(',',$docs->handle);
+        $docs->handle = end($docs->handle);
 
         return response()->json($docs);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -94,7 +81,16 @@ class ApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $doc = Docs::findOrfail($id);
+        $doc->title = $request->title;
+        $doc->genre = $request->genre;
+        if ($request->handle !== "")
+        {
+            $doc->handles = $doc->handles .",". $request->handle;
+        }
+        $this->validate($request,Docs::$update);
+        $doc->save();
+        return redirect()->action('DocsController@show',$doc->id);
     }
 
     /**
