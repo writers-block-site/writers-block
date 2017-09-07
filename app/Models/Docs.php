@@ -9,7 +9,21 @@ class Docs extends Model
     protected $table = 'docs';
     public static $rules = [
         'title' => 'required|min:2|max:200',
-        'file' => 'required',
-        'genre'=> 'required'
+        'handle' => 'required',
+        'genre'=> 'required',
     ];
+
+
+    public static function parse($url)
+    {
+        fopen("https://process.filestackapi.com/output=[options]/Filestack_FileLink_Handle".$url,'r');
+
+        $contents = stream_get_contents($handle);
+
+        $contentsArray = explode('\n',$contents);
+
+        fclose($url);
+
+        return $contentsArray;
+    }
 }
