@@ -30,8 +30,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="file" name="file" value="Choose file">
-                                {{-- <label for="id" id="selected" class="col-md-4 control-label">No Document selected</label>
+                                <label for="id" id="selected" class="col-md-4 control-label">No Document selected</label>
                                 <div class="col-md-6">
                                     <input type="button"id="doc"class="btn btn-primary" value="Choose document">
                                 </div>
@@ -39,7 +38,7 @@
                             {!!$errors->first('handle', '<span class="help-block">Document must be selected</span>')!!}
                             <input id="doc_handle"type="hidden" name="handle" value="">
                             <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4"> --}}
+                                <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
                                         Upload
                                     </button>
@@ -72,9 +71,11 @@
                 maxFiles: 1,
             }).then(function(results){
                 var label = document.getElementById('selected');
-                var hidden = document.getElementById('doc_handle');
+                var handle = document.getElementById('doc_handle');
+                var transform = document.getElementById('transform');
                 label.innerHTML = "<a href='" + results.filesUploaded[0].url + "'>Your Document</a>";
-                hidden.setAttribute('value',results.filesUploaded[0].handle);
+                handle.setAttribute('value',results.filesUploaded[0].handle);
+                transform.setAttribute('value',"https://process.filestackapi.com/output=f:txt/" + results.filesUploaded[0].handle);
             })
         }
     }());

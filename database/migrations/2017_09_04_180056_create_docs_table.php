@@ -18,7 +18,7 @@ class CreateDocsTable extends Migration
             $table->integer('uploaded_by')->unsigned();
             $table->foreign('uploaded_by')->references('id')->on('users');
             $table->integer('view_count');
-            $table->string('handles');
+            $table->longText('handles');
             $table->string('title');
             $table->string('genre');
             $table->timestamps();
