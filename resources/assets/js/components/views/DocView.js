@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {Route, Switch, withRouter} from 'react-router-dom';
-import SearchDocuments from './PartialViews/SearchDocuments'
+import SearchView from './PartialViews/SearchView';
 
 class DocView extends Component {
     render() {
         return(
             <Switch>
-                <Route path='/docs' component={SearchDocuments} />
+                <Route path='/docs' component={SearchView} />
             </Switch>
         )
     }
