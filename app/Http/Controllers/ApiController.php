@@ -41,7 +41,25 @@ class ApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $doc = new Docs();
+        $doc->title = $request->title;
+        $doc->handles = $request->handle;
+        $doc->genre = $request->genre;
+        $doc->view_count = 0;
+        $doc->uploaded_by = Auth::id();
+        $this->validate($request,Docs::$rules);
+        try {
+
+            $doc->save();
+
+        } catch (Exception $e) {
+            $data['error'] = 'could not save';
+            return response()->json($data);
+        }
+        $data['success'] = "Your upload has been saved";
+
+        return response()->json($data);
+
     }
 
     /**
