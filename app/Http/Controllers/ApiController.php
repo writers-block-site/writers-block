@@ -63,8 +63,11 @@ class ApiController extends Controller
     public function show($id)
     {
         $docs = Docs::with('user')->with('comments')->findOrfail($id);
-        $docs->handle = explode(',',$docs->handle);
-        $docs->handle = end($docs->handle);
+        // $docs->handles = explode(',',$docs->handles);
+        // $docs->handles = end($docs->handles);
+        $handle = explode(',',$docs->handles);
+        $handle = end($handle);
+        $docs->handles = $handle;
 
         return response()->json($docs);
     }
