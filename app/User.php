@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function docs()
+    {
+        return $this->hasMany('\App\Docs','uploaded_by');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('\App\Comments','uploaded_by');
+    }
 }
