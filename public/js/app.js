@@ -45688,7 +45688,7 @@ var PrimaryLayout = function (_Component) {
                     null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/', exact: true, component: __WEBPACK_IMPORTED_MODULE_2__views_Landing__["a" /* default */] }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/users/:user/profile', component: __WEBPACK_IMPORTED_MODULE_3__views_Profile__["a" /* default */] }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/docs', component: function component() {
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/posts', component: function component() {
                             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__views_DocView__["a" /* default */], null);
                         } }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '*', component: __WEBPACK_IMPORTED_MODULE_4__views_NotFound__["a" /* default */] })
@@ -45924,7 +45924,7 @@ var DocView = function (_Component) {
             this.setState({
                 selectedPost: id
             }, function () {
-                _this3.props.history.push('/docs/' + _this3.state.selectedPost + '/view');
+                _this3.props.history.push('/posts/' + _this3.state.selectedPost + '/view');
             });
         }
     }, {
@@ -45935,10 +45935,10 @@ var DocView = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Switch */],
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/docs', exact: true, component: function component() {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/posts', exact: true, component: function component() {
                         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__PartialViews_SearchView__["a" /* default */], { posts: _this4.state.resultsArr, selectPost: _this4.selectPost });
                     } }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/docs/:id/view', component: function component() {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/posts/:id/view', component: function component() {
                         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__PartialViews_SelectedDocView__["a" /* default */], null);
                     } })
             );
