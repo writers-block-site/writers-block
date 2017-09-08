@@ -46197,7 +46197,7 @@ var SelectedDocument = function (_Component) {
     _createClass(SelectedDocument, [{
         key: 'render',
         value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('iframe', { className: 'col-sm-8', src: 'https://www.filestackapi.com/api/file/hoIjLd1eRLCpaniplHjG' });
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('iframe', { className: 'col-sm-8', src: 'http://process.filestackapi.com/output=f:pdf/uvFTU9jRiqZmdi2yzKLO' });
         }
     }]);
 
