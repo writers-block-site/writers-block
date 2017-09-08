@@ -34,4 +34,14 @@ class Docs extends Model
 
         return $contentsArray;
     }
+
+    public function user()
+    {
+        $this->belongsTo('\App\User','uploaded_by');
+    }
+
+    public function comment()
+    {
+        $this->hasMany('\App\Comments','doc_id');
+    }
 }
