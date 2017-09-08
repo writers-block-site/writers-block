@@ -46194,15 +46194,15 @@ var SelectedDocView = function (_Component) {
         value: function postComment() {
             // console.log(this.props.match.params.id);
             var content = document.getElementById('comment-content').value;
-            axios.post('/docs').then(function (results) {
-                console.log(results);
+            // axios.post('/docs').then((results) => {console.log(results)})
+            axios.post('/comments', {
+                doc_id: this.props.match.params.id,
+                comment: content
+            }, {
+                withCredentials: true
+            }).then(function (results) {
+                return console.log(results);
             });
-            // axios.post('/api/comments', {
-            //     doc_id: this.props.match.params.id,
-            //     comment: content
-            // },{
-            //     withCredentials: true
-            // }).then(results => console.log(results));
         }
     }, {
         key: 'render',
