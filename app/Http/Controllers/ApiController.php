@@ -22,7 +22,8 @@ class ApiController extends Controller
      */
     public function index(Request $request)
     {
-        $docs = Docs::with('user')
+        $docs = Docs::with('comment')
+                // ->with('comment')
                 ->orderBy('updated_at','ASC')
                 ->Paginate(6);
 
