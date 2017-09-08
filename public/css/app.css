@@ -57,6 +57,10 @@
   background: #888;
 }
 
+iframe {
+  height: 95vh;
+}
+
 .comments {
   height: 95vh;
   background: #1e9cbc;
