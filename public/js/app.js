@@ -12325,7 +12325,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(111);
-module.exports = __webpack_require__(273);
+module.exports = __webpack_require__(275);
 
 
 /***/ }),
@@ -45906,7 +45906,8 @@ var DocView = function (_Component) {
 
             var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.searchPage;
 
-            axios.get('/api/docs?page=' + page).then(function (results) {
+            axios.get('/docs?page=' + page).then(function (results) {
+                console.log(results);
                 _this2.setState({
                     lastPage: results.data.last_page,
                     resultsArr: results.data.data
@@ -46150,6 +46151,7 @@ var Document = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_SelectedDocument__ = __webpack_require__(271);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_CommentForm__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_CommentsContainer__ = __webpack_require__(273);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46157,6 +46159,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -46172,19 +46175,27 @@ var SelectedDocView = function (_Component) {
         var _this = _possibleConstructorReturn(this, (SelectedDocView.__proto__ || Object.getPrototypeOf(SelectedDocView)).call(this, props));
 
         _this.state = {
-            handle: ''
+            handle: '',
+            comments: ''
         };
+        _this.getComments = _this.getComments.bind(_this);
         return _this;
     }
 
     _createClass(SelectedDocView, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
+            this.getComments();
+        }
+    }, {
+        key: 'getComments',
+        value: function getComments() {
             var _this2 = this;
 
-            axios.get('/api/docs/' + this.props.match.params.id).then(function (results) {
-                console.log(results.data.handles);
+            axios.get('/docs/' + this.props.match.params.id).then(function (results) {
+                console.log(results);
                 _this2.setState({
+                    comments: results.data.comments,
                     handle: results.data.handles
                 });
             });
@@ -46212,25 +46223,21 @@ var SelectedDocView = function (_Component) {
                 comment: content
             }, {
                 withCredentials: true
-            }).then(function (results) {
-                return console.log(results);
-            });
+            }).then(this.getComments());
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
-
-            document.onmouseup = document.onkeyup = document.onselectionchange = function () {
-                // document.getElementById("sel").value = getSelectionText();
-                console.log('Hello!');
-                console.log(_this3.getText());
-            };
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SelectedDocument__["a" /* default */], { handle: this.state.handle }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_CommentForm__["a" /* default */], { postComment: this.postComment.bind(this) })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_CommentForm__["a" /* default */], { getComments: this.getComments, postComment: this.postComment.bind(this) }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_CommentsContainer__["a" /* default */], { comments: this.state.comments })
+                )
             );
         }
     }]);
@@ -46405,6 +46412,119 @@ var CommentForm = function (_Component) {
 
 /***/ }),
 /* 273 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterators_Comment__ = __webpack_require__(274);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var CommentsContainer = function (_Component) {
+    _inherits(CommentsContainer, _Component);
+
+    function CommentsContainer(props) {
+        _classCallCheck(this, CommentsContainer);
+
+        return _possibleConstructorReturn(this, (CommentsContainer.__proto__ || Object.getPrototypeOf(CommentsContainer)).call(this, props));
+    }
+
+    _createClass(CommentsContainer, [{
+        key: 'render',
+        value: function render() {
+            if (this.props.comments) {
+                var comments = this.props.comments.map(function (comment) {
+                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__iterators_Comment__["a" /* default */], {
+                        comment: comment.comment
+                    });
+                });
+            }
+            if (comments) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    null,
+                    comments
+                );
+            }
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h1',
+                    null,
+                    'Loading Comments...'
+                )
+            );
+        }
+    }]);
+
+    return CommentsContainer;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (CommentsContainer);
+
+/***/ }),
+/* 274 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var Comment = function (_Component) {
+    _inherits(Comment, _Component);
+
+    function Comment(props) {
+        _classCallCheck(this, Comment);
+
+        return _possibleConstructorReturn(this, (Comment.__proto__ || Object.getPrototypeOf(Comment)).call(this, props));
+    }
+
+    _createClass(Comment, [{
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h4',
+                    null,
+                    'Comment By [USER NAME HERE]'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'p',
+                    null,
+                    this.props.comment
+                )
+            );
+        }
+    }]);
+
+    return Comment;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Comment);
+
+/***/ }),
+/* 275 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

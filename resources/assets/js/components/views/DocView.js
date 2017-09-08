@@ -19,7 +19,8 @@ class DocView extends Component {
         this.getPosts();
     }
     getPosts(page = this.state.searchPage){
-        axios.get(`/api/docs?page=${page}`).then((results) => {
+        axios.get(`/docs?page=${page}`).then((results) => {
+            console.log(results)
             this.setState({
                 lastPage: results.data.last_page,
                 resultsArr: results.data.data

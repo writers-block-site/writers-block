@@ -2,19 +2,26 @@ import React, {Component} from 'react';
 import {Route, withRouter} from 'react-router-dom';
 import SelectedDocument from './components/SelectedDocument'
 import CommentForm from './components/CommentForm'
+import CommentsContainer from './components/CommentsContainer'
 
 class SelectedDocView extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            handle: ''
+            handle: '',
+            comments: ''
         }
+        this.getComments = this.getComments.bind(this);
     }
     componentWillMount() {
-        axios.get(`/api/docs/${this.props.match.params.id}`).then((results) => {
-            console.log(results.data.handles)
+        this.getComments();
+    }
+    getComments(){
+        axios.get(`/docs/${this.props.match.params.id}`).then((results) => {
+            console.log(results)
             this.setState({
+                comments: results.data.comments,
                 handle: results.data.handles
             })
         })
@@ -38,18 +45,16 @@ class SelectedDocView extends Component {
             comment: content
         },{
             withCredentials: true
-        }).then(results => console.log(results));
+        }).then(this.getComments());
     }
     render() {
-        document.onmouseup = document.onkeyup = document.onselectionchange = () => {
-            // document.getElementById("sel").value = getSelectionText();
-            console.log('Hello!')
-            console.log(this.getText());
-          };
         return (
             <div>
                 <SelectedDocument handle={this.state.handle} />
-                <CommentForm postComment={this.postComment.bind(this)} />
+                <div>
+                    <CommentForm getComments={this.getComments} postComment={this.postComment.bind(this)} />
+                    <CommentsContainer comments={this.state.comments}  />
+                </div>
             </div>
         )
     }
