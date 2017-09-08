@@ -23,7 +23,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
 
@@ -59,7 +59,7 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
 
