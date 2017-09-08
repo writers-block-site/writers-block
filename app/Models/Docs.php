@@ -37,11 +37,11 @@ class Docs extends Model
 
     public function user()
     {
-        $this->belongsTo('\App\User','uploaded_by');
+        return $this->belongsTo('\App\User','uploaded_by');
     }
 
     public function comment()
     {
-        $this->hasMany('\App\Comments','doc_id');
+       return $this->hasMany('\App\Comments','doc_id');
     }
 }
