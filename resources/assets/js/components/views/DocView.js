@@ -10,8 +10,10 @@ class DocView extends Component {
         this.state = {
             searchPage: 1,
             lastPage: '',
-            resultsArr: ''
+            resultsArr: '',
+            selectedPost: ''
         }
+        this.selectPost = this.selectPost.bind(this);
     }
     componentWillMount(){
         this.getPosts();
@@ -21,19 +23,24 @@ class DocView extends Component {
             this.setState({
                 lastPage: results.data.last_page,
                 resultsArr: results.data.data
-            }, () => {
-                console.log(this.state.resultsArr)
             })
         });
+    }
+    selectPost(id = 2){
+            this.setState({
+                selectedPost: id
+            }, () => {
+                this.props.history.push(`/docs/${this.state.selectedPost}/view`)
+            });
     }
     render() {
         return(
             <Switch>
-                <Route path='/docs' exact component={() => (<SearchView posts={this.state.resultsArr}  />)} />
+                <Route path='/docs' exact component={() => (<SearchView posts={this.state.resultsArr} selectPost={this.selectPost}  />)} />
                 <Route path='/docs/:id/view' component={() => (<SelectedDocView />)} />
             </Switch>
         )
     }
 }
 
-export default DocView;
+export default withRouter(DocView);

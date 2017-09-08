@@ -12325,7 +12325,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(111);
-module.exports = __webpack_require__(272);
+module.exports = __webpack_require__(273);
 
 
 /***/ }),
@@ -45887,8 +45887,10 @@ var DocView = function (_Component) {
         _this.state = {
             searchPage: 1,
             lastPage: '',
-            resultsArr: ''
+            resultsArr: '',
+            selectedPost: ''
         };
+        _this.selectPost = _this.selectPost.bind(_this);
         return _this;
     }
 
@@ -45908,21 +45910,32 @@ var DocView = function (_Component) {
                 _this2.setState({
                     lastPage: results.data.last_page,
                     resultsArr: results.data.data
-                }, function () {
-                    console.log(_this2.state.resultsArr);
                 });
+            });
+        }
+    }, {
+        key: 'selectPost',
+        value: function selectPost() {
+            var _this3 = this;
+
+            var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 2;
+
+            this.setState({
+                selectedPost: id
+            }, function () {
+                _this3.props.history.push('/docs/' + _this3.state.selectedPost + '/view');
             });
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
+            var _this4 = this;
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Switch */],
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/docs', exact: true, component: function component() {
-                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__PartialViews_SearchView__["a" /* default */], { posts: _this3.state.resultsArr });
+                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__PartialViews_SearchView__["a" /* default */], { posts: _this4.state.resultsArr, selectPost: _this4.selectPost });
                     } }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/docs/:id/view', component: function component() {
                         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__PartialViews_SelectedDocView__["a" /* default */], null);
@@ -45934,7 +45947,7 @@ var DocView = function (_Component) {
     return DocView;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (DocView);
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* withRouter */])(DocView));
 
 /***/ }),
 /* 267 */
@@ -45978,7 +45991,7 @@ var SearchView = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SearchDocuments__["a" /* default */], { posts: this.props.posts }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SearchDocuments__["a" /* default */], { selectPost: this.props.selectPost, posts: this.props.posts }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'test col-sm-4 text-center' },
@@ -46030,6 +46043,8 @@ var SearchDocuments = function (_Component) {
     _createClass(SearchDocuments, [{
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             if (!this.props.posts) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
@@ -46044,6 +46059,7 @@ var SearchDocuments = function (_Component) {
             var documents = this.props.posts.map(function (document) {
                 console.log(document);
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__iterators_Document__["a" /* default */], {
+                    selectPost: _this2.props.selectPost,
                     key: document.handles,
                     id: document.id,
                     genre: document.genre,
@@ -46091,18 +46107,20 @@ var Document = function (_Component) {
     function Document(props) {
         _classCallCheck(this, Document);
 
-        var _this = _possibleConstructorReturn(this, (Document.__proto__ || Object.getPrototypeOf(Document)).call(this, props));
-
-        console.log('Document Props:', _this.props);
-        return _this;
+        return _possibleConstructorReturn(this, (Document.__proto__ || Object.getPrototypeOf(Document)).call(this, props));
+        // console.log('Document Props:', this.props);
     }
 
     _createClass(Document, [{
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                null,
+                { onClick: function onClick() {
+                        _this2.props.selectPost(_this2.props.id);
+                    } },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h3',
                     null,
@@ -46131,6 +46149,7 @@ var Document = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_SelectedDocument__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_CommentForm__ = __webpack_require__(272);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46143,22 +46162,56 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
 var SelectedDocView = function (_Component) {
     _inherits(SelectedDocView, _Component);
 
-    function SelectedDocView() {
+    function SelectedDocView(props) {
         _classCallCheck(this, SelectedDocView);
 
-        return _possibleConstructorReturn(this, (SelectedDocView.__proto__ || Object.getPrototypeOf(SelectedDocView)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (SelectedDocView.__proto__ || Object.getPrototypeOf(SelectedDocView)).call(this, props));
+
+        console.log('SelectedProps:', _this.props);
+        _this.state = {
+            handle: ''
+        };
+        return _this;
     }
 
     _createClass(SelectedDocView, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            var _this2 = this;
+
+            axios.get('/api/docs/' + this.props.match.params.id).then(function (results) {
+                _this2.setState({
+                    handle: results.data.handles
+                });
+            });
+        }
+    }, {
+        key: 'postComment',
+        value: function postComment() {
+            // console.log(this.props.match.params.id);
+            var content = document.getElementById('comment-content').value;
+            // axios.post('/docs').then((results) => {console.log(results)})
+            axios.post('/comments', {
+                doc_id: this.props.match.params.id,
+                comment: content
+            }, {
+                withCredentials: true
+            }).then(function (results) {
+                return console.log(results);
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SelectedDocument__["a" /* default */], null)
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SelectedDocument__["a" /* default */], { handle: this.state.handle }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_CommentForm__["a" /* default */], { postComment: this.postComment.bind(this) })
             );
         }
     }]);
@@ -46166,7 +46219,7 @@ var SelectedDocView = function (_Component) {
     return SelectedDocView;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (SelectedDocView);
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* withRouter */])(SelectedDocView));
 
 /***/ }),
 /* 271 */
@@ -46197,7 +46250,22 @@ var SelectedDocument = function (_Component) {
     _createClass(SelectedDocument, [{
         key: 'render',
         value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('iframe', { className: 'col-sm-8', src: 'http://process.filestackapi.com/output=f:pdf/uvFTU9jRiqZmdi2yzKLO' });
+            if (this.props.handle === '') {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'h1',
+                        null,
+                        'Loading...'
+                    )
+                );
+            }
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'col-md-8 selected-doc' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('iframe', { src: 'http://process.filestackapi.com/output=f:pdf/' + this.props.handle })
+            );
         }
     }]);
 
@@ -46208,6 +46276,73 @@ var SelectedDocument = function (_Component) {
 
 /***/ }),
 /* 272 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var CommentForm = function (_Component) {
+    _inherits(CommentForm, _Component);
+
+    function CommentForm(props) {
+        _classCallCheck(this, CommentForm);
+
+        return _possibleConstructorReturn(this, (CommentForm.__proto__ || Object.getPrototypeOf(CommentForm)).call(this, props));
+    }
+
+    _createClass(CommentForm, [{
+        key: 'formHandler',
+        value: function formHandler() {
+            console.log('Submitted!');
+            this.props.postComment();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'col-md-4' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h4',
+                    null,
+                    'Comments:'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'form',
+                    { className: 'form-group-md', onSubmit: function onSubmit(e) {
+                            e.preventDefault();
+                            _this2.formHandler();
+                        } },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control', name: 'content', id: 'comment-content', cols: '30', rows: '10', placeholder: 'Leave a comment! Remember, CONSTRUCTIVE criticism :)' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        { className: 'btn btn-info' },
+                        'Submit'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return CommentForm;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (CommentForm);
+
+/***/ }),
+/* 273 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

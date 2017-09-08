@@ -15,6 +15,7 @@ class SearchDocuments extends Component {
             console.log(document);
             return(
                 <Document
+                selectPost={this.props.selectPost}
                 key={document.handles}
                 id={document.id}
                 genre={document.genre}
