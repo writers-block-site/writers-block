@@ -104,8 +104,8 @@ class ApiController extends Controller
 
     public function getDiff($doc1,$doc2)
     {
-        $doc1 = Docs::with('user')findOrfail($doc1);
-        $doc2 = Docs::with('user')findOrfail($doc2);
+        $doc1 = Docs::with('user')->findOrfail($doc1);
+        $doc2 = Docs::with('user')->findOrfail($doc2);
 
         $contents1 = Docs::parse($doc1->handle);
         $contents2 = Docs::parse($doc2->handle);
