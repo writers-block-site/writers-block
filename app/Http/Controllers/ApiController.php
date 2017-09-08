@@ -22,8 +22,7 @@ class ApiController extends Controller
      */
     public function index(Request $request)
     {
-        $docs = Docs::with('comment')
-                // ->with('comment')
+        $docs = Docs::with('user')
                 ->orderBy('updated_at','ASC')
                 ->Paginate(6);
 
@@ -63,7 +62,7 @@ class ApiController extends Controller
      */
     public function show($id)
     {
-        $docs = Docs::with('user')->findOrfail($id);
+        $docs = Docs::with('user')->with('comments')->findOrfail($id);
         $docs->handle = explode(',',$docs->handle);
         $docs->handle = end($docs->handle);
 
