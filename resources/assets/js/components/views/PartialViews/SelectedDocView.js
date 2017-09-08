@@ -7,17 +7,27 @@ class SelectedDocView extends Component {
     constructor(props){
         super(props);
 
-        console.log('SelectedProps:', this.props)
         this.state = {
             handle: ''
         }
     }
     componentWillMount() {
         axios.get(`/api/docs/${this.props.match.params.id}`).then((results) => {
+            console.log(results.data.handles)
             this.setState({
                 handle: results.data.handles
             })
         })
+    }
+    getText(){
+        var text = "";
+        var iframe = document.getElementById('iframe');
+        var idoc= iframe.contentDocument || iframe.contentWindow.document;
+        var iwin= iframe.contentWindow || iframe.contentDocument.defaultView;
+        
+        text = iwin.getSelection().toString()
+        // text = iframe.contentWindow.getSelection().toString();
+        return text;
     }
     postComment(){
         // console.log(this.props.match.params.id);
@@ -31,6 +41,11 @@ class SelectedDocView extends Component {
         }).then(results => console.log(results));
     }
     render() {
+        document.onmouseup = document.onkeyup = document.onselectionchange = () => {
+            // document.getElementById("sel").value = getSelectionText();
+            console.log('Hello!')
+            console.log(this.getText());
+          };
         return (
             <div>
                 <SelectedDocument handle={this.state.handle} />
