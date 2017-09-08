@@ -15,7 +15,12 @@ Route::get('/', function () {
     return view('reactApp');
 });
 
+Route::get('/test',function(){
+    return view('test');
+});
+
 Route::resource('docs','DocsController');
+Route::resource('comments','CommentsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
