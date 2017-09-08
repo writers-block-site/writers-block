@@ -20,9 +20,11 @@ class ApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $docs = Docs::Paginate(6);
+        $docs = Docs::with('user')
+                ->orderBy('updated_at','ASC')
+                ->Paginate(6);
 
         return response()->json($docs);
     }
@@ -60,7 +62,7 @@ class ApiController extends Controller
      */
     public function show($id)
     {
-        $docs = Docs::findOrfail($id);
+        $docs = Docs::with('user')->findOrfail($id);
         $docs->handle = explode(',',$docs->handle);
         $docs->handle = end($docs->handle);
 
@@ -102,8 +104,8 @@ class ApiController extends Controller
 
     public function getDiff($doc1,$doc2)
     {
-        $doc1 = Docs::findOrfail($doc1);
-        $doc2 = Docs::findOrfail($doc2);
+        $doc1 = Docs::with('user')findOrfail($doc1);
+        $doc2 = Docs::with('user')findOrfail($doc2);
 
         $contents1 = Docs::parse($doc1->handle);
         $contents2 = Docs::parse($doc2->handle);
