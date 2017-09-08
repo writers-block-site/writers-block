@@ -29,11 +29,11 @@ class User extends Authenticatable
 
     public function docs()
     {
-        return $this->hasMany('\App\Docs','uploaded_by');
+        return $this->hasMany('\App\Models\Docs','uploaded_by');
     }
 
     public function comments()
     {
-        return $this->hasMany('\App\Comments','uploaded_by');
+        return $this->hasMany('\App\Models\Comments','uploaded_by');
     }
 }

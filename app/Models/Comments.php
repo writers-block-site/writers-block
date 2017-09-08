@@ -21,6 +21,6 @@ class Comments extends Model
 
     public function docs()
     {
-        return $this->belongsTo('\App\Docs','doc_id');
+        return $this->belongsTo('\App\Models\Docs','doc_id');
     }
 }

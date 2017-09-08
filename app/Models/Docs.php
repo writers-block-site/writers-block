@@ -40,8 +40,8 @@ class Docs extends Model
         return $this->belongsTo('\App\User','uploaded_by');
     }
 
-    public function comment()
+    public function comments()
     {
-       return $this->hasMany('\App\Comments','doc_id');
+       return $this->hasMany('\App\Models\Comments','doc_id');
     }
 }
