@@ -1,33 +1,25 @@
 import React, {Component, PropTypes} from 'react';
-import RichTextEditor from 'react-rte';
 
-export default class MyStatefulEditor extends Component {
-  propTypes = {
-    onChange: PropTypes.func
-  };
-
-  state = {
-    value: RichTextEditor.createEmptyValue()
-  }
-
-  onChange = (value) => {
-    this.setState({value});
-    if (this.props.onChange) {
-      // Send the changes up to the parent component as an HTML string.
-      // This is here to demonstrate using `.toString()` but in a real app it
-      // would be better to avoid generating a string on each change.
-      this.props.onChange(
-        value.toString('html')
-      );
+export default class CommentForm extends Component {
+    constructor(props){
+        super(props);
     }
-  };
-
-  render () {
-    return (
-      <RichTextEditor
-        value={this.state.value}
-        onChange={this.onChange}
-      />
-    );
-  }
+    formHandler() {
+        console.log('Submitted!');
+        this.props.postComment()
+    }
+    render() {
+        return(
+            <div className='col-md-4'>
+                <h4>Comments:</h4>
+                <form className='form-group-md' onSubmit={(e) => {
+                    e.preventDefault();
+                    this.formHandler();
+                    }}>
+                    <textarea className='form-control' name="content" id="comment-content" cols="30" rows="10" placeholder='Leave a comment! Remember, CONSTRUCTIVE criticism :)' />
+                    <button className='btn btn-info'>Submit</button>
+                </form>
+            </div>
+        )
+    }
 }
