@@ -26,3 +26,13 @@ iframe {
 .selected-doc{
     background: #6CD46C;
 }
+.posts-title{
+    margin: {
+        top: 10vh;
+    }
+}
+.user-document {
+    box-sizing: border-box;
+    border: 5px solid #222;
+    cursor: pointer;
+}

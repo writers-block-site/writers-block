@@ -66,6 +66,17 @@ iframe {
   background: #6CD46C;
 }
 
+.posts-title {
+  margin-top: 10vh;
+}
+
+.user-document {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 5px solid #222;
+  cursor: pointer;
+}
+
 .comments {
   overflow-y: scroll;
 }
