@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Route, Switch, withRouter} from 'react-router-dom';
 import SearchView from './PartialViews/SearchView';
 import SelectedDocView from './PartialViews/SelectedDocView';
+import DiffView from './PartialViews/DiffView';
 
 class DocView extends Component {
     constructor(props){
@@ -39,6 +40,7 @@ class DocView extends Component {
             <Switch>
                 <Route path='/posts' exact component={() => (<SearchView posts={this.state.resultsArr} selectPost={this.selectPost}  />)} />
                 <Route path='/posts/:id/view' component={() => (<SelectedDocView />)} />
+                <Route path='/posts/:id/history' component={DiffView} />
             </Switch>
         )
     }

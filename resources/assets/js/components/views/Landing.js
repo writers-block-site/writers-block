@@ -9,11 +9,9 @@ class Landing extends Component {
                     <span className='title' >Writer's Block  <span className="glyphicon glyphicon-book book"></span></span>
                 </div>
                 <div>
-                    <div className='container-fluid'> 
-                        <span className='col-sm-4 text-center'>{test}</span>
-                        <span className='col-sm-4 text-center'>{test}</span>
-                        <span className='col-sm-4 text-center'>{test}</span>
+                    <div className='container'> 
                         
+                        <blockquote id='p' className='lead'>We are a community for writers to get advice and critique on their creative work from their peers</blockquote>
                     </div>
                 </div>
             </div>
