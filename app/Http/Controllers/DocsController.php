@@ -14,7 +14,7 @@ class DocsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('ajax', ['except' => ['store','create','edit','update','destroy']]);
+        $this->middleware('ajax', ['except' => ['store','create','edit','update','destroy','getDiff']]);
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
     /**
@@ -25,7 +25,7 @@ class DocsController extends Controller
     public function index(Request $request)
     {
         $docs = Docs::with('user')
-                ->orderBy('updated_at','ASC')
+                ->orderBy('view_count','DESC')
                 ->Paginate(6);
 
         return response()->json($docs);
@@ -119,13 +119,23 @@ class DocsController extends Controller
     public function create() {
         return view('docs.create');
     }
-    public function getDiff($doc1,$doc2)
+    public function getDiff($id)
     {
-        $doc1 = Docs::findOrfail($doc1);
-        $doc2 = Docs::findOrfail($doc2);
+        // $id = $request->id;
 
-        $contents1 = Docs::parse($doc1->handle);
-        $contents2 = Docs::parse($doc2->handle);
+        $post = Docs::findOrfail($id);
+
+        $handles = explode(',',$post->handles);
+        $handle1 = end($handles);
+
+        $handle2 = $handles[count($handles)-2];
+
+        $contents1 = Docs::parse($handle1);
+        $contents2 = Docs::parse($handle2);
+
+        $contents1 = utf8_encode($contents1);
+        $contents2 = utf8_encode($contents2);
+
 
         $data['doc1'] = $contents1;
         $data['doc2'] = $contents2;
