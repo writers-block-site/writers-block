@@ -1,6 +1,6 @@
 <?php
 
-$genres = ['Fiction','Comedy','Drama','Satire','Romantic','Non-fiction','Horror']
+$genres = ['Auto-Biography', 'Biography', 'Essay', 'Journal', 'Memoir', 'Novel', 'Poem','Script', 'Short Story', 'Song', 'Speech', 'Thesis', ]
 
 ?>
 <datalist id="genres">
