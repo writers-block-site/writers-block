@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="container">
-        <h1>UPLOAD THE NEW VERSION</h1>
+        <h1>Update</h1>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -21,10 +21,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="genre" class="col-md-4 control-label">Genre</label>
+                                <label for="genre" class="col-md-4 control-label">Type</label>
                                 <div class="col-md-6">
                                     {!!$errors->first('genre', '<span class="help-block">:message</span>')!!}
-                                    <input list="genres" type="text" class="form-control" name="genre" value="{{ $doc->genre}}" required autofocus>
+                                    <input placeholder='Click Dropdown For Example Types' list="genres" type="text" class="form-control" name="genre" value="{{ $doc->genre}}" required autofocus>
                                     @include('docs.partials.datalist')
                                 </div>
                             </div>

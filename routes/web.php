@@ -22,7 +22,6 @@ Route::get('/', function () {
 Route::resource('docs','DocsController');
 Route::resource('comments','CommentsController');
 Auth::routes();
-
 Route::get('/home', 'HomeController@index');
 
 Route::get('/{any}', function(){
