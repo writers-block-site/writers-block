@@ -25,7 +25,7 @@ class DocsController extends Controller
     public function index(Request $request)
     {
         $docs = Docs::with('user')
-                ->orderBy('view_count','DESC')
+                ->orderBy('created_at','DESC')
                 ->Paginate(6);
 
         return response()->json($docs);
@@ -70,15 +70,20 @@ class DocsController extends Controller
     {
 
         $docs = Docs::with('user')->with('comments')->findOrfail($id);
+        $docs->view_count +=1;
+        $docs->save();
         $handle = explode(',',$docs->handles);
         $handle = end($handle);
         $docs->handles = $handle;
-        $docs->view_count +=1;
-        $docs->save();
 
         return response()->json($docs);
     }
 
+    public function redirectView()
+    {
+
+        return redirect("/posts/1/view");
+    }
 
     /**
      * Update the specified resource in storage.
@@ -90,15 +95,22 @@ class DocsController extends Controller
     public function update(Request $request, $id)
     {
         $doc = Docs::findOrfail($id);
+        $this->validate($request,Docs::$update);
         $doc->title = $request->title;
         $doc->genre = $request->genre;
-
-        if ($request->handle !== null)
+        if ($request->handle != null)
         {
-            $doc->handles = $doc->handles .",". $request->handle;
+            $oldHandles = $doc->handles;
+            $newHandle = $oldHandles .",".$request->handle;
+            $doc->handles = $newHandle;
         }
-        $doc->save();
-        return redirect("/posts/$doc->id/view");
+        $result = $doc->save();
+
+        if ($result) {
+
+            return $this->redirectView();
+
+        }
     }
 
     /**
