@@ -24,7 +24,17 @@ class Docs extends Model
 
     public static function parse($url)
     {
-        $handle = fopen("https://process.filestackapi.com/output=f:txt/".$url,'r');
+
+            // Might need to refactor "@" too much power it holds
+
+            $handle = @fopen("https://process.filestackapi.com/output=f:txt/".$url,'r');
+
+
+            if ($handle == false) {
+
+                $handle = fopen("https://cdn.filestackcontent.com/".$url,'r');
+            }
+
 
         $contents = trim(stream_get_contents($handle));
 
