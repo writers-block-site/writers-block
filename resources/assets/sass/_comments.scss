@@ -3,7 +3,13 @@
     // background: #1e9cbc;
     overflow-y: scroll;
 }
-
+.scroll{
+    // overflow: scroll;
+}
+.float{
+    display: block;
+    float: left;
+}
 .comment {
     text-align: left;
     background: #FEFEFE;

@@ -46234,7 +46234,7 @@ var SelectedDocView = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SelectedDocument__["a" /* default */], { handle: this.state.handle }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    null,
+                    { className: 'scroll' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_CommentForm__["a" /* default */], { getComments: this.getComments, postComment: this.postComment.bind(this) }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_CommentsContainer__["a" /* default */], { comments: this.state.comments })
                 )
@@ -46382,7 +46382,7 @@ var CommentForm = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'col-md-4' },
+                { className: 'col-md-4 float' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h4',
                     null,
@@ -46451,7 +46451,7 @@ var CommentsContainer = function (_Component) {
             if (comments) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    null,
+                    { className: 'float' },
                     comments
                 );
             }

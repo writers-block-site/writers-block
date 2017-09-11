@@ -18,7 +18,7 @@ export default class CommentsContainer extends Component{
         }
         if (comments){
             return(
-                <div>
+                <div className='float'>
                     {comments}
                 </div>
             )
