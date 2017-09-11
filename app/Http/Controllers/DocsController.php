@@ -70,19 +70,19 @@ class DocsController extends Controller
     {
 
         $docs = Docs::with('user')->with('comments')->findOrfail($id);
+        $docs->view_count +=1;
+        $docs->save();
         $handle = explode(',',$docs->handles);
         $handle = end($handle);
         $docs->handles = $handle;
-        $docs->view_count +=1;
-        $docs->save();
 
         return response()->json($docs);
     }
 
-    public function redirectView($id,$doc)
+    public function redirectView()
     {
 
-        return redirect("/posts/$id/view");
+        return redirect("/posts/1/view");
     }
 
     /**
@@ -108,8 +108,8 @@ class DocsController extends Controller
 
         if ($result) {
 
-            return $this->redirectView($doc->id,$content);
-            
+            return $this->redirectView();
+
         }
     }
 
