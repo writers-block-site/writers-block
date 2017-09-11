@@ -24,15 +24,13 @@ class Docs extends Model
 
     public static function parse($url)
     {
-        fopen("https://process.filestackapi.com/output=f:txt/Filestack_FileLink_Handle".$url,'r');
+        $handle = fopen("https://process.filestackapi.com/output=f:txt/".$url,'r');
 
-        $contents = stream_get_contents($handle);
+        $contents = trim(stream_get_contents($handle));
 
-        $contentsArray = explode('\n',$contents);
+        fclose($handle);
 
-        fclose($url);
-
-        return $contentsArray;
+        return $contents;
     }
 
     public function user()
