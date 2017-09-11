@@ -107,8 +107,9 @@ class DocsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $id = $request->id;
         $post = Docs::findOrfail($id);
 
         $post->delete();
