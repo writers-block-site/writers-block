@@ -16,7 +16,7 @@
                                 <label for="title" class="col-md-4 control-label">Document Title</label>
                                 <div class="col-md-6">
                                     {!!$errors->first('title', '<span class="help-block">:message</span>')!!}
-                                    <input id="title" type="text" class="form-control" name="title" value="{{ $doc->title}}" required autofocus>
+                                    <input id="title" type="text" class="form-control" name="title" value="{{ $doc->title }}" required autofocus>
                                 </div>
                             </div>
 
@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             {!!$errors->first('handle', '<span class="help-block">Document must be selected</span>')!!}
-                            <input id="doc_handle"type="hidden" name="handle" value="{{$doc->handles}}">
+                            <input id="doc_handle"type="hidden" name="handle" value="">
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
                                     {{ method_field('PUT') }}
@@ -65,7 +65,7 @@
         function picker()
         {
             client.pick({
-                accept: ['.txt','.doc','.docx','.pdf'],
+                accept: ['.txt','.doc','.docx','.odt'],
                 maxFiles: 1,
             }).then(function(results){
                 var label = document.getElementById('selected');
