@@ -65,7 +65,7 @@
         function picker()
         {
             client.pick({
-                accept: ['.txt','.doc','.docx','.odt'],
+                accept: ['.doc','.docx','.odt'],
                 maxFiles: 1,
             }).then(function(results){
                 var label = document.getElementById('selected');

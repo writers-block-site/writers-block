@@ -21,9 +21,10 @@ Route::get('/', function () {
 
 Route::resource('docs','DocsController');
 Route::resource('comments','CommentsController');
+Route::get('/profile/userPage/{id}','UserController@userPage');
 Auth::routes();
 Route::get('/home', 'HomeController@index');
-Route::get('docs/getDiff', 'DocsController@getDiff');
+Route::get('docs/getDiff/{id}', 'DocsController@getDiff');
 Route::get('/{any}', function(){
     return view('reactApp');
 })->where('any', '.+');
