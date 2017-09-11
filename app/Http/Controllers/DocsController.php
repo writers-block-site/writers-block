@@ -14,7 +14,7 @@ class DocsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('ajax');
+        $this->middleware('ajax', ['except' => ['store','create']]);
     }
     /**
      * Display a listing of the resource.
@@ -112,7 +112,9 @@ class DocsController extends Controller
     {
         //
     }
-
+    public function create() {
+        return view('docs.create');
+    }
     public function getDiff($doc1,$doc2)
     {
         $doc1 = Docs::findOrfail($doc1);

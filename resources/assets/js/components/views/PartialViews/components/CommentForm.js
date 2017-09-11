@@ -10,7 +10,7 @@ export default class CommentForm extends Component {
     }
     render() {
         return(
-            <div className='col-md-4'>
+            <div className='col-md-4 float'>
                 <h4>Comments:</h4>
                 <form className='form-group-md' onSubmit={(e) => {
                     e.preventDefault();

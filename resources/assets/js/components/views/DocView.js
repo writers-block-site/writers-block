@@ -19,7 +19,8 @@ class DocView extends Component {
         this.getPosts();
     }
     getPosts(page = this.state.searchPage){
-        axios.get(`/api/docs?page=${page}`).then((results) => {
+        axios.get(`/docs?page=${page}`).then((results) => {
+            console.log(results)
             this.setState({
                 lastPage: results.data.last_page,
                 resultsArr: results.data.data
@@ -30,14 +31,14 @@ class DocView extends Component {
             this.setState({
                 selectedPost: id
             }, () => {
-                this.props.history.push(`/docs/${this.state.selectedPost}/view`)
+                this.props.history.push(`/posts/${this.state.selectedPost}/view`)
             });
     }
     render() {
         return(
             <Switch>
-                <Route path='/docs' exact component={() => (<SearchView posts={this.state.resultsArr} selectPost={this.selectPost}  />)} />
-                <Route path='/docs/:id/view' component={() => (<SelectedDocView />)} />
+                <Route path='/posts' exact component={() => (<SearchView posts={this.state.resultsArr} selectPost={this.selectPost}  />)} />
+                <Route path='/posts/:id/view' component={() => (<SelectedDocView />)} />
             </Switch>
         )
     }
