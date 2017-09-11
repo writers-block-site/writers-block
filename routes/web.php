@@ -23,7 +23,7 @@ Route::resource('docs','DocsController');
 Route::resource('comments','CommentsController');
 Auth::routes();
 Route::get('/home', 'HomeController@index');
-
+Route::get('docs/getDiff', 'DocsController@getDiff');
 Route::get('/{any}', function(){
     return view('reactApp');
 })->where('any', '.+');
