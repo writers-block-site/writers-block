@@ -24,6 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect("/users/" . Auth::user()->name . "/profile");
+        return redirect("/users/" . Auth::user()->id . "/profile");
     }
 }
