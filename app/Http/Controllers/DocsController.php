@@ -14,7 +14,8 @@ class DocsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('ajax', ['except' => ['store','create']]);
+        $this->middleware('ajax', ['except' => ['store','create','edit','update','destroy']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
     /**
      * Display a listing of the resource.
@@ -55,9 +56,7 @@ class DocsController extends Controller
 
         $doc->save();
 
-        $data['success'] = "Your upload has been saved";
-
-        return response()->json($data);
+        return redirect("/posts/$doc->id/view");
 
     }
 
@@ -91,15 +90,15 @@ class DocsController extends Controller
     public function update(Request $request, $id)
     {
         $doc = Docs::findOrfail($id);
-        $this->validate($request,Docs::$update);
         $doc->title = $request->title;
         $doc->genre = $request->genre;
-        if ($request->handle !== "")
+
+        if ($request->handle !== null)
         {
             $doc->handles = $doc->handles .",". $request->handle;
         }
         $doc->save();
-        return redirect()->action('DocsController@show',$doc->id);
+        return redirect("/posts/$doc->id/view");
     }
 
     /**
@@ -110,7 +109,11 @@ class DocsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Docs::findOrfail($id);
+
+        $post->delete();
+
+        return response()->json(['success' => 'it has been deleted']);
     }
     public function create() {
         return view('docs.create');
