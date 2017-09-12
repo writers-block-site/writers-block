@@ -3,6 +3,13 @@ import {withRouter} from 'react-router-dom';
 import Document from './iterators/Document'
 
 class SearchDocuments extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            message: 'All Documents'
+        }
+    }
     render() {
         if (!this.props.posts){
             return(
@@ -24,9 +31,11 @@ class SearchDocuments extends Component {
         })
 
         return (
-            <div className='documents col-sm-8'>
-                <h1>Search Results:</h1>
-                {documents}
+            <div className='documents'>
+                <h1>{this.state.message}</h1>
+                <div className='container'>
+                    {documents}
+                </div>
             </div>
         )
     }

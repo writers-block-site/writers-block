@@ -13,11 +13,8 @@ class SearchView extends Component {
     }
     render() {
         return(
-            <div>
+            <div className='container'>
                 <SearchDocuments selectPost={this.props.selectPost} posts={this.props.posts} />
-                <div className='test col-sm-4 text-center'>
-                    <h2>(Preview to be added)</h2>
-                </div>
             </div>
         )
     }
