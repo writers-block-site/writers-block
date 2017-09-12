@@ -70,7 +70,7 @@
             }).then(function(results){
                 var label = document.getElementById('selected');
                 var hidden = document.getElementById('doc_handle');
-                label.innerHTML = "<a href='" + results.filesUploaded[0].url + "'>Your Document</a>";
+                label.innerHTML = "<a target = '_blank'href='" + results.filesUploaded[0].url + "'>Your Document</a>";
                 hidden.setAttribute('value',results.filesUploaded[0].handle);
             })
         }

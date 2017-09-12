@@ -73,7 +73,7 @@
                 var label = document.getElementById('selected');
                 var handle = document.getElementById('doc_handle');
                 var transform = document.getElementById('transform');
-                label.innerHTML = "<a href='" + results.filesUploaded[0].url + "'>Your Document</a>";
+                label.innerHTML = "<a target='_blank'href='" + results.filesUploaded[0].url + "'>Your Document</a>";
                 handle.setAttribute('value',results.filesUploaded[0].handle);
                 transform.setAttribute('value',"https://process.filestackapi.com/output=f:txt/" + results.filesUploaded[0].handle);
             })
