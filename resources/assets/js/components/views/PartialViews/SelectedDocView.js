@@ -48,7 +48,7 @@ class SelectedDocView extends Component {
         }).then(() => {
             window.setTimeout(() => {
                 this.getComments();
-            }, 100);
+            }, 400);
         });
     }
     render() {

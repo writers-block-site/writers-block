@@ -46554,7 +46554,7 @@ var SelectedDocView = function (_Component) {
             }).then(function () {
                 window.setTimeout(function () {
                     _this3.getComments();
-                }, 100);
+                }, 400);
             });
         }
     }, {
@@ -46698,19 +46698,38 @@ var CommentForm = function (_Component) {
     function CommentForm(props) {
         _classCallCheck(this, CommentForm);
 
-        return _possibleConstructorReturn(this, (CommentForm.__proto__ || Object.getPrototypeOf(CommentForm)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (CommentForm.__proto__ || Object.getPrototypeOf(CommentForm)).call(this, props));
+
+        _this.state = {
+            comment: ''
+        };
+        return _this;
     }
 
     _createClass(CommentForm, [{
+        key: 'onInputChange',
+        value: function onInputChange(comment) {
+            this.setState({
+                comment: comment
+            });
+        }
+    }, {
         key: 'formHandler',
         value: function formHandler() {
+            var _this2 = this;
+
             console.log('Submitted!');
             this.props.postComment();
+            window.setTimeout(function () {
+                _this2.setState({
+                    comment: ''
+                }, 50);
+            });
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this3 = this;
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
@@ -46724,9 +46743,19 @@ var CommentForm = function (_Component) {
                     'form',
                     { className: 'form-group-md', onSubmit: function onSubmit(e) {
                             e.preventDefault();
-                            _this2.formHandler();
+                            _this3.formHandler();
                         } },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control', name: 'content', id: 'comment-content', cols: '30', rows: '10', placeholder: 'Leave a comment! Remember, CONSTRUCTIVE criticism :)' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', {
+                        onChange: function onChange(e) {
+                            _this3.onInputChange(e.target.value);
+                        },
+                        value: this.state.comment,
+                        className: 'form-control',
+                        name: 'content',
+                        id: 'comment-content',
+                        cols: '30',
+                        rows: '10',
+                        placeholder: 'Leave a comment! Remember, CONSTRUCTIVE criticism :)' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
                         { className: 'btn btn-info' },
@@ -46776,6 +46805,7 @@ var CommentsContainer = function (_Component) {
             if (this.props.comments) {
                 var comments = this.props.comments.reverse().map(function (comment) {
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__iterators_Comment__["a" /* default */], {
+                        key: comment.comment + Math.random(0, 100000),
                         comment: comment.comment
                     });
                 });

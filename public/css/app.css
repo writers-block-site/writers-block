@@ -97,6 +97,7 @@ iframe {
 
 .comment .content {
   font-size: 1.5em;
+  width: 100%;
 }
 
 .comment-form {
@@ -106,6 +107,7 @@ iframe {
 .comments-container {
   height: 40vh;
   overflow-y: scroll;
+  width: 100%;
 }
 
 #p {

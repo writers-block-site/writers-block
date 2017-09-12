@@ -11,6 +11,7 @@ export default class CommentsContainer extends Component{
             var comments = this.props.comments.reverse().map((comment) => {
                 return(
                     <Comment
+                    key={comment.comment + Math.random(0,100000)}
                     comment={comment.comment}
                     />
                 )
