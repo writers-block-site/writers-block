@@ -24,13 +24,22 @@ class UserDoc extends Component {
             )
         }
         return(
-                <div
-                onClick={() => {
-                    this.openPost();
-                }}
-                 className='col-md-4 user-document'>
-                    <h3>{this.props.title}</h3>
-                    <p>{this.props.type}</p>
+                <div className='col-md-4'>
+                    <div
+                    onClick={() => {
+                        this.openPost();
+                    }}
+                    className=' user-document'>
+                        <h3>{this.props.title}</h3>
+                        <p>{this.props.type}</p>
+                    </div>
+                    <button 
+                    onClick={
+                        () =>{
+                            this.props.deletePost(this.props.id)
+                        }
+                    }
+                    className='btn btn-danger'>Delete</button>
                 </div>
 
             )

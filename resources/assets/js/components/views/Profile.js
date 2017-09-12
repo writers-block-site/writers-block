@@ -14,8 +14,12 @@ class Profile extends Component {
             userID: ''
 
         }
+        this.getUser = this.getUser.bind(this);
     }
     componentWillMount() {
+        this.getUser();
+    }
+    getUser() {
         axios.get(`/profile/userPage/${this.props.match.params.user}`).then((results) => {
             console.log(results);
             if (results.data){
@@ -53,7 +57,7 @@ class Profile extends Component {
                 <h1>Welcome, {this.state.userProfile}!</h1>
                 <div className='user-documents container'>
                 <h2 className='posts-title'>Posts</h2>
-                    <UserDocs profileMatch={this.state.profileMatch} userDocs={this.state.userDocs} />
+                    <UserDocs getUser={this.getUser} profileMatch={this.state.profileMatch} userDocs={this.state.userDocs} />
                 </div>
             </div>
         )

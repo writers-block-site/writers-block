@@ -5,13 +5,12 @@
 }
 
 .float{
-    display: block;
+    // display: block;
     float: left;
 }
 .comment {
     text-align: left;
     background: #FEFEFE;
-
     .content {
         font-size: 1.5em;
         width: 100%;
@@ -22,7 +21,9 @@
     height: 40vh;
 }
 .comments-container {
+    margin: 0 auto;
     height: 40vh;
     overflow-y: scroll;
-    width: 100%;
+    box-shadow: 0 0 5px 0px black inset;
+    // width: 100%;
 }

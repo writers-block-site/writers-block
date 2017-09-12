@@ -7,8 +7,9 @@ export default class Comment extends Component {
     render() {
         return(
             <div>
-                <h4>Comment By [USER NAME HERE]</h4>
+                <h4>Comment By <a href={`/users/${this.props.id}/profile`}>{this.props.username}</a></h4>
                 <p>{this.props.comment}</p>
+                
             </div>
         )
     }
