@@ -7,6 +7,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Docs;
+use App\Models\Comments;
+use Illuminate\Support\Facades\DB;
+
 use Log;
 
 class DocsController extends Controller
@@ -33,6 +36,7 @@ class DocsController extends Controller
 
             $type = $request->type;
             $docs = Docs::searchByType($type)->Paginate(6);
+
 
         }
 
@@ -89,14 +93,17 @@ class DocsController extends Controller
     public function show($id)
     {
 
-        $docs = Docs::with('user')->with('comments')->findOrfail($id);
+        $docs = Docs::with('user')->findOrfail($id);
+        $comments = Comments::with('user')->where('doc_id','=',$id)->get();
         $docs->view_count +=1;
         $docs->save();
         $handle = explode(',',$docs->handles);
         $handle = end($handle);
         $docs->handles = $handle;
+        $data['docs'] = $docs;
+        $data['comments'] = $comments;
 
-        return response()->json($docs);
+        return response()->json($data);
     }
 
     /**
