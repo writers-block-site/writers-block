@@ -45804,12 +45804,18 @@ var Profile = function (_Component) {
             userID: ''
 
         };
+        _this.getUser = _this.getUser.bind(_this);
         return _this;
     }
 
     _createClass(Profile, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
+            this.getUser();
+        }
+    }, {
+        key: 'getUser',
+        value: function getUser() {
             var _this2 = this;
 
             axios.get('/profile/userPage/' + this.props.match.params.user).then(function (results) {
@@ -45879,7 +45885,7 @@ var Profile = function (_Component) {
                         { className: 'posts-title' },
                         'Posts'
                     ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__PartialViews_UserDocs__["a" /* default */], { profileMatch: this.state.profileMatch, userDocs: this.state.userDocs })
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__PartialViews_UserDocs__["a" /* default */], { getUser: this.getUser, profileMatch: this.state.profileMatch, userDocs: this.state.userDocs })
                 )
             );
         }
@@ -45921,9 +45927,23 @@ var UserDocs = function (_Component) {
     }
 
     _createClass(UserDocs, [{
+        key: 'deletePost',
+        value: function deletePost(id) {
+            var _this2 = this;
+
+            if (confirm('Are you sure you want to delete this post?')) {
+                axios.delete('/docs/' + id).then(function (results) {
+                    console.log(results);
+                    window.setTimeout(function () {
+                        _this2.props.getUser();
+                    }, 100);
+                });
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this3 = this;
 
             if (this.props.userDocs.length < 1) {
                 if (this.props.profileMatch) {
@@ -45957,8 +45977,9 @@ var UserDocs = function (_Component) {
             }
             var userDocs = this.props.userDocs.map(function (doc) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_iterators_UserDoc__["a" /* default */], {
+                    deletePost: _this3.deletePost.bind(_this3),
                     key: doc.handle,
-                    profileMatch: _this2.props.profileMatch,
+                    profileMatch: _this3.props.profileMatch,
                     handle: doc.handle,
                     id: doc.id,
                     title: doc.title,
@@ -46038,20 +46059,33 @@ var UserDoc = function (_Component) {
             }
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                {
-                    onClick: function onClick() {
-                        _this2.openPost();
-                    },
-                    className: 'col-md-4 user-document' },
+                { className: 'col-md-4' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h3',
-                    null,
-                    this.props.title
+                    'div',
+                    {
+                        onClick: function onClick() {
+                            _this2.openPost();
+                        },
+                        className: ' user-document' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'h3',
+                        null,
+                        this.props.title
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'p',
+                        null,
+                        this.props.type
+                    )
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'p',
-                    null,
-                    this.props.type
+                    'button',
+                    {
+                        onClick: function onClick() {
+                            _this2.props.deletePost(_this2.props.id);
+                        },
+                        className: 'btn btn-danger' },
+                    'Delete'
                 )
             );
         }
@@ -46367,7 +46401,9 @@ var Document = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { onClick: function onClick() {
+                {
+                    className: 'post',
+                    onClick: function onClick() {
                         _this2.props.selectPost(_this2.props.id);
                     } },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -46522,7 +46558,7 @@ var SelectedDocView = function (_Component) {
                 console.log(results);
                 _this2.setState({
                     comments: results.data.comments,
-                    handle: results.data.handles
+                    handle: results.data.docs.handles
                 });
             });
         }
@@ -46806,7 +46842,9 @@ var CommentsContainer = function (_Component) {
                 var comments = this.props.comments.reverse().map(function (comment) {
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__iterators_Comment__["a" /* default */], {
                         key: comment.comment + Math.random(0, 100000),
-                        comment: comment.comment
+                        comment: comment.comment,
+                        id: comment.user.id,
+                        username: comment.user.name
                     });
                 });
             }
@@ -46869,7 +46907,12 @@ var Comment = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h4',
                     null,
-                    'Comment By [USER NAME HERE]'
+                    'Comment By ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'a',
+                        { href: '/users/' + this.props.id + '/profile' },
+                        this.props.username
+                    )
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'p',

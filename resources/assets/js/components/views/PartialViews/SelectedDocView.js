@@ -22,7 +22,7 @@ class SelectedDocView extends Component {
             console.log(results)
             this.setState({
                 comments: results.data.comments,
-                handle: results.data.handles
+                handle: results.data.docs.handles
             })
         })
     }

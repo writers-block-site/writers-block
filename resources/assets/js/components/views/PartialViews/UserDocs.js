@@ -7,6 +7,18 @@ export default class UserDocs extends Component {
 
         // console.log('USERDOCS:', this.props)
     }
+    deletePost(id) {
+        if (confirm('Are you sure you want to delete this post?')){
+            axios.delete(`/docs/${id}`).then((results) => {
+                console.log(results);
+                window.setTimeout(() => {
+                    this.props.getUser();
+
+                }, 100);
+            })
+
+        }
+    }
     render () {
         if (this.props.userDocs.length < 1){
             if (this.props.profileMatch){
@@ -31,6 +43,7 @@ export default class UserDocs extends Component {
         var userDocs = this.props.userDocs.map((doc) => {
             return(
                 <UserDoc
+                deletePost={this.deletePost.bind(this)}
                 key={doc.handle}
                 profileMatch={this.props.profileMatch}
                 handle={doc.handle}

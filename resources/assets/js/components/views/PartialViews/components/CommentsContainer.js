@@ -13,6 +13,8 @@ export default class CommentsContainer extends Component{
                     <Comment
                     key={comment.comment + Math.random(0,100000)}
                     comment={comment.comment}
+                    id={comment.user.id}
+                    username={comment.user.name}
                     />
                 )
             })

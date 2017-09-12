@@ -140,11 +140,10 @@ class DocsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $id = $request->id;
+        DB::delete("delete from comments where doc_id = $id");
         $post = Docs::findOrfail($id);
-
         $post->delete();
 
         return response()->json(['success' => 'it has been deleted']);

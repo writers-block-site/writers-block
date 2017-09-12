@@ -81,12 +81,15 @@ iframe {
   cursor: pointer;
 }
 
+.post {
+  cursor: pointer;
+}
+
 .comments {
   overflow-y: scroll;
 }
 
 .float {
-  display: block;
   float: left;
 }
 
@@ -105,9 +108,11 @@ iframe {
 }
 
 .comments-container {
+  margin: 0 auto;
   height: 40vh;
   overflow-y: scroll;
-  width: 100%;
+  -webkit-box-shadow: 0 0 5px 0px black inset;
+          box-shadow: 0 0 5px 0px black inset;
 }
 
 #p {
