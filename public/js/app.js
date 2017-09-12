@@ -46226,17 +46226,8 @@ var SearchView = function (_Component) {
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SearchDocuments__["a" /* default */], { selectPost: this.props.selectPost, posts: this.props.posts }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'test col-sm-4 text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'h2',
-                        null,
-                        '(Preview to be added)'
-                    )
-                )
+                { className: 'container' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SearchDocuments__["a" /* default */], { selectPost: this.props.selectPost, posts: this.props.posts })
             );
         }
     }]);
@@ -46270,10 +46261,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var SearchDocuments = function (_Component) {
     _inherits(SearchDocuments, _Component);
 
-    function SearchDocuments() {
+    function SearchDocuments(props) {
         _classCallCheck(this, SearchDocuments);
 
-        return _possibleConstructorReturn(this, (SearchDocuments.__proto__ || Object.getPrototypeOf(SearchDocuments)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (SearchDocuments.__proto__ || Object.getPrototypeOf(SearchDocuments)).call(this, props));
+
+        _this.state = {
+            message: 'All Documents'
+        };
+        return _this;
     }
 
     _createClass(SearchDocuments, [{
@@ -46304,13 +46300,17 @@ var SearchDocuments = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'documents col-sm-8' },
+                { className: 'documents' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
-                    'Search Results:'
+                    this.state.message
                 ),
-                documents
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'container' },
+                    documents
+                )
             );
         }
     }]);
