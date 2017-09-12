@@ -20,8 +20,15 @@ export default class CommentsContainer extends Component{
             })
         }
         if (comments){
+            if (comments.length < 1) {
+                return(
+                    <div className=' col-md-4 float comments-container'>
+                        <h4>No Comments yet!</h4>
+                    </div>
+                )
+            }
             return(
-                <div className='float comments-container'>
+                <div className=' col-md-4 float comments-container'>
                     {comments}
                 </div>
             )

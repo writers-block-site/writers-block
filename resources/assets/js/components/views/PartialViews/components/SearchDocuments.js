@@ -20,9 +20,10 @@ class SearchDocuments extends Component {
             )
         }
         var documents = this.props.posts.map((document) => {
-            // console.log(document);
+            console.log(document);
             return(
                 <Document
+                user={document.user}
                 selectPost={this.props.selectPost}
                 key={document.handles}
                 id={document.id}
