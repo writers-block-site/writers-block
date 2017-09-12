@@ -40,6 +40,7 @@ class UserDoc extends Component {
                         }
                     }
                     className='btn btn-danger'>Delete</button>
+                    <a className='btn btn-warning' href={`/docs/${this.props.id}/edit`}>Edit Post</a>
                 </div>
 
             )
