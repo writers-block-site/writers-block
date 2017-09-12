@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comments;
+use Illuminate\Support\Facades\DB;
 use Log;
 
 class CommentsController extends Controller
@@ -15,6 +16,7 @@ class CommentsController extends Controller
     public function __construct()
     {
         $this->middleware('ajax');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -23,7 +25,12 @@ class CommentsController extends Controller
      */
     public function index()
     {
-
+        $id = Auth::id();
+        $comments = DB::table('comments')
+                            ->where('uploaded_by', '=', $id)
+                            ->orderBy('created_at','DESC')
+                            ->Paginate(6);
+        return response()->json($comments);
     }
 
 
@@ -72,7 +79,15 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = Comments::findOrfail($id);
+        $this->validate($request,Comments::$rules);
+        $comments->comment = $request->comment;
+
+        $comment->save();
+
+        $data['success'] = true;
+
+        return response()->json($data);
     }
 
     /**
@@ -81,8 +96,13 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $comment = Comments::findOrfail($request->id);
+
+        $comment->delete();
+
+        return response()->json(['success' => 'it has been deleted']);
+
     }
 }
