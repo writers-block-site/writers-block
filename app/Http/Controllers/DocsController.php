@@ -25,8 +25,22 @@ class DocsController extends Controller
     public function index(Request $request)
     {
         $docs = Docs::with('user')
-                ->orderBy('created_at','DESC')
-                ->Paginate(6);
+        ->orderBy('created_at','DESC')
+        ->Paginate(6);
+
+        if ($request->has('type'))
+        {
+
+            $type = $request->type;
+            $docs = Docs::searchByType($type)->Paginate(6);
+
+        }
+
+        if($request->has('search'))
+        {
+            $search = $request->search;
+            $docs = Docs::search($search)->Paginate(6);
+        }
 
         return response()->json($docs);
     }
