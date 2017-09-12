@@ -12325,7 +12325,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(111);
-module.exports = __webpack_require__(280);
+module.exports = __webpack_require__(281);
 
 
 /***/ }),
@@ -46094,8 +46094,8 @@ var NotFound = function NotFound() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PartialViews_SearchView__ = __webpack_require__(269);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PartialViews_SelectedDocView__ = __webpack_require__(272);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PartialViews_DiffView__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PartialViews_SelectedDocView__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PartialViews_DiffView__ = __webpack_require__(278);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46131,18 +46131,28 @@ var DocView = function (_Component) {
     _createClass(DocView, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            this.getPosts();
+            var _this2 = this;
+
+            axios.get('/docs?page=1').then(function (results) {
+                // console.log(results)
+                _this2.setState({
+                    lastPage: results.data.last_page,
+                    resultsArr: results.data.data
+                });
+            });
         }
     }, {
         key: 'getPosts',
         value: function getPosts() {
-            var _this2 = this;
+            var _this3 = this;
 
-            var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.searchPage;
+            var search = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+            var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.state.searchPage;
 
-            axios.get('/docs?page=' + page).then(function (results) {
-                console.log(results);
-                _this2.setState({
+            // console.log('Test')
+            axios.get('/docs?search=' + search + '&page=' + page).then(function (results) {
+                // console.log(results)
+                _this3.setState({
                     lastPage: results.data.last_page,
                     resultsArr: results.data.data
                 });
@@ -46151,26 +46161,26 @@ var DocView = function (_Component) {
     }, {
         key: 'selectPost',
         value: function selectPost() {
-            var _this3 = this;
+            var _this4 = this;
 
             var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 2;
 
             this.setState({
                 selectedPost: id
             }, function () {
-                _this3.props.history.push('/posts/' + _this3.state.selectedPost + '/view');
+                _this4.props.history.push('/posts/' + _this4.state.selectedPost + '/view');
             });
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this4 = this;
+            var _this5 = this;
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Switch */],
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/posts', exact: true, component: function component() {
-                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__PartialViews_SearchView__["a" /* default */], { posts: _this4.state.resultsArr, selectPost: _this4.selectPost });
+                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__PartialViews_SearchView__["a" /* default */], { getPosts: _this5.getPosts.bind(_this5), posts: _this5.state.resultsArr, selectPost: _this5.selectPost });
                     } }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/posts/:id/view', component: function component() {
                         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__PartialViews_SelectedDocView__["a" /* default */], null);
@@ -46227,7 +46237,7 @@ var SearchView = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'container' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SearchDocuments__["a" /* default */], { selectPost: this.props.selectPost, posts: this.props.posts })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SearchDocuments__["a" /* default */], { getPosts: this.props.getPosts, selectPost: this.props.selectPost, posts: this.props.posts })
             );
         }
     }]);
@@ -46246,6 +46256,7 @@ var SearchView = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__iterators_Document__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SearchForm__ = __webpack_require__(272);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46253,6 +46264,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -46289,7 +46301,7 @@ var SearchDocuments = function (_Component) {
                 );
             }
             var documents = this.props.posts.map(function (document) {
-                console.log(document);
+                // console.log(document);
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__iterators_Document__["a" /* default */], {
                     selectPost: _this2.props.selectPost,
                     key: document.handles,
@@ -46306,6 +46318,7 @@ var SearchDocuments = function (_Component) {
                     null,
                     this.state.message
                 ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SearchForm__["a" /* default */], { getPosts: this.props.getPosts }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'container' },
@@ -46383,10 +46396,88 @@ var Document = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var SearchForm = function (_Component) {
+    _inherits(SearchForm, _Component);
+
+    function SearchForm(props) {
+        _classCallCheck(this, SearchForm);
+
+        var _this = _possibleConstructorReturn(this, (SearchForm.__proto__ || Object.getPrototypeOf(SearchForm)).call(this, props));
+
+        _this.state = {
+            term: ''
+        };
+        return _this;
+    }
+
+    _createClass(SearchForm, [{
+        key: 'onInputChange',
+        value: function onInputChange(term) {
+            this.setState({ term: term });
+        }
+    }, {
+        key: 'handleSubmit',
+        value: function handleSubmit(search) {
+            console.log('Not Submit');
+            this.props.getPosts(search);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'form',
+                {
+                    className: 'form-group-md',
+                    onSubmit: function onSubmit(e) {
+                        e.preventDefault();
+                        _this2.handleSubmit(_this2.state.term);
+                    } },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                    className: 'form-control',
+                    id: 'search',
+                    name: 'search',
+                    type: 'text',
+                    value: this.state.search,
+                    onChange: function onChange(e) {
+                        _this2.onInputChange(e.target.value);
+                    } }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    { className: 'btn btn-default' },
+                    'Submit'
+                )
+            );
+        }
+    }]);
+
+    return SearchForm;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (SearchForm);
+
+/***/ }),
+/* 273 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_SelectedDocument__ = __webpack_require__(273);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_CommentForm__ = __webpack_require__(274);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_CommentsContainer__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_SelectedDocument__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_CommentForm__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_CommentsContainer__ = __webpack_require__(276);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46450,6 +46541,8 @@ var SelectedDocView = function (_Component) {
     }, {
         key: 'postComment',
         value: function postComment() {
+            var _this3 = this;
+
             // console.log(this.props.match.params.id);
             var content = document.getElementById('comment-content').value;
             // axios.post('/docs').then((results) => {console.log(results)})
@@ -46458,7 +46551,11 @@ var SelectedDocView = function (_Component) {
                 comment: content
             }, {
                 withCredentials: true
-            }).then(this.getComments());
+            }).then(function () {
+                window.setTimeout(function () {
+                    _this3.getComments();
+                }, 400);
+            });
         }
     }, {
         key: 'render',
@@ -46483,7 +46580,7 @@ var SelectedDocView = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* withRouter */])(SelectedDocView));
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46579,7 +46676,7 @@ var SelectedDocument = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (SelectedDocument);
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46601,23 +46698,42 @@ var CommentForm = function (_Component) {
     function CommentForm(props) {
         _classCallCheck(this, CommentForm);
 
-        return _possibleConstructorReturn(this, (CommentForm.__proto__ || Object.getPrototypeOf(CommentForm)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (CommentForm.__proto__ || Object.getPrototypeOf(CommentForm)).call(this, props));
+
+        _this.state = {
+            comment: ''
+        };
+        return _this;
     }
 
     _createClass(CommentForm, [{
+        key: 'onInputChange',
+        value: function onInputChange(comment) {
+            this.setState({
+                comment: comment
+            });
+        }
+    }, {
         key: 'formHandler',
         value: function formHandler() {
+            var _this2 = this;
+
             console.log('Submitted!');
             this.props.postComment();
+            window.setTimeout(function () {
+                _this2.setState({
+                    comment: ''
+                }, 50);
+            });
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
+            var _this3 = this;
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'col-md-4 float' },
+                { className: 'col-md-4 float comment-form' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h4',
                     null,
@@ -46627,9 +46743,19 @@ var CommentForm = function (_Component) {
                     'form',
                     { className: 'form-group-md', onSubmit: function onSubmit(e) {
                             e.preventDefault();
-                            _this2.formHandler();
+                            _this3.formHandler();
                         } },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control', name: 'content', id: 'comment-content', cols: '30', rows: '10', placeholder: 'Leave a comment! Remember, CONSTRUCTIVE criticism :)' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', {
+                        onChange: function onChange(e) {
+                            _this3.onInputChange(e.target.value);
+                        },
+                        value: this.state.comment,
+                        className: 'form-control',
+                        name: 'content',
+                        id: 'comment-content',
+                        cols: '30',
+                        rows: '10',
+                        placeholder: 'Leave a comment! Remember, CONSTRUCTIVE criticism :)' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
                         { className: 'btn btn-info' },
@@ -46646,13 +46772,13 @@ var CommentForm = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (CommentForm);
 
 /***/ }),
-/* 275 */
+/* 276 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterators_Comment__ = __webpack_require__(276);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__iterators_Comment__ = __webpack_require__(277);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46677,8 +46803,9 @@ var CommentsContainer = function (_Component) {
         key: 'render',
         value: function render() {
             if (this.props.comments) {
-                var comments = this.props.comments.map(function (comment) {
+                var comments = this.props.comments.reverse().map(function (comment) {
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__iterators_Comment__["a" /* default */], {
+                        key: comment.comment + Math.random(0, 100000),
                         comment: comment.comment
                     });
                 });
@@ -46686,7 +46813,7 @@ var CommentsContainer = function (_Component) {
             if (comments) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'float' },
+                    { className: 'float comments-container' },
                     comments
                 );
             }
@@ -46708,7 +46835,7 @@ var CommentsContainer = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (CommentsContainer);
 
 /***/ }),
-/* 276 */
+/* 277 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46759,14 +46886,14 @@ var Comment = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Comment);
 
 /***/ }),
-/* 277 */
+/* 278 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_diff__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_diff__ = __webpack_require__(279);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_diff___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_diff__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -46802,14 +46929,14 @@ var DiffView = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* withRouter */])(DiffView));
 
 /***/ }),
-/* 278 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var React = __webpack_require__(2);
-var jsdiff = __webpack_require__(279);
+var jsdiff = __webpack_require__(280);
 
 var fnMap = {
   'chars': jsdiff.diffChars,
@@ -46858,7 +46985,7 @@ module.exports = React.createClass({
 
 
 /***/ }),
-/* 279 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* See LICENSE file for terms of use */
@@ -47484,7 +47611,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* See LICENSE f
 
 
 /***/ }),
-/* 280 */
+/* 281 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

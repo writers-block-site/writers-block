@@ -14,7 +14,7 @@ class SearchView extends Component {
     render() {
         return(
             <div className='container'>
-                <SearchDocuments selectPost={this.props.selectPost} posts={this.props.posts} />
+                <SearchDocuments getPosts={this.props.getPosts} selectPost={this.props.selectPost} posts={this.props.posts} />
             </div>
         )
     }

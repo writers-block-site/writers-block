@@ -8,9 +8,10 @@ export default class CommentsContainer extends Component{
     }
     render() {
         if (this.props.comments){
-            var comments = this.props.comments.map((comment) => {
+            var comments = this.props.comments.reverse().map((comment) => {
                 return(
                     <Comment
+                    key={comment.comment + Math.random(0,100000)}
                     comment={comment.comment}
                     />
                 )
@@ -18,7 +19,7 @@ export default class CommentsContainer extends Component{
         }
         if (comments){
             return(
-                <div className='float'>
+                <div className='float comments-container'>
                     {comments}
                 </div>
             )
