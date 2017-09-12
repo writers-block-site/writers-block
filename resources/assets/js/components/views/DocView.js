@@ -17,11 +17,18 @@ class DocView extends Component {
         this.selectPost = this.selectPost.bind(this);
     }
     componentWillMount(){
-        this.getPosts();
+        axios.get(`/docs?page=1`).then((results) => {
+            // console.log(results)
+            this.setState({
+                lastPage: results.data.last_page,
+                resultsArr: results.data.data
+            })
+        });
     }
-    getPosts(page = this.state.searchPage){
-        axios.get(`/docs?page=${page}`).then((results) => {
-            console.log(results)
+    getPosts(search = '', page = this.state.searchPage){
+        // console.log('Test')
+        axios.get(`/docs?search=${search}&page=${page}`).then((results) => {
+            // console.log(results)
             this.setState({
                 lastPage: results.data.last_page,
                 resultsArr: results.data.data
@@ -38,7 +45,7 @@ class DocView extends Component {
     render() {
         return(
             <Switch>
-                <Route path='/posts' exact component={() => (<SearchView posts={this.state.resultsArr} selectPost={this.selectPost}  />)} />
+                <Route path='/posts' exact component={() => (<SearchView getPosts={this.getPosts.bind(this)} posts={this.state.resultsArr} selectPost={this.selectPost}  />)} />
                 <Route path='/posts/:id/view' component={() => (<SelectedDocView />)} />
                 <Route path='/posts/:id/history' component={DiffView} />
             </Switch>

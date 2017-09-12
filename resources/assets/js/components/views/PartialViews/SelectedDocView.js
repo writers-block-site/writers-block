@@ -45,7 +45,11 @@ class SelectedDocView extends Component {
             comment: content
         },{
             withCredentials: true
-        }).then(this.getComments());
+        }).then(() => {
+            window.setTimeout(() => {
+                this.getComments();
+            }, 100);
+        });
     }
     render() {
         return (
