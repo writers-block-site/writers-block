@@ -43,6 +43,24 @@ class Docs extends Model
         return $contents;
     }
 
+    public static function searchByType($type)
+    {
+        $docs = Docs::with('user')
+                            ->where('genre','LIKE',"%$type%")
+                            ->orderBy('created_at','DESC');
+
+        return $docs;
+    }
+
+    public static function search($search)
+    {
+        $docs = Docs::with('user')
+                            ->where('title','LIKE',"%$search%")
+                            ->orderBy('created_at','DESC');
+
+        return $docs;
+    }
+
     public function user()
     {
         return $this->belongsTo('\App\User','uploaded_by');
