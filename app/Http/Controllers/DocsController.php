@@ -14,7 +14,7 @@ class DocsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('ajax', ['except' => ['store','create','edit','update','destroy','getDiff']]);
+        $this->middleware('ajax', ['except' => ['store','create','edit','update','getDiff']]);
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
     /**
@@ -25,16 +25,36 @@ class DocsController extends Controller
     public function index(Request $request)
     {
         $docs = Docs::with('user')
-                ->orderBy('created_at','DESC')
-                ->Paginate(6);
+        ->orderBy('created_at','DESC')
+        ->Paginate(6);
+
+        if ($request->has('type'))
+        {
+
+            $type = $request->type;
+            $docs = Docs::searchByType($type)->Paginate(6);
+
+        }
+
+        if($request->has('search'))
+        {
+            $search = $request->search;
+            $docs = Docs::search($search)->Paginate(6);
+        }
 
         return response()->json($docs);
     }
 
     public function edit($id){
         $doc = Docs::findOrfail($id);
-        $data['doc'] = $doc;
-        return view('docs.edit',$data);
+        if (Auth::id()==$doc->uploaded_by) {
+
+            $data['doc'] = $doc;
+            return view('docs.edit',$data);
+
+        }else {
+            return redirect("/posts/$doc->id/view");
+        }
     }
 
     /**
@@ -79,12 +99,6 @@ class DocsController extends Controller
         return response()->json($docs);
     }
 
-    public function redirectView()
-    {
-
-        return redirect("/posts/1/view");
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -108,7 +122,7 @@ class DocsController extends Controller
 
         if ($result) {
 
-            return $this->redirectView();
+            return redirect("/posts/$doc->id/view");
 
         }
     }
