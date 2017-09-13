@@ -80,6 +80,8 @@ class DocsController extends Controller
 
         $doc->save();
 
+
+
         return redirect("/posts/$doc->id/view");
 
     }
@@ -97,11 +99,11 @@ class DocsController extends Controller
         $comments = Comments::with('user')->where('doc_id','=',$id)->get();
         $docs->view_count +=1;
         $docs->save();
-        $handle = explode(',',$docs->handles);
-        $handle = end($handle);
-        $docs->handles = $handle;
+        $handles = explode(',',$docs->handles);
+        $docs->handles = $handles;
         $data['docs'] = $docs;
         $data['comments'] = $comments;
+        $data['check'] = Auth::check();
 
         return response()->json($data);
     }
