@@ -46612,11 +46612,16 @@ var SelectedDocView = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'scroll' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_DocHistoryButtons__["a" /* default */], { id: this.props.match.params.id }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h4',
+                            null,
+                            'Login or Register to leave a comment and view history!'
+                        ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_CommentsContainer__["a" /* default */], { comments: this.state.comments })
                     )
                 );
             }
+            //Shouldn't be rendering by default, but it is
             if (this.state.handle !== 'NOT A HANDLE') {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
