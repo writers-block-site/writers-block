@@ -15,7 +15,7 @@ class CommentsTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        for ($i=0; $i <=50 ; $i++) {
+        for ($i=0; $i <=999 ; $i++) {
             $comment = new Comments();
             $comment->uploaded_by= User::all()->random()->id;
             $comment->doc_id = Docs::all()->random()->id;
