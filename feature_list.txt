@@ -1,0 +1,30 @@
+* Writer's Block
+
+                FEATURES
+
+- [[http://writersblock.site/]]
+- [X] Users Register
+- [X] Users Login
+- [X] Users view other users' posts
+- [X] Users create posts
+- [X] Users upload documents for a post
+- [X] Users delete documents
+- [ ] Users see document revisions
+- [X] Users view the most recent revision of a document on the post page
+- [X] Users comment on posts
+- [X] Users view comments on a posts
+- [X] Users upload multiple versions of the same document
+- [X] Users view comments sorted by most recent comment
+- [X] Users give documents different "types"
+- [X] Users search documents by title
+- [X] Users reset passwords thru email
+- [ ] About Page
+--------------------------------------------------------------------------------
+                BONUS FEATURES
+
+- [ ] Users write comments a rich text editor
+- [ ] Users create organizations
+- [ ] Users view documents by organization
+- [ ] Users can watch, or "follow", posts
+- [ ] Users receive emails when a comment is received on their post
+- [ ] Users receive emails when a post they are watching changes
