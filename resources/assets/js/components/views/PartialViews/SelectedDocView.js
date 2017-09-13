@@ -50,7 +50,7 @@ class SelectedDocView extends Component {
                 <div>
                     <SelectedDocument handle={this.state.handle[0]} />
                     <div className='scroll'>
-                        <DocHistoryButtons id={this.props.match.params.id}  />
+                        <h4>Login or Register to leave a comment and view history!</h4>
                         <CommentsContainer comments={this.state.comments}  />
                     </div>
                 </div>
