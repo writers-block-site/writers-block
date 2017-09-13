@@ -25,6 +25,9 @@ Route::get('/profile/userPage/{id}','UserController@userPage');
 Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::get('docs/getDiff/{id}', 'DocsController@getDiff');
+Route::get('/about',function (){
+    return view('about');
+});
 Route::get('/{any}', function(){
     return view('reactApp');
 })->where('any', '.+');
