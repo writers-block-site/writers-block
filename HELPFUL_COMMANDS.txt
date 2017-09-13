@@ -1,0 +1,2 @@
+//Clears the cached everything
+composer dump-autoload
