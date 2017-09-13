@@ -46561,8 +46561,8 @@ var SelectedDocView = function (_Component) {
     }
 
     _createClass(SelectedDocView, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
             this.getComments();
         }
     }, {
@@ -46574,7 +46574,7 @@ var SelectedDocView = function (_Component) {
                 console.log(results);
                 _this2.setState({
                     comments: results.data.comments,
-                    handle: results.data.docs.handles
+                    handle: results.data.docs.handles.reverse()
                 });
             });
         }
@@ -46615,7 +46615,7 @@ var SelectedDocView = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SelectedDocument__["a" /* default */], { handle: this.state.handle }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SelectedDocument__["a" /* default */], { handle: this.state.handle[0] }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'scroll' },
@@ -46752,7 +46752,7 @@ var CommentForm = function (_Component) {
                     'form',
                     { className: 'form-group-md', onSubmit: function onSubmit(e) {
                             e.preventDefault();
-                            _this3.formHandler();
+                            _this3.newFunction();
                         } },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', {
                         onChange: function onChange(e) {
@@ -46772,6 +46772,11 @@ var CommentForm = function (_Component) {
                     )
                 )
             );
+        }
+    }, {
+        key: 'newFunction',
+        value: function newFunction() {
+            this.formHandler();
         }
     }]);
 
@@ -46944,6 +46949,13 @@ var DiffView = function (_Component) {
     }
 
     _createClass(DiffView, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            axios.get('/docs/getDiff/' + this.props.match.params.id).then(function (results) {
+                console.log(results);
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_diff___default.a, { inputA: 'gogol', inputB: 'google', type: 'sentences' });

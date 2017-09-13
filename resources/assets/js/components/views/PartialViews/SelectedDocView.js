@@ -14,7 +14,7 @@ class SelectedDocView extends Component {
         }
         this.getComments = this.getComments.bind(this);
     }
-    componentWillMount() {
+    componentDidMount() {
         this.getComments();
     }
     getComments(){
@@ -22,7 +22,7 @@ class SelectedDocView extends Component {
             console.log(results)
             this.setState({
                 comments: results.data.comments,
-                handle: results.data.docs.handles
+                handle: results.data.docs.handles.reverse()
             })
         })
     }
@@ -54,7 +54,7 @@ class SelectedDocView extends Component {
     render() {
         return (
             <div>
-                <SelectedDocument handle={this.state.handle} />
+                <SelectedDocument handle={this.state.handle[0]} />
                 <div className='scroll'>
                     <CommentForm getComments={this.getComments} postComment={this.postComment.bind(this)} />
                     <CommentsContainer comments={this.state.comments}  />
