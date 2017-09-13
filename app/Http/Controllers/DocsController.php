@@ -153,12 +153,29 @@ class DocsController extends Controller
     public function create() {
         return view('docs.create');
     }
-    public function getDiff($id)
+    public function getDiff(Request $request,$id)
     {
-        // $id = $request->id;
 
+        if ($request->has('handle1')) {
+
+            $handle1 = $request->handle1;
+
+            $handle2 = $request->handle2;
+
+            $contents1 = Docs::parse($handle1);
+            $contents2 = Docs::parse($handle2);
+
+            $contents1 = utf8_encode($contents1);
+            $contents2 = utf8_encode($contents2);
+
+
+            $data['doc1'] = $contents1;
+            $data['doc2'] = $contents2;
+
+            return response()->json($data);
+        }
+        else {
         $post = Docs::findOrfail($id);
-
         $handles = explode(',',$post->handles);
         $handle1 = end($handles);
 
@@ -170,10 +187,11 @@ class DocsController extends Controller
         $contents1 = utf8_encode($contents1);
         $contents2 = utf8_encode($contents2);
 
-
         $data['doc1'] = $contents1;
         $data['doc2'] = $contents2;
-
+        $data['handles'] = $handles;
         return response()->json($data);
+        }
+
     }
 }
