@@ -12,3 +12,4 @@ yarn-error.log
 .env
 /vscode
 .eslintrc
+feature_list.txt
