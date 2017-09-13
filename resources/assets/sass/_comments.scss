@@ -6,7 +6,7 @@
 
 .float{
     // display: block;
-    float: left;
+    // float: left;
 }
 .comment {
     text-align: left;
@@ -21,7 +21,7 @@
     height: 40vh;
 }
 .comments-container {
-    margin: 0 auto;
+    margin: auto;
     height: 40vh;
     overflow-y: scroll;
     box-shadow: 0 0 5px 0px black inset;

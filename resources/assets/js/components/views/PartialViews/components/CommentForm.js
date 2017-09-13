@@ -28,7 +28,7 @@ export default class CommentForm extends Component {
                 <h4>Comments:</h4>
                 <form className='form-group-md' onSubmit={(e) => {
                     e.preventDefault();
-                    this.formHandler();
+                    this.newFunction();
                     }}>
                     <textarea
                     onChange={
@@ -47,5 +47,9 @@ export default class CommentForm extends Component {
                 </form>
             </div>
         )
+    }
+
+    newFunction() {
+        this.formHandler();
     }
 }
