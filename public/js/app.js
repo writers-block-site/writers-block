@@ -46942,23 +46942,39 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var DiffView = function (_Component) {
     _inherits(DiffView, _Component);
 
-    function DiffView() {
+    function DiffView(props) {
         _classCallCheck(this, DiffView);
 
-        return _possibleConstructorReturn(this, (DiffView.__proto__ || Object.getPrototypeOf(DiffView)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (DiffView.__proto__ || Object.getPrototypeOf(DiffView)).call(this, props));
+
+        _this.state = {
+            doc1: 'Loading...',
+            doc2: 'Loading...'
+        };
+        return _this;
     }
 
     _createClass(DiffView, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
+            var _this2 = this;
+
             axios.get('/docs/getDiff/' + this.props.match.params.id).then(function (results) {
                 console.log(results);
+                _this2.setState({
+                    doc1: results.data.doc1,
+                    doc2: results.data.doc2
+                });
             });
         }
     }, {
         key: 'render',
         value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_diff___default.a, { inputA: 'gogol', inputB: 'google', type: 'sentences' });
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'container diff-container' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_diff___default.a, { inputA: this.state.doc1, inputB: this.state.doc2, type: 'sentences' })
+            );
         }
     }]);
 

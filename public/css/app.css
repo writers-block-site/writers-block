@@ -117,3 +117,8 @@ iframe {
   font-family: "Raleway", sans-serif;
 }
 
+.diff-container > pre.diff-result span {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
