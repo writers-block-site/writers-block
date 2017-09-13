@@ -3,14 +3,16 @@ import {Route, withRouter} from 'react-router-dom';
 import SelectedDocument from './components/SelectedDocument'
 import CommentForm from './components/CommentForm'
 import CommentsContainer from './components/CommentsContainer'
+import DocHistoryButtons from './components/DocHistoryButtons'
 
 class SelectedDocView extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            handle: '',
-            comments: ''
+            handle: 'NOT A HANDLE',
+            comments: '',
+            isLoggedIn: false
         }
         this.getComments = this.getComments.bind(this);
     }
@@ -22,19 +24,10 @@ class SelectedDocView extends Component {
             console.log(results)
             this.setState({
                 comments: results.data.comments,
-                handle: results.data.docs.handles.reverse()
+                handle: results.data.docs.handles.reverse(),
+                isLoggedIn: results.data.check
             })
         })
-    }
-    getText(){
-        var text = "";
-        var iframe = document.getElementById('iframe');
-        var idoc= iframe.contentDocument || iframe.contentWindow.document;
-        var iwin= iframe.contentWindow || iframe.contentDocument.defaultView;
-        
-        text = iwin.getSelection().toString()
-        // text = iframe.contentWindow.getSelection().toString();
-        return text;
     }
     postComment(){
         // console.log(this.props.match.params.id);
@@ -52,13 +45,34 @@ class SelectedDocView extends Component {
         });
     }
     render() {
+        if (!this.state.isLoggedIn) {
+            return(
+                <div>
+                    <SelectedDocument handle={this.state.handle[0]} />
+                    <div className='scroll'>
+                        <DocHistoryButtons id={this.props.match.params.id}  />
+                        <CommentsContainer comments={this.state.comments}  />
+                    </div>
+                </div>
+            )
+        }
+        //Shouldn't be rendering by default, but it is
+        if (this.state.handle !== 'NOT A HANDLE'){
+            return (
+                <div>
+                    <SelectedDocument handle={this.state.handle[0]} />
+                    <div className='scroll'>
+                        <DocHistoryButtons id={this.props.match.params.id}  />
+                        <CommentForm getComments={this.getComments} postComment={this.postComment.bind(this)} />
+                        <CommentsContainer comments={this.state.comments}  />
+                    </div>
+                </div>
+            )
+  
+        }
         return (
             <div>
-                <SelectedDocument handle={this.state.handle[0]} />
-                <div className='scroll'>
-                    <CommentForm getComments={this.getComments} postComment={this.postComment.bind(this)} />
-                    <CommentsContainer comments={this.state.comments}  />
-                </div>
+                <h1>Loading...</h1>
             </div>
         )
     }

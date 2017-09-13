@@ -8,7 +8,8 @@ class DiffView extends Component {
 
         this.state = {
             doc1: 'Loading...',
-            doc2: 'Loading...'
+            doc2: 'Loading...',
+            compareBy: 'sentences'
         }
     }
     componentDidMount() {
@@ -20,10 +21,37 @@ class DiffView extends Component {
             })
         })
     }
+    compareBy(type) {
+        this.setState({
+            compareBy: type
+        })
+    }
     render() {
         return(
-            <div className='container diff-container'>
-                <Diff inputA={this.state.doc1} inputB={this.state.doc2} type="sentences" />
+            <div>
+                <div className='container diff-container'>
+                    <Diff inputA={this.state.doc1} inputB={this.state.doc2} type={this.state.compareBy} />
+                    <div className='diff-buttons'>
+                        <button
+                        className='btn btn-primary'
+                        onClick={() => {
+                            this.compareBy('chars')
+                        }}
+                        >Compare Characters</button>
+                        <button
+                        className='btn btn-info'
+                        onClick={() => {
+                            this.compareBy('words')
+                        }}
+                        >Compare Words</button>
+                        <button
+                        className='btn btn-warning'
+                        onClick={() => {
+                            this.compareBy('sentences')
+                        }}
+                        >Compare Sentences</button>
+                    </div>
+                </div>
             </div>
         )
     }
