@@ -54,3 +54,36 @@ body {
         family: $body-font;
     }
 }
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #13657a;
+    margin-top: 5px;
+    height: 7vh;
+}
+
+.footer-bar-link{
+  display: inline-block;
+  padding: 10px 0 ;
+  width: 10vw;
+  font-size: 2vh;
+  color: #FEFEFE;
+  cursor: pointer;
+
+}
+
+#doug{
+    position: absolute;
+    left: 1em;
+}
+
+#wb{
+
+
+}
+#daniel{
+    position: absolute;
+    right: 1em;
+}
