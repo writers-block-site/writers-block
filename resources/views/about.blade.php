@@ -3,9 +3,12 @@
 @section('content')
 
 <div class="container text-center">
-    <h1>Who We Are</h1>
+    <h1 class='title'>Who We Are</h1>
     <div class="row">
-        <p>We are justs two broke dudes with a dream to make awesome sites for you!</p>
+        <p class='col-sm-offset-2 col-sm-8 body'>
+            We are a team of two passionate full stack developers dedicated and determined to finding solutions to your challenging 
+        </p>
+        
     </div>
 </div>
 

@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel='stylesheet' href='/css/Draft.css'></link>
 </head>
 <body>
     <div id="app">
@@ -45,30 +44,31 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
 
-                        <li><a href='/posts'>View Posts</a></li>
+                        <li><a class='nav-link' href='/posts'>View Posts</a></li>
                         <!-- Authentication Links -->
+                            <li><a class='nav-link' href="/about">About Us</a></li>
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a class='nav-link' href="{{ route('login') }}">Login</a></li>
+                            <li><a class='nav-link' href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a class='nav-link' href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href='/docs/create'>
+                                        <a class='nav-link' href='/docs/create'>
                                             Create a post
                                         </a>
                                     </li>
                                     <li>
-                                        <a href='/home'>
+                                        <a class='nav-link' href='/home'>
                                             Profile
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a class='nav-link' href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
