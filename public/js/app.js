@@ -46078,13 +46078,12 @@ var UserDoc = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     {
-                        onClick: function onClick() {
-                            // this.openPost();
-                        },
                         className: ' user-document' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h3',
-                        null,
+                        { onClick: function onClick() {
+                                _this2.openPost();
+                            } },
                         this.props.title
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

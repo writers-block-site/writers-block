@@ -34,11 +34,11 @@ class UserDoc extends Component {
         return(
                 <div className='col-md-4'>
                     <div
-                    onClick={() => {
-                        // this.openPost();
-                    }}
                     className=' user-document'>
-                        <h3>{this.props.title}</h3>
+
+                        <h3 onClick={() => {
+                            this.openPost();
+                        }}>{this.props.title}</h3>
                         <p>{this.props.type}</p>
                     </div>
                     <button
