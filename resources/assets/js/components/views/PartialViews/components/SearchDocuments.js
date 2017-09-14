@@ -35,7 +35,11 @@ class SearchDocuments extends Component {
         return (
             <div className='documents'>
                 <h1>{this.state.message}</h1>
-                <SearchForm getPosts={this.props.getPosts} />
+                <SearchForm 
+                    changePage={this.props.changePage}
+                    lastPage={this.props.lastPage}
+                    currentPage={this.props.currentPage} 
+                    getPosts={this.props.getPosts} />
                 <div className='container'>
                     {documents}
                 </div>

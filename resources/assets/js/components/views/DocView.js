@@ -10,6 +10,7 @@ class DocView extends Component {
 
         this.state = {
             searchPage: 1,
+            search: '',
             lastPage: '',
             resultsArr: '',
             selectedPost: ''
@@ -25,15 +26,28 @@ class DocView extends Component {
             })
         });
     }
-    getPosts(search = '', page = this.state.searchPage){
+    changePage(page) {
+        if (this.state.search) {
+            this.getPosts(this.state.search, page);
+        } else {
+            this.getPosts('', page)
+        }
+    }
+    getPosts(search = this.state.search, page = 1){
         // console.log('Test')
-        axios.get(`/docs?search=${search}&page=${page}`).then((results) => {
-            // console.log(results)
-            this.setState({
-                lastPage: results.data.last_page,
-                resultsArr: results.data.data
-            })
-        });
+        this.setState({
+            searchPage: page,
+            search: search
+        },() => {
+            axios.get(`/docs?page=${page}&search=${search}`).then((results) => {
+                // console.log(results)
+                this.setState({
+                    lastPage: results.data.last_page,
+                    resultsArr: results.data.data
+                })
+            });
+
+        })
     }
     selectPost(id = 2){
             this.setState({
@@ -45,7 +59,14 @@ class DocView extends Component {
     render() {
         return(
             <Switch>
-                <Route path='/posts' exact component={() => (<SearchView getPosts={this.getPosts.bind(this)} posts={this.state.resultsArr} selectPost={this.selectPost}  />)} />
+                <Route path='/posts' exact component={() => (
+                    <SearchView 
+                    lastPage={this.state.lastPage}
+                    currentPage={this.state.searchPage}
+                    changePage={this.changePage.bind(this)}
+                    getPosts={this.getPosts.bind(this)} 
+                    posts={this.state.resultsArr} 
+                    selectPost={this.selectPost}  />)} />
                 <Route path='/posts/:id/view' component={() => (<SelectedDocView />)} />
                 <Route path='/posts/:id/history' component={DiffView} />
             </Switch>

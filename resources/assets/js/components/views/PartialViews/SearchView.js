@@ -14,7 +14,13 @@ class SearchView extends Component {
     render() {
         return(
             <div className='container'>
-                <SearchDocuments getPosts={this.props.getPosts} selectPost={this.props.selectPost} posts={this.props.posts} />
+                <SearchDocuments 
+                changePage={this.props.changePage}
+                lastPage={this.props.lastPage}
+                currentPage={this.props.currentPage}
+                getPosts={this.props.getPosts} 
+                selectPost={this.props.selectPost} 
+                posts={this.props.posts} />
             </div>
         )
     }
