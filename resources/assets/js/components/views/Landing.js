@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 
 class Landing extends Component {
     render() {
@@ -7,10 +8,15 @@ class Landing extends Component {
             <div id='home'>
                 <div className='title-container'>
                     <span className='title' >Writer's Block  <span className="glyphicon glyphicon-book book"></span></span>
+                    <div>
+                        <button onClick={() => {
+                            this.props.history.push('/posts')
+                        }} className='btn btn-default'>All Posts</button>
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-export default Landing;
+export default withRouter(Landing);

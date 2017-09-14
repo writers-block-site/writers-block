@@ -10,7 +10,7 @@ body {
   width: 100%;
   height: 95vh;
   background: #1e9cbc;
-  padding-top: 40vh;
+  padding-top: 20vh;
   text-align: center;
 }
 
@@ -21,6 +21,7 @@ body {
       -ms-user-select: none;
           user-select: none;
   color: #FEFEFE;
+  text-shadow: 0 2px 5px black;
   font-size: 5em;
   font-family: "Josefin Sans", sans-serif;
 }
@@ -32,14 +33,165 @@ body {
 }
 
 .navbar {
-  background: #4c5c68;
+  background: #13657a;
+  border: none;
+  -webkit-box-shadow: 0 0 5px 0 black;
+          box-shadow: 0 0 5px 0 black;
   position: fixed;
   width: 100%;
   z-index: 3;
 }
 
-.navbar * {
-  color: white;
+.navbar .navbar-brand {
+  color: FEFEFE;
+}
+
+.navbar {
+  border: none;
+  -webkit-box-shadow: 0 0 5px 0 black;
+          box-shadow: 0 0 5px 0 black;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  background-color: #13657a;
+}
+
+.navbar .navbar-brand {
+  color: #fefefe;
+}
+
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+  color: #e0e0e0;
+}
+
+.navbar .navbar-text {
+  color: #fefefe;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: #fefefe;
+  border-radius: .25rem;
+  margin: 0 0.25em;
+}
+
+.navbar .navbar-nav .nav-link:not(.disabled):hover,
+.navbar .navbar-nav .nav-link:not(.disabled):focus {
+  color: #e0e0e0;
+}
+
+.navbar .navbar-nav .nav-item.active .nav-link,
+.navbar .navbar-nav .nav-item.active .nav-link:hover,
+.navbar .navbar-nav .nav-item.active .nav-link:focus,
+.navbar .navbar-nav .nav-item.show .nav-link,
+.navbar .navbar-nav .nav-item.show .nav-link:hover,
+.navbar .navbar-nav .nav-item.show .nav-link:focus {
+  color: #e0e0e0;
+  background-color: #1e9cbc;
+}
+
+.navbar .navbar-toggle {
+  border-color: #1e9cbc;
+}
+
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+  background-color: #1e9cbc;
+}
+
+.navbar .navbar-toggle .navbar-toggler-icon {
+  color: #fefefe;
+}
+
+.navbar .navbar-collapse,
+.navbar .navbar-form {
+  border-color: #fefefe;
+}
+
+.navbar .navbar-link {
+  color: #fefefe;
+}
+
+.navbar .navbar-link:hover {
+  color: #e0e0e0;
+}
+
+@media (max-width: 575px) {
+  .navbar-expend-sm .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #fefefe;
+  }
+
+  .navbar-expend-sm .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expend-sm .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #e0e0e0;
+  }
+
+  .navbar-expend-sm .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #e0e0e0;
+    background-color: #1e9cbc;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-expend-md .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #fefefe;
+  }
+
+  .navbar-expend-md .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expend-md .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #e0e0e0;
+  }
+
+  .navbar-expend-md .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #e0e0e0;
+    background-color: #1e9cbc;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-expend-lg .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #fefefe;
+  }
+
+  .navbar-expend-lg .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expend-lg .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #e0e0e0;
+  }
+
+  .navbar-expend-lg .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #e0e0e0;
+    background-color: #1e9cbc;
+  }
+}
+
+@media (max-width: 1199px) {
+  .navbar-expend-xl .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #fefefe;
+  }
+
+  .navbar-expend-xl .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expend-xl .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #e0e0e0;
+  }
+
+  .navbar-expend-xl .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #e0e0e0;
+    background-color: #1e9cbc;
+  }
+}
+
+.navbar-expend .navbar-nav .show .dropdown-menu .dropdown-item {
+  color: #fefefe;
+}
+
+.navbar-expend .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+.navbar-expend .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+  color: #e0e0e0;
+}
+
+.navbar-expend .navbar-nav .show .dropdown-menu .dropdown-item.active {
+  color: #e0e0e0;
+  background-color: #1e9cbc;
 }
 
 .documents {
@@ -145,10 +297,12 @@ iframe {
 }
 
 .title {
+  color: #bc1e4d;
   font-family: "Josefin Sans", sans-serif;
 }
 
 .body {
+  font-size: 2em;
   font-family: "Raleway", sans-serif;
 }
 

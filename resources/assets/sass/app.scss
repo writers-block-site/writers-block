@@ -21,6 +21,7 @@ body {
 @import "./navbar";
 @import "./documents";
 @import "./comments";
+@import './about';
 
 #p {
     margin-top: 5vh;
@@ -44,8 +45,12 @@ body {
     }
 }
 .title {
+    color: #bc1e4d;
     font-family: $title-font;
 }
 .body {
-    font-family: $body-font;
+    font: {
+        size: 2em;
+        family: $body-font;
+    }
 }
