@@ -33,14 +33,14 @@ class SearchDocuments extends Component {
         })
 
         return (
-            <div className='documents'>
-                <h1>{this.state.message}</h1>
-                <SearchForm 
+            <div className='container documents'>
+                <h1 className="text-center">{this.state.message}</h1>
+                <SearchForm
                     changePage={this.props.changePage}
                     lastPage={this.props.lastPage}
-                    currentPage={this.props.currentPage} 
+                    currentPage={this.props.currentPage}
                     getPosts={this.props.getPosts} />
-                <div className='container'>
+                <div className=''>
                     {documents}
                 </div>
             </div>

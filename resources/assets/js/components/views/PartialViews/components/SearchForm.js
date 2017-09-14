@@ -18,18 +18,18 @@ export default class SearchForm extends Component {
     render() {
         return (
             <div>
-                <form 
-                className='form-group-md'
+                <form
+                className='form-group-md col-md-offset-3 col-md-6'
                 onSubmit={(e) => {
                     e.preventDefault();
                     this.handleSubmit(this.state.term);
                 }} >
-                    <input 
-                    className='form-control' 
-                    id='search' 
-                    name='search' 
-                    type='text' 
-                    value={this.state.search} 
+                    <input
+                    className='form-control'
+                    id='search'
+                    name='search'
+                    type='text'
+                    value={this.state.search}
                     onChange={(e) => {
                         this.onInputChange(e.target.value);
                     }}  />
