@@ -43,10 +43,10 @@ export default class UserDocs extends Component {
         var userDocs = this.props.userDocs.map((doc) => {
             return(
                 <UserDoc
+                key={doc.id + doc.handles}
                 deletePost={this.deletePost.bind(this)}
-                key={doc.handle}
                 profileMatch={this.props.profileMatch}
-                handle={doc.handle}
+                handle={doc.handles}
                 id={doc.id}
                 title={doc.title}
                 type={doc.genre}/>
