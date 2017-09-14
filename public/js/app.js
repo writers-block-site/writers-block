@@ -46189,6 +46189,7 @@ var DocView = function (_Component) {
 
         _this.state = {
             searchPage: 1,
+            search: '',
             lastPage: '',
             resultsArr: '',
             selectedPost: ''
@@ -46211,19 +46212,33 @@ var DocView = function (_Component) {
             });
         }
     }, {
+        key: 'changePage',
+        value: function changePage(page) {
+            if (this.state.search) {
+                this.getPosts(this.state.search, page);
+            } else {
+                this.getPosts('', page);
+            }
+        }
+    }, {
         key: 'getPosts',
         value: function getPosts() {
             var _this3 = this;
 
-            var search = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-            var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.state.searchPage;
+            var search = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.state.search;
+            var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
             // console.log('Test')
-            axios.get('/docs?search=' + search + '&page=' + page).then(function (results) {
-                // console.log(results)
-                _this3.setState({
-                    lastPage: results.data.last_page,
-                    resultsArr: results.data.data
+            this.setState({
+                searchPage: page,
+                search: search
+            }, function () {
+                axios.get('/docs?page=' + page + '&search=' + search).then(function (results) {
+                    // console.log(results)
+                    _this3.setState({
+                        lastPage: results.data.last_page,
+                        resultsArr: results.data.data
+                    });
                 });
             });
         }
@@ -46249,7 +46264,13 @@ var DocView = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Switch */],
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/posts', exact: true, component: function component() {
-                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__PartialViews_SearchView__["a" /* default */], { getPosts: _this5.getPosts.bind(_this5), posts: _this5.state.resultsArr, selectPost: _this5.selectPost });
+                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__PartialViews_SearchView__["a" /* default */], {
+                            lastPage: _this5.state.lastPage,
+                            currentPage: _this5.state.searchPage,
+                            changePage: _this5.changePage.bind(_this5),
+                            getPosts: _this5.getPosts.bind(_this5),
+                            posts: _this5.state.resultsArr,
+                            selectPost: _this5.selectPost });
                     } }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["b" /* Route */], { path: '/posts/:id/view', component: function component() {
                         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__PartialViews_SelectedDocView__["a" /* default */], null);
@@ -46306,7 +46327,13 @@ var SearchView = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'container' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SearchDocuments__["a" /* default */], { getPosts: this.props.getPosts, selectPost: this.props.selectPost, posts: this.props.posts })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SearchDocuments__["a" /* default */], {
+                    changePage: this.props.changePage,
+                    lastPage: this.props.lastPage,
+                    currentPage: this.props.currentPage,
+                    getPosts: this.props.getPosts,
+                    selectPost: this.props.selectPost,
+                    posts: this.props.posts })
             );
         }
     }]);
@@ -46388,7 +46415,11 @@ var SearchDocuments = function (_Component) {
                     null,
                     this.state.message
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SearchForm__["a" /* default */], { getPosts: this.props.getPosts }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SearchForm__["a" /* default */], {
+                    changePage: this.props.changePage,
+                    lastPage: this.props.lastPage,
+                    currentPage: this.props.currentPage,
+                    getPosts: this.props.getPosts }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'container' },
@@ -46519,26 +46550,83 @@ var SearchForm = function (_Component) {
             var _this2 = this;
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'form',
-                {
-                    className: 'form-group-md',
-                    onSubmit: function onSubmit(e) {
-                        e.preventDefault();
-                        _this2.handleSubmit(_this2.state.term);
-                    } },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                    className: 'form-control',
-                    id: 'search',
-                    name: 'search',
-                    type: 'text',
-                    value: this.state.search,
-                    onChange: function onChange(e) {
-                        _this2.onInputChange(e.target.value);
-                    } }),
+                'div',
+                null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'button',
-                    { className: 'btn btn-default' },
-                    'Submit'
+                    'form',
+                    {
+                        className: 'form-group-md',
+                        onSubmit: function onSubmit(e) {
+                            e.preventDefault();
+                            _this2.handleSubmit(_this2.state.term);
+                        } },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                        className: 'form-control',
+                        id: 'search',
+                        name: 'search',
+                        type: 'text',
+                        value: this.state.search,
+                        onChange: function onChange(e) {
+                            _this2.onInputChange(e.target.value);
+                        } }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        { className: 'btn btn-default' },
+                        'Submit'
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'ul',
+                        { className: 'pagination' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'li',
+                            { className: 'page-item' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'a',
+                                { className: 'page-link', onClick: function onClick() {
+                                        if (_this2.props.currentPage - 1 >= 1) {
+                                            var previous = _this2.props.currentPage - 1;
+                                            _this2.props.changePage(previous);
+                                        }
+                                    } },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'span',
+                                    { 'aria-hidden': 'true' },
+                                    '\xAB'
+                                )
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'li',
+                            { className: 'page-item' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'a',
+                                { className: 'page-link' },
+                                this.props.currentPage
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'li',
+                            { className: 'page-item' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'a',
+                                { className: 'page-link', onClick: function onClick() {
+                                        if (_this2.props.currentPage + 1 <= _this2.props.lastPage) {
+                                            var next = _this2.props.currentPage + 1;
+                                            _this2.props.changePage(next);
+                                        }
+                                    } },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'span',
+                                    { 'aria-hidden': 'true' },
+                                    '\xBB'
+                                )
+                            )
+                        )
+                    )
                 )
             );
         }
