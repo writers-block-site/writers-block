@@ -295,6 +295,7 @@ iframe {
       -ms-flex-pack: center;
           justify-content: center;
 }
+
 .title {
   color: #bc1e4d;
   font-family: "Josefin Sans", sans-serif;
@@ -303,6 +304,7 @@ iframe {
 .body {
   font-size: 2em;
   font-family: "Raleway", sans-serif;
+}
 
 .footer {
   position: fixed;
