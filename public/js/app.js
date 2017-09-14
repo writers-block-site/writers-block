@@ -45977,10 +45977,10 @@ var UserDocs = function (_Component) {
             }
             var userDocs = this.props.userDocs.map(function (doc) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_iterators_UserDoc__["a" /* default */], {
+                    key: doc.id + doc.handles,
                     deletePost: _this3.deletePost.bind(_this3),
-                    key: doc.handle,
                     profileMatch: _this3.props.profileMatch,
-                    handle: doc.handle,
+                    handle: doc.handles,
                     id: doc.id,
                     title: doc.title,
                     type: doc.genre });
@@ -46024,6 +46024,7 @@ var UserDoc = function (_Component) {
         _classCallCheck(this, UserDoc);
 
         return _possibleConstructorReturn(this, (UserDoc.__proto__ || Object.getPrototypeOf(UserDoc)).call(this, props));
+        // console.log(this.props.handle);
         // console.log('USERDOC', this.props)
     }
 
@@ -46057,6 +46058,20 @@ var UserDoc = function (_Component) {
                     )
                 );
             }
+            var handlesArr = this.props.handle.split(',');
+            var links = handlesArr.map(function (link, index) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'li',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'a',
+                        { href: 'http://cdn.filestackcontent.com/' + link },
+                        'Version ',
+                        index + 1
+                    )
+                );
+            });
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'col-md-4' },
@@ -46064,7 +46079,7 @@ var UserDoc = function (_Component) {
                     'div',
                     {
                         onClick: function onClick() {
-                            _this2.openPost();
+                            // this.openPost();
                         },
                         className: ' user-document' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -46091,6 +46106,21 @@ var UserDoc = function (_Component) {
                     'a',
                     { className: 'btn btn-warning', href: '/docs/' + this.props.id + '/edit' },
                     'Edit Post'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'dropdown' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        { className: 'btn btn-primary dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
+                        'Download previous uploads',
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'caret' })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'ul',
+                        { className: 'dropdown-menu' },
+                        links
+                    )
                 )
             );
         }
