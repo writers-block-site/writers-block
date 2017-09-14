@@ -126,6 +126,10 @@ iframe {
   font-family: "Raleway", sans-serif;
 }
 
+.inline {
+  display: inline-block;
+}
+
 .diff-container > pre.diff-result span {
   word-wrap: break-word;
   white-space: pre-wrap;
@@ -138,5 +142,13 @@ iframe {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.title {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.body {
+  font-family: "Raleway", sans-serif;
 }
 

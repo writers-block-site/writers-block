@@ -29,6 +29,9 @@ body {
         family: $body-font;
     }
 }
+.inline {
+    display: inline-block;
+}
 .diff-container{
     >pre.diff-result span{
         word-wrap: break-word;
@@ -39,4 +42,10 @@ body {
         display: flex;
         justify-content: center;
     }
+}
+.title {
+    font-family: $title-font;
+}
+.body {
+    font-family: $body-font;
 }

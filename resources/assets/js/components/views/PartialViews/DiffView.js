@@ -30,6 +30,9 @@ class DiffView extends Component {
         return(
             <div>
                 <div className='container diff-container'>
+                    <h5 className='inline'>Gray</h5>
+                    <h5 className='inline'>Green</h5>
+                    <h5 className='inline'>Red</h5>
                     <Diff inputA={this.state.doc1} inputB={this.state.doc2} type={this.state.compareBy} />
                     <div className='diff-buttons'>
                         <button

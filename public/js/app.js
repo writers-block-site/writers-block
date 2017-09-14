@@ -45744,19 +45744,6 @@ var Landing = function (_Component) {
                         'Writer\'s Block  ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'glyphicon glyphicon-book book' })
                     )
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    null,
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'container' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'blockquote',
-                            { id: 'p', className: 'lead' },
-                            'We are a community for writers to get advice and critique on their creative work from their peers'
-                        )
-                    )
                 )
             );
         }
@@ -47175,6 +47162,21 @@ var DiffView = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'container diff-container' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'h5',
+                        { className: 'inline' },
+                        'Gray'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'h5',
+                        { className: 'inline' },
+                        'Green'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'h5',
+                        { className: 'inline' },
+                        'Red'
+                    ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_diff___default.a, { inputA: this.state.doc1, inputB: this.state.doc2, type: this.state.compareBy }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',

@@ -47,6 +47,7 @@
 
                         <li><a href='/posts'>View Posts</a></li>
                         <!-- Authentication Links -->
+                            <li><a href="/about">About Us</a></li>
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
