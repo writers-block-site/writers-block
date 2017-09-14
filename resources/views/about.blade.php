@@ -12,5 +12,5 @@
     </div>
 </div>
 
-<footer class="footer"> hello</footer>
+@include('layouts.blade')
 @endsection
