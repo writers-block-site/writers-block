@@ -160,7 +160,7 @@ class DocsController extends Controller
         $handles = explode(',',$post->handles);
         $handle1 = end($handles);
         if (count($handles) == 1) {
-            $handle2 = $handles1;
+            $handle2 = $handle1;
 
             $contents1 = Docs::parse($handle1);
             $contents2 = Docs::parse($handle2);
@@ -172,7 +172,7 @@ class DocsController extends Controller
             $data['doc2'] = $contents2;
             $data['handles'] = $handles;
             return response()->json($data);
-            
+
         }else {
 
             $handle2 = $handles[count($handles)-2];
