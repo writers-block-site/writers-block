@@ -9,8 +9,8 @@ class Document extends Component {
 
     render() {
         return(
-            <div 
-            className='post'
+            <div
+            className='post col-md-6'
             onClick={()=>{
                 this.props.selectPost(this.props.id)
             }}>

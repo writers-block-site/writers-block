@@ -46438,7 +46438,7 @@ var Document = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 {
-                    className: 'post',
+                    className: 'post col-md-6',
                     onClick: function onClick() {
                         _this2.props.selectPost(_this2.props.id);
                     } },
