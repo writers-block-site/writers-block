@@ -297,6 +297,10 @@ iframe {
   min-height: 40vh;
 }
 
+.aboutUs {
+  background-color: #fefefe;
+}
+
 #p {
   margin-top: 5vh;
   font-size: 3em;
@@ -347,6 +351,16 @@ iframe {
   font-size: 2vh;
   color: #FEFEFE;
   cursor: pointer;
+}
+
+.daniel {
+  width: 30srem;
+  height: 40rem;
+}
+
+.icon {
+  width: 5rem;
+  height: 5rem;
 }
 
 #doug {
