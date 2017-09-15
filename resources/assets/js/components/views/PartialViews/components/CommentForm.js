@@ -30,7 +30,7 @@ export default class CommentForm extends Component {
 
                 <form className='form-group-md' onSubmit={(e) => {
                     e.preventDefault();
-                    this.newFunction();
+                    this.formHandler();
                     }}>
 
                     <textarea
@@ -44,7 +44,7 @@ export default class CommentForm extends Component {
                     name="content" 
                     /*Overriding bootstrap */
                     style={{height: '38vh'}}
-                    id="comment-content not-form-control" 
+                    id="comment-content" 
                     cols="30"  
                     placeholder='Leave a comment! Remember, CONSTRUCTIVE criticism :)' />
                     <button className='btn btn-info col-xs-12'>Submit</button>
