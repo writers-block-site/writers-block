@@ -5,6 +5,7 @@ class DocHistoryButtons extends Component {
     render() {
         return(
             <button
+            className="btn btn-danger col-xs-4"
             onClick={() => {
                 this.props.history.push(`/posts/${this.props.id}/history`)
             }}

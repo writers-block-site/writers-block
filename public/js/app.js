@@ -45733,8 +45733,6 @@ var Landing = function (_Component) {
     _createClass(Landing, [{
         key: 'render',
         value: function render() {
-            var _this2 = this;
-
             var test = 'Hello!';
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
@@ -45749,13 +45747,16 @@ var Landing = function (_Component) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        null,
+                        { className: '' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            { onClick: function onClick() {
-                                    _this2.props.history.push('/posts');
-                                }, className: 'btn btn-default' },
-                            'All Posts'
+                            'a',
+                            { className: 'tagline', style: {
+                                    'font-family': "Comfortaa",
+                                    'font-size': '2em',
+                                    'color': '#FEFEFE'
+
+                                }, href: '/posts' },
+                            'Inspiration is a click away'
                         )
                     )
                 )
@@ -45839,7 +45840,7 @@ var Profile = function (_Component) {
             if (!this.state.userProfile) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    null,
+                    { className: 'profile container' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h1',
                         null,
@@ -45849,7 +45850,7 @@ var Profile = function (_Component) {
             } else if (!this.state.profileMatch) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    null,
+                    { className: 'profile container' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h1',
                         null,
@@ -45858,7 +45859,7 @@ var Profile = function (_Component) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'user-documents container' },
+                        { className: 'user-documents ' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'h2',
                             { className: 'posts-title' },
@@ -45870,7 +45871,7 @@ var Profile = function (_Component) {
             }
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                null,
+                { className: 'profile container' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
@@ -45880,7 +45881,7 @@ var Profile = function (_Component) {
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'user-documents container' },
+                    { className: 'user-documents' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h2',
                         { className: 'posts-title' },
@@ -46578,7 +46579,7 @@ var SearchForm = function (_Component) {
                         } },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'input-append' },
+                        { className: 'input-group' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
                             className: 'form-control',
                             id: 'search',
@@ -46589,9 +46590,13 @@ var SearchForm = function (_Component) {
                                 _this2.onInputChange(e.target.value);
                             } }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            { type: 'submit', className: 'btn btn-default' },
-                            'Search'
+                            'span',
+                            { className: 'input-group-btn' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'button',
+                                { type: 'submit', className: 'btn btn-default' },
+                                'Search'
+                            )
                         )
                     )
                 ),
@@ -46928,7 +46933,7 @@ var CommentForm = function (_Component) {
                         placeholder: 'Leave a comment! Remember, CONSTRUCTIVE criticism :)' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
-                        { className: 'btn btn-info' },
+                        { className: 'btn btn-info col-xs-12' },
                         'Submit'
                     )
                 )
@@ -47015,7 +47020,7 @@ var CommentsContainer = function (_Component) {
             }
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                null,
+                { className: 'col-md-4 comments-container' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
@@ -47122,6 +47127,7 @@ var DocHistoryButtons = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'button',
                 {
+                    className: 'btn btn-danger col-xs-4',
                     onClick: function onClick() {
                         _this2.props.history.push('/posts/' + _this2.props.id + '/history');
                     }

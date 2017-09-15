@@ -8,10 +8,13 @@ class Landing extends Component {
             <div id='home'>
                 <div className='title-container'>
                     <span className='title' >Writer's Block</span>
-                    <div>
-                        <button onClick={() => {
-                            this.props.history.push('/posts')
-                        }} className='btn btn-default'>All Posts</button>
+                    <div className=''>
+                        <a className='tagline' style={{
+                            'font-family': "Comfortaa", 
+                            'font-size': '2em',
+                            'color': '#FEFEFE'
+                             
+                        }} href="/posts">Inspiration is a click away</a>
                     </div>
                 </div>
             </div>

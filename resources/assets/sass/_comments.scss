@@ -15,15 +15,18 @@
 
 .comment-form{
     // height: 45vh;
+    margin-bottom: 1vh;
+    color: #FEFEFE;
 }
 .comment-component {
     height: 95vh;
 }
 .comments-container {
     margin: 0 auto;
-    height: 45vh;
+    height: 44vh;
     overflow-y: scroll;
     box-shadow: 0 0 5px 0px black inset;
+    background: #fefefe;
     // width: 100%;
 }
 #not-form-control {
