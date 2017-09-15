@@ -61,7 +61,7 @@ class SelectedDocView extends Component {
             return (
                 <div>
                     <SelectedDocument handle={this.state.handle[0]} />
-                    <div className='scroll'>
+                    <div className='comment-component'>
                         <DocHistoryButtons id={this.props.match.params.id}  />
                         <CommentForm getComments={this.getComments} postComment={this.postComment.bind(this)} />
                         <CommentsContainer comments={this.state.comments}  />
