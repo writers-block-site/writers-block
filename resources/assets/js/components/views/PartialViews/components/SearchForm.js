@@ -24,16 +24,19 @@ export default class SearchForm extends Component {
                     e.preventDefault();
                     this.handleSubmit(this.state.term);
                 }} >
-                    <input
-                    className='form-control'
-                    id='search'
-                    name='search'
-                    type='text'
-                    value={this.state.search}
+
+                <div className="input-append">
+                    <input 
+                    className='form-control' 
+                    id='search' 
+                    name='search' 
+                    type='text' 
+                    value={this.state.search} 
                     onChange={(e) => {
                         this.onInputChange(e.target.value);
                     }}  />
-                    <button className='btn btn-default'>Submit</button>
+                    <button type="submit" className="btn btn-default">Search</button>
+                    </div>
                 </form>
                 <div>
                     <ul className='pagination'>

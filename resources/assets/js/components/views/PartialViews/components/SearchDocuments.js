@@ -8,7 +8,7 @@ class SearchDocuments extends Component {
         super(props);
 
         this.state = {
-            message: 'All Documents'
+            message: 'Public Posts'
         }
     }
     render() {
