@@ -16,7 +16,7 @@ $bgDefault      : #13657a;
 $bgHighlight    : #1e9cbc;
 $colDefault     : #fefefe;
 $colHighlight   : #e0e0e0;
-$dropDown       : false;
+$dropDown       : true;
 .navbar {
     border: none;
     box-shadow: 0 0 5px 0 black;
@@ -43,7 +43,7 @@ $dropDown       : false;
         background-color: $bgDefault;
         border-color: $bgHighlight;
         .dropdown-item {
-          color: $colDefault;
+          color: #222;
           &:hover, &:focus, &.active {
             color: $colHighlight;
             background-color: $bgHighlight; }}
@@ -78,7 +78,7 @@ $dropDown       : false;
 @media (max-width: 767px) {
   .navbar-expend-md .navbar-nav .show .dropdown-menu {
     .dropdown-item {
-      color: $colDefault;
+      color: #222;
       &:hover, &:focus {
         color: $colHighlight; }}
     .dropdown-item.active {
@@ -87,7 +87,7 @@ $dropDown       : false;
 @media (max-width: 991px) {
   .navbar-expend-lg .navbar-nav .show .dropdown-menu {
     .dropdown-item {
-      color: $colDefault;
+      color: #222;
       &:hover, &:focus {
         color: $colHighlight; }}
     .dropdown-item.active {
@@ -96,7 +96,7 @@ $dropDown       : false;
 @media (max-width: 1199px) {
   .navbar-expend-xl .navbar-nav .show .dropdown-menu {
     .dropdown-item {
-      color: $colDefault;
+      color: #222;
       &:hover, &:focus {
         color: $colHighlight; }}
     .dropdown-item.active {
@@ -104,7 +104,7 @@ $dropDown       : false;
       background-color: $bgHighlight; }}}
 .navbar-expend .navbar-nav .show .dropdown-menu {
   .dropdown-item {
-    color: $colDefault;
+    color: #222;
     &:hover, &:focus {
       color: $colHighlight; }}
   .dropdown-item.active {

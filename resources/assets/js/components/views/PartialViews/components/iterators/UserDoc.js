@@ -32,7 +32,7 @@ class UserDoc extends Component {
         })
 
         return(
-                <div className='col-md-4'>
+                <div className='col-md-4 text-center'>
                     <div
                     className=' user-document'>
 
@@ -40,21 +40,21 @@ class UserDoc extends Component {
                             this.openPost();
                         }}>{this.props.title}</h3>
                         <p>{this.props.type}</p>
-                    </div>
-                    <button
-                    onClick={
-                        () =>{
-                            this.props.deletePost(this.props.id)
-                        }
-                    }
-                    className='btn btn-danger'>Delete</button>
-                    <a className='btn btn-warning' href={`/docs/${this.props.id}/edit`}>Edit Post</a>
-                    <div className="dropdown">
-                        <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Download previous uploads
-                            <span className="caret"></span></button>
-                            <ul className="dropdown-menu">
-                                {links}
-                            </ul>
+                        <button
+                            onClick={
+                                () =>{
+                                    this.props.deletePost(this.props.id)
+                                }
+                            }
+                            className='btn btn-danger col-md-12'>Delete</button>
+                            <a className='btn btn-warning col-md-12' href={`/docs/${this.props.id}/edit`}>Edit Post</a>
+                            <div className="dropdown">
+                                <button className="btn btn-primary dropdown-toggle col-md-12" type="button" data-toggle="dropdown">Download previous uploads
+                                    <span className="caret"></span></button>
+                                    <ul className="dropdown-menu">
+                                        {links}
+                                    </ul>
+                                </div>
                     </div>
                 </div>
 

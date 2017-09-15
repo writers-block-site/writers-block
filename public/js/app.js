@@ -46076,7 +46076,7 @@ var UserDoc = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'col-md-4' },
+                { className: 'col-md-4 text-center' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     {
@@ -46092,35 +46092,35 @@ var UserDoc = function (_Component) {
                         'p',
                         null,
                         this.props.type
-                    )
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'button',
-                    {
-                        onClick: function onClick() {
-                            _this2.props.deletePost(_this2.props.id);
-                        },
-                        className: 'btn btn-danger' },
-                    'Delete'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'a',
-                    { className: 'btn btn-warning', href: '/docs/' + this.props.id + '/edit' },
-                    'Edit Post'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'dropdown' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'button',
-                        { className: 'btn btn-primary dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
-                        'Download previous uploads',
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'caret' })
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'ul',
-                        { className: 'dropdown-menu' },
-                        links
+                        'button',
+                        {
+                            onClick: function onClick() {
+                                _this2.props.deletePost(_this2.props.id);
+                            },
+                            className: 'btn btn-danger col-md-12' },
+                        'Delete'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'a',
+                        { className: 'btn btn-warning col-md-12', href: '/docs/' + this.props.id + '/edit' },
+                        'Edit Post'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'dropdown' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'button',
+                            { className: 'btn btn-primary dropdown-toggle col-md-12', type: 'button', 'data-toggle': 'dropdown' },
+                            'Download previous uploads',
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'caret' })
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'ul',
+                            { className: 'dropdown-menu' },
+                            links
+                        )
                     )
                 )
             );
@@ -47181,21 +47181,6 @@ var DiffView = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'container diff-container' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'h5',
-                        { className: 'inline' },
-                        'Gray'
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'h5',
-                        { className: 'inline' },
-                        'Green'
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'h5',
-                        { className: 'inline' },
-                        'Red'
-                    ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_diff___default.a, { inputA: this.state.doc1, inputB: this.state.doc2, type: this.state.compareBy }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
