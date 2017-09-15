@@ -46376,7 +46376,7 @@ var SearchDocuments = function (_Component) {
         var _this = _possibleConstructorReturn(this, (SearchDocuments.__proto__ || Object.getPrototypeOf(SearchDocuments)).call(this, props));
 
         _this.state = {
-            message: 'All Documents'
+            message: 'Public Posts'
         };
         return _this;
     }
@@ -46561,19 +46561,23 @@ var SearchForm = function (_Component) {
                             e.preventDefault();
                             _this2.handleSubmit(_this2.state.term);
                         } },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-                        className: 'form-control',
-                        id: 'search',
-                        name: 'search',
-                        type: 'text',
-                        value: this.state.search,
-                        onChange: function onChange(e) {
-                            _this2.onInputChange(e.target.value);
-                        } }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'button',
-                        { className: 'btn btn-default' },
-                        'Submit'
+                        'div',
+                        { className: 'input-append' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                            className: 'form-control',
+                            id: 'search',
+                            name: 'search',
+                            type: 'text',
+                            value: this.state.search,
+                            onChange: function onChange(e) {
+                                _this2.onInputChange(e.target.value);
+                            } }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'button',
+                            { type: 'submit', className: 'btn btn-default' },
+                            'Search'
+                        )
                     )
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

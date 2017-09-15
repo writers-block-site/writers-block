@@ -24,6 +24,7 @@ export default class SearchForm extends Component {
                     e.preventDefault();
                     this.handleSubmit(this.state.term);
                 }} >
+                <div className="input-append">
                     <input 
                     className='form-control' 
                     id='search' 
@@ -33,7 +34,8 @@ export default class SearchForm extends Component {
                     onChange={(e) => {
                         this.onInputChange(e.target.value);
                     }}  />
-                    <button className='btn btn-default'>Submit</button>
+                    <button type="submit" className="btn btn-default">Search</button>
+                    </div>
                 </form>
                 <div>
                     <ul className='pagination'>
