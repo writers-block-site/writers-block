@@ -46410,10 +46410,10 @@ var SearchDocuments = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'documents' },
+                { className: 'container documents' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
-                    null,
+                    { className: 'text-center' },
                     this.state.message
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SearchForm__["a" /* default */], {
@@ -46423,7 +46423,7 @@ var SearchDocuments = function (_Component) {
                     getPosts: this.props.getPosts }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'container' },
+                    { className: '' },
                     documents
                 )
             );
@@ -46556,7 +46556,7 @@ var SearchForm = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'form',
                     {
-                        className: 'form-group-md',
+                        className: 'form-group-md col-md-offset-3 col-md-6',
                         onSubmit: function onSubmit(e) {
                             e.preventDefault();
                             _this2.handleSubmit(_this2.state.term);

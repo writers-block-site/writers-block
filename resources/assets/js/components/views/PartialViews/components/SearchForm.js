@@ -18,12 +18,13 @@ export default class SearchForm extends Component {
     render() {
         return (
             <div>
-                <form 
-                className='form-group-md'
+                <form
+                className='form-group-md col-md-offset-3 col-md-6'
                 onSubmit={(e) => {
                     e.preventDefault();
                     this.handleSubmit(this.state.term);
                 }} >
+
                 <div className="input-append">
                     <input 
                     className='form-control' 
