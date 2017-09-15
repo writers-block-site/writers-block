@@ -38,7 +38,7 @@ export default class CommentsContainer extends Component{
             )
         }
         return(
-            <div>
+            <div className='col-md-4 comments-container'>
                 <h1>Loading Comments...</h1>
             </div>
         )

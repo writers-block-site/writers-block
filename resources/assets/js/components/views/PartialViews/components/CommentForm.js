@@ -47,7 +47,7 @@ export default class CommentForm extends Component {
                     id="comment-content not-form-control" 
                     cols="30"  
                     placeholder='Leave a comment! Remember, CONSTRUCTIVE criticism :)' />
-                    <button className='btn btn-info'>Submit</button>
+                    <button className='btn btn-info col-xs-12'>Submit</button>
                 </form>
             </div>
         )

@@ -37,15 +37,15 @@ class Profile extends Component {
     render() {
         if (!this.state.userProfile) {
             return(
-                <div>
+                <div className='profile container'>
                     <h1>Loading...</h1>
                 </div>
             )
         } else if (!this.state.profileMatch) {
             return(
-                <div>
+                <div className='profile container'>
                     <h1>{this.state.userProfile}'s Profile</h1>
-                    <div className='user-documents container'>
+                    <div className='user-documents '>
                     <h2 className='posts-title'>Posts</h2>
                         <UserDocs profileMatch={this.state.profileMatch} userDocs={this.state.userDocs} />
                     </div>
@@ -53,9 +53,9 @@ class Profile extends Component {
             )
         }
         return (
-            <div>
+            <div className='profile container'>
                 <h1>Welcome, {this.state.userProfile}!</h1>
-                <div className='user-documents container'>
+                <div className='user-documents'>
                 <h2 className='posts-title'>Posts</h2>
                     <UserDocs getUser={this.getUser} profileMatch={this.state.profileMatch} userDocs={this.state.userDocs} />
                 </div>
