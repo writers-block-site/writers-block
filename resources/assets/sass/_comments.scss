@@ -4,10 +4,6 @@
     overflow-y: scroll;
 }
 
-.float{
-    // display: block;
-    // float: left;
-}
 .comment {
     text-align: left;
     background: #FEFEFE;
@@ -18,12 +14,18 @@
 }
 
 .comment-form{
-    height: 40vh;
+    // height: 45vh;
+}
+.comment-component {
+    height: 95vh;
 }
 .comments-container {
-    margin: auto;
-    height: 40vh;
+    margin: 0 auto;
+    height: 45vh;
     overflow-y: scroll;
     box-shadow: 0 0 5px 0px black inset;
     // width: 100%;
+}
+#not-form-control {
+    min-height: 40vh;
 }

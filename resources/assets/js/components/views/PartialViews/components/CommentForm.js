@@ -25,11 +25,14 @@ export default class CommentForm extends Component {
     render() {
         return(
             <div className='col-md-4 float comment-form'>
+
                 <h4>Comments:</h4>
+
                 <form className='form-group-md' onSubmit={(e) => {
                     e.preventDefault();
                     this.newFunction();
                     }}>
+
                     <textarea
                     onChange={
                         (e) => {
@@ -39,9 +42,10 @@ export default class CommentForm extends Component {
                     value={this.state.comment}
                     className='form-control' 
                     name="content" 
-                    id="comment-content" 
-                    cols="30" 
-                    rows="10" 
+                    /*Overriding bootstrap */
+                    style={{height: '38vh'}}
+                    id="comment-content not-form-control" 
+                    cols="30"  
                     placeholder='Leave a comment! Remember, CONSTRUCTIVE criticism :)' />
                     <button className='btn btn-info'>Submit</button>
                 </form>

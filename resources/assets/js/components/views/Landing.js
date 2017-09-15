@@ -7,7 +7,7 @@ class Landing extends Component {
         return(
             <div id='home'>
                 <div className='title-container'>
-                    <span className='title' >Writer's Block  <span className="glyphicon glyphicon-book book"></span></span>
+                    <span className='title' >Writer's Block</span>
                     <div>
                         <button onClick={() => {
                             this.props.history.push('/posts')

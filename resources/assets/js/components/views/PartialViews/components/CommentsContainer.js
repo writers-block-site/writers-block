@@ -22,14 +22,18 @@ export default class CommentsContainer extends Component{
         if (comments){
             if (comments.length < 1) {
                 return(
-                    <div className=' col-md-4 float comments-container'>
-                        <h4>No Comments yet!</h4>
+                    <div className='row'>
+                        <div className=' col-md-4 float comments-container'>
+                            <h4>No Comments yet!</h4>
+                        </div>
                     </div>
                 )
             }
             return(
-                <div className=' col-md-4 float comments-container'>
-                    {comments}
+                <div className='row'>
+                    <div className=' col-md-4 float comments-container'>
+                        {comments}
+                    </div>
                 </div>
             )
         }

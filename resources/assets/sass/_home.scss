@@ -6,7 +6,11 @@
         width: 100%;
         height: 95vh;
         //4AC035
-        background: #1e9cbc;
+        // background: #1e9cbc;
+        background: {
+            image: url('/Stipula_fountain_pen.jpg');
+            size: 100vw 95vh;
+        }
         // height: 300px;
         padding: {
             top: 20vh;
@@ -20,8 +24,8 @@
             color: #FEFEFE;
             text-shadow: 0 2px 5px black;
             font: { 
-                size: 5em;
-                family: $title-font;
+                size: 7em;
+                family: $cinzel;
             }
             // >.book{
             //     // padding-top: 2px;

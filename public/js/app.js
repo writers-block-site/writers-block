@@ -45745,8 +45745,7 @@ var Landing = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'span',
                         { className: 'title' },
-                        'Writer\'s Block  ',
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'glyphicon glyphicon-book book' })
+                        'Writer\'s Block'
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
@@ -46094,32 +46093,48 @@ var UserDoc = function (_Component) {
                         this.props.type
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'button',
-                        {
-                            onClick: function onClick() {
-                                _this2.props.deletePost(_this2.props.id);
-                            },
-                            className: 'btn btn-danger col-md-12' },
-                        'Delete'
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'a',
-                        { className: 'btn btn-warning col-md-12', href: '/docs/' + this.props.id + '/edit' },
-                        'Edit Post'
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'dropdown' },
+                        { className: 'row' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            { className: 'btn btn-primary dropdown-toggle col-md-12', type: 'button', 'data-toggle': 'dropdown' },
-                            'Download previous uploads',
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'caret' })
+                            'div',
+                            { className: 'col-md-12' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'button',
+                                {
+                                    onClick: function onClick() {
+                                        _this2.props.deletePost(_this2.props.id);
+                                    },
+                                    className: 'btn btn-danger' },
+                                'Delete'
+                            )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'ul',
-                            { className: 'dropdown-menu' },
-                            links
+                            'div',
+                            { className: 'col-md-12' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'a',
+                                { className: 'btn btn-warning', href: '/docs/' + this.props.id + '/edit' },
+                                'Edit Post'
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'col-md-12' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'dropdown' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'button',
+                                    { className: 'btn btn-primary dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
+                                    'Download previous uploads',
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'caret' })
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'ul',
+                                    { className: 'dropdown-menu' },
+                                    links
+                                )
+                            )
                         )
                     )
                 )
@@ -46752,7 +46767,7 @@ var SelectedDocView = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_SelectedDocument__["a" /* default */], { handle: this.state.handle[0] }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'scroll' },
+                        { className: 'comment-component' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_DocHistoryButtons__["a" /* default */], { id: this.props.match.params.id }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_CommentForm__["a" /* default */], { getComments: this.getComments, postComment: this.postComment.bind(this) }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_CommentsContainer__["a" /* default */], { comments: this.state.comments })
@@ -46905,10 +46920,11 @@ var CommentForm = function (_Component) {
                         },
                         value: this.state.comment,
                         className: 'form-control',
-                        name: 'content',
-                        id: 'comment-content',
+                        name: 'content'
+                        /*Overriding bootstrap */
+                        , style: { height: '38vh' },
+                        id: 'comment-content not-form-control',
                         cols: '30',
-                        rows: '10',
                         placeholder: 'Leave a comment! Remember, CONSTRUCTIVE criticism :)' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
@@ -46975,18 +46991,26 @@ var CommentsContainer = function (_Component) {
                 if (comments.length < 1) {
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: ' col-md-4 float comments-container' },
+                        { className: 'row' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'h4',
-                            null,
-                            'No Comments yet!'
+                            'div',
+                            { className: ' col-md-4 float comments-container' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'h4',
+                                null,
+                                'No Comments yet!'
+                            )
                         )
                     );
                 }
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: ' col-md-4 float comments-container' },
-                    comments
+                    { className: 'row' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: ' col-md-4 float comments-container' },
+                        comments
+                    )
                 );
             }
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
