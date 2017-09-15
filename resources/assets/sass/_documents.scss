@@ -1,6 +1,7 @@
 .documents {
     height: 95vh;
     background: #FEFEFE;
+    box-shadow: 0 0 5px 0 #222 inset;
 }
 
 .document {
@@ -38,9 +39,9 @@ iframe {
 }
 .post {
     cursor: pointer;
-    box-sizing: border-box;
-    box-shadow: 0,0,5px,black;
-    border: 1px solid #1e9cbc;
+    // box-sizing: border-box;
+    box-shadow: 0 0 5px black;
+    // border: 1px solid #1e9cbc;
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: center;

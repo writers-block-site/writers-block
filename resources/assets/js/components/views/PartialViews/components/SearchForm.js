@@ -25,17 +25,19 @@ export default class SearchForm extends Component {
                     this.handleSubmit(this.state.term);
                 }} >
 
-                <div className="input-append">
-                    <input 
-                    className='form-control' 
-                    id='search' 
-                    name='search' 
-                    type='text' 
-                    value={this.state.search} 
-                    onChange={(e) => {
-                        this.onInputChange(e.target.value);
-                    }}  />
-                    <button type="submit" className="btn btn-default">Search</button>
+                    <div className="input-group">
+                        <input 
+                        className='form-control' 
+                        id='search' 
+                        name='search' 
+                        type='text' 
+                        value={this.state.search} 
+                        onChange={(e) => {
+                            this.onInputChange(e.target.value);
+                        }}  />
+                        <span className='input-group-btn'>
+                            <button type="submit" className="btn btn-default">Search</button>
+                        </span>
                     </div>
                 </form>
                 <div>
