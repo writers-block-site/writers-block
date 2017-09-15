@@ -46917,7 +46917,7 @@ var CommentForm = function (_Component) {
                     'form',
                     { className: 'form-group-md', onSubmit: function onSubmit(e) {
                             e.preventDefault();
-                            _this3.newFunction();
+                            _this3.formHandler();
                         } },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', {
                         onChange: function onChange(e) {
@@ -46928,7 +46928,7 @@ var CommentForm = function (_Component) {
                         name: 'content'
                         /*Overriding bootstrap */
                         , style: { height: '38vh' },
-                        id: 'comment-content not-form-control',
+                        id: 'comment-content',
                         cols: '30',
                         placeholder: 'Leave a comment! Remember, CONSTRUCTIVE criticism :)' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
