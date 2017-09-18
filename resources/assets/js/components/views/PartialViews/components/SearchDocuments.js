@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import Document from './iterators/Document'
 import SearchForm from './SearchForm';
+import Pagination from './Pagination';
 
 class SearchDocuments extends Component {
     constructor(props) {
@@ -36,12 +37,15 @@ class SearchDocuments extends Component {
             <div className='container documents'>
                 <h1 className="text-center">{this.state.message}</h1>
                 <SearchForm
-                    changePage={this.props.changePage}
-                    lastPage={this.props.lastPage}
-                    currentPage={this.props.currentPage}
                     getPosts={this.props.getPosts} />
                 <div className=''>
                     {documents}
+                </div>
+                <div>
+                <Pagination
+                    changePage={this.props.changePage}
+                    lastPage={this.props.lastPage}
+                    currentPage={this.props.currentPage} />
                 </div>
             </div>
         )

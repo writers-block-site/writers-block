@@ -10,11 +10,11 @@ class Document extends Component {
     render() {
         return(
             <div
-            className='post col-md-6'
-            onClick={()=>{
-                this.props.selectPost(this.props.id)
-            }}>
-                <h3>{this.props.title}</h3>
+            className='post col-md-6'>
+                <h3 
+                onClick={()=>{
+                    this.props.selectPost(this.props.id)
+                }}>{this.props.title}</h3>
                 <h4>by <a href={`/users/${this.props.user.id}/profile`}>{this.props.user.name}</a></h4>
                 <p>{this.props.genre}</p>
             </div>
