@@ -256,7 +256,9 @@ iframe {
 }
 
 .user-document {
+  word-wrap: break-word;
   padding: 5%;
+  min-height: 250px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-box-shadow: 0 0 5px 0 #222;
