@@ -38,7 +38,7 @@ class SearchDocuments extends Component {
                 <h1 className="text-center">{this.state.message}</h1>
                 <SearchForm
                     getPosts={this.props.getPosts} />
-                <div className=''>
+                <div className='row'>
                     {documents}
                 </div>
                 <div>

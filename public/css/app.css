@@ -221,7 +221,7 @@ body {
 }
 
 .documents {
-  height: 95vh;
+  height: 100%;
   background: #FEFEFE;
   -webkit-box-shadow: 0 0 5px 0 #222 inset;
           box-shadow: 0 0 5px 0 #222 inset;
@@ -256,19 +256,47 @@ iframe {
 }
 
 .user-document {
+  padding: 5%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border: 5px solid #222;
+  -webkit-box-shadow: 0 0 5px 0 #222;
+          box-shadow: 0 0 5px 0 #222;
   cursor: pointer;
 }
 
+.user-document button,
+.user-document a {
+  width: 95%;
+}
+
+.user-document .btn-navbar-blue {
+  color: white;
+  background: #13657a;
+}
+
+.user-document .btn-navbar-blue:hover {
+  background: #005166;
+}
+
+.post-container padding {
+  left: 25px;
+  right: 25px;
+}
+
 .post {
-  cursor: pointer;
-  -webkit-box-shadow: 0 0 5px black;
-          box-shadow: 0 0 5px black;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  min-height: 250px;
+  -webkit-box-shadow: 0 0 5px black inset;
+          box-shadow: 0 0 5px black inset;
   margin-top: 10px;
   margin-bottom: 5px;
   text-align: center;
+}
+
+.post h3 {
+  cursor: pointer;
+  font-size: 2em;
 }
 
 .comments {
@@ -312,7 +340,13 @@ iframe {
 }
 
 .profile {
-  color: #FEFEFE;
+  color: #222;
+  background: #FEFEFE;
+  height: 94vh;
+}
+
+.fefefe {
+  color: #fefefe;
 }
 
 #p {

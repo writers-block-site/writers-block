@@ -46100,22 +46100,22 @@ var UserDoc = function (_Component) {
                             'div',
                             { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'button',
-                                {
-                                    onClick: function onClick() {
-                                        _this2.props.deletePost(_this2.props.id);
-                                    },
-                                    className: 'btn btn-danger' },
-                                'Delete'
+                                'a',
+                                { className: 'btn btn-navbar-blue', href: '/docs/' + this.props.id + '/edit' },
+                                'Edit Post'
                             )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
                             { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'a',
-                                { className: 'btn btn-warning', href: '/docs/' + this.props.id + '/edit' },
-                                'Edit Post'
+                                'button',
+                                {
+                                    onClick: function onClick() {
+                                        _this2.props.deletePost(_this2.props.id);
+                                    },
+                                    className: 'btn btn-default' },
+                                'Delete'
                             )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -46438,7 +46438,7 @@ var SearchDocuments = function (_Component) {
                     getPosts: this.props.getPosts }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: '' },
+                    { className: 'row' },
                     documents
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -46493,29 +46493,33 @@ var Document = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 {
-                    className: 'post col-md-6' },
+                    className: 'col-md-6 post-container' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h3',
-                    {
-                        onClick: function onClick() {
-                            _this2.props.selectPost(_this2.props.id);
-                        } },
-                    this.props.title
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h4',
-                    null,
-                    'by ',
+                    'div',
+                    { className: 'col-md-12 post' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'a',
-                        { href: '/users/' + this.props.user.id + '/profile' },
-                        this.props.user.name
+                        'h3',
+                        {
+                            onClick: function onClick() {
+                                _this2.props.selectPost(_this2.props.id);
+                            } },
+                        this.props.title
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'h4',
+                        null,
+                        'by ',
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'a',
+                            { href: '/users/' + this.props.user.id + '/profile' },
+                            this.props.user.name
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'p',
+                        null,
+                        this.props.genre
                     )
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'p',
-                    null,
-                    this.props.genre
                 )
             );
         }

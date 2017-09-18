@@ -43,16 +43,16 @@ class UserDoc extends Component {
                         <p>{this.props.type}</p>
                         <div className='row'>
                             <div className='col-md-12'>
+                                <a className='btn btn-navbar-blue' href={`/docs/${this.props.id}/edit`}>Edit Post</a>
+                            </div>
+                            <div className='col-md-12'>
                                 <button
                                     onClick={
                                         () =>{
                                             this.props.deletePost(this.props.id)
                                         }
                                     }
-                                    className='btn btn-danger'>Delete</button>
-                            </div>
-                            <div className='col-md-12'>
-                                <a className='btn btn-warning' href={`/docs/${this.props.id}/edit`}>Edit Post</a>
+                                    className='btn btn-default'>Delete</button>
                             </div>
                             <div className='col-md-12'>
                                 <div className="dropdown">

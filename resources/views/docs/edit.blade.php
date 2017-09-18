@@ -2,11 +2,11 @@
 @section('content')
 
     <div class="container">
-        <h1>Update</h1>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                <h1 class='fefefe'>Update</h1>
                 <div class="panel panel-default">
-                    <div class="panel-heading">Upload</div>
+                    <div class="panel-heading">Update</div>
 
                     <div class="panel-body">
                         <form class="form-horizontal" action="{{action('DocsController@update',$doc->id)}}" method="post">
