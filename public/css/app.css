@@ -411,23 +411,22 @@ iframe {
 }
 
 .daniel {
-  width: 30srem;
   height: 40rem;
 }
 
 .icon {
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
 }
 
-#doug {
-  position: absolute;
-  left: 1em;
+.mail-icon {
+  font-size: 5rem;
 }
 
-#daniel {
-  position: absolute;
-  right: 1em;
+.email {
+  color: #bc1e4d;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 3rem;
 }
 
 .pagination-center {
