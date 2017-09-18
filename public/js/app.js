@@ -46044,20 +46044,28 @@ var UserDoc = function (_Component) {
             if (!this.props.profileMatch) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    {
-                        onClick: function onClick() {
-                            _this2.openPost();
-                        },
-                        className: 'col-md-4 user-document' },
+                    { className: 'col-md-4 ' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'h3',
-                        null,
-                        this.props.title
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'p',
-                        null,
-                        this.props.type
+                        'div',
+                        {
+                            onClick: function onClick() {
+                                _this2.openPost();
+                            },
+                            className: 'user-document' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: '' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'h3',
+                                null,
+                                this.props.title
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'p',
+                                null,
+                                this.props.type
+                            )
+                        )
                     )
                 );
             }
