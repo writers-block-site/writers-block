@@ -1,4 +1,4 @@
-Writer's Block Capstone Guide
+Writer's Block ReadMe
 =============================
 
 > Like Github For Writers
@@ -14,17 +14,18 @@ Writer's Block Capstone Guide
 * [Views](#views)
 * [Features](#features)
 
-## <a name='tech'></a> Tech to be Used
-1. PHP
-    * Laravel
-    * Email stuff?
-2. JS
+## <a name='tech'></a> Tech Used
+1. Backend
+    * Laravel 5.5
+    * MySQL
+    * composer
+2. Frontend
     * React
-        * `create-react-app`
         * `react-router-dom`
-        * Draft.js?
-    * jQuery 
+	* `react-diff
+    * Sass
     * Filestack
+
 
 ## <a name='views'></a> Separation of Views
 
@@ -74,7 +75,7 @@ App
 
 ## <a name='features'></a> Feature Set
 
-### Must Haves
+### Features Implemented
 
 1. Create User and Login
     * Verify User by email?
@@ -84,16 +85,13 @@ App
 4. Delete Document *Record*
 5. Search
     * By type(i.e. Poem, Novel Snippet, Short Story?)
-6. Notifications by email
-    * Comments
-    * Watch document for changes?
 1. Reupload/History (Version Control)
     * Store multiple versions of doc
         * View Past versions (Read Only!)
 
 ----
 
-### Bonus Features
+### Future Features
 
 1. Groups
     * Ideal for 
@@ -104,3 +102,6 @@ App
 2. Markdown in comments
     * If markdown, then hihglighted text formats as 'blockquote'
 3. Personal Messaging (similar to Reddit messaging)
+6. Notifications by email
+    * Comments
+    * Watch document for changes?
