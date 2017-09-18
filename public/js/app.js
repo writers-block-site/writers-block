@@ -46160,7 +46160,7 @@ var UserDoc = function (_Component) {
 var NotFound = function NotFound() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        null,
+        { className: 'container not-found' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'h1',
             null,

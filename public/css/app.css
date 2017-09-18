@@ -346,6 +346,12 @@ iframe {
   height: 94vh;
 }
 
+.not-found {
+  color: #222;
+  background: #FEFEFE;
+  height: 94vh;
+}
+
 .fefefe {
   color: #fefefe;
 }
