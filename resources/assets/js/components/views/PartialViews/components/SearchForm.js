@@ -40,33 +40,6 @@ export default class SearchForm extends Component {
                         </span>
                     </div>
                 </form>
-                <div>
-                    <ul className='pagination'>
-                        <li className='page-item'>
-                            <a className="page-link" onClick={()=> {
-                                    if ((this.props.currentPage - 1 ) >= 1) {
-                                        let previous = (this.props.currentPage - 1)
-                                        this.props.changePage(previous)
-                                    }
-                                }}>
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li className='page-item'>
-                            <a className='page-link'>{this.props.currentPage}</a>
-                        </li>
-                        <li className='page-item'>
-                            <a className="page-link" onClick={()=> {
-                                    if ((this.props.currentPage + 1) <= this.props.lastPage) {
-                                        let next = (this.props.currentPage + 1);
-                                        this.props.changePage(next)
-                                    }
-                                }}>
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         )
     }

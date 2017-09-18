@@ -23,7 +23,10 @@ body {
 @import "./comments";
 @import './about';
 @import './profile';
-
+@import './notfound';
+.fefefe{
+    color: #fefefe;
+}
 #p {
     margin-top: 5vh;
     font: {
@@ -95,4 +98,8 @@ body {
 #daniel{
     position: absolute;
     right: 1em;
+}
+.pagination-center {
+    display: flex;
+    justify-content: center;
 }

@@ -3,9 +3,9 @@
 @section('content')
 
     <div class="container">
-        <h1>Upload</h1>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                <h1 class='fefefe'>Upload</h1>
                 <div class="panel panel-default">
                     <div class="panel-heading">Upload</div>
 
