@@ -28,7 +28,7 @@ class DocsController extends Controller
     public function index(Request $request)
     {
         $docs = Docs::with('user')
-        ->orderBy('created_at','DESC')
+        ->orderBy('view_count','DESC')
         ->Paginate(6);
 
         if ($request->has('type'))
