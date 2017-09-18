@@ -46506,7 +46506,7 @@ var Document = function (_Component) {
                         this.props.title
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'h4',
+                        'h3',
                         null,
                         'by ',
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -46516,7 +46516,12 @@ var Document = function (_Component) {
                         )
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'p',
+                        'h4',
+                        null,
+                        'Type:'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'h4',
                         null,
                         this.props.genre
                     )

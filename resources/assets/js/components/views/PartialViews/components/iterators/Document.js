@@ -16,8 +16,9 @@ class Document extends Component {
                     onClick={()=>{
                         this.props.selectPost(this.props.id)
                     }}>{this.props.title}</h3>
-                    <h4>by <a href={`/users/${this.props.user.id}/profile`}>{this.props.user.name}</a></h4>
-                    <p>{this.props.genre}</p>
+                    <h3>by <a href={`/users/${this.props.user.id}/profile`}>{this.props.user.name}</a></h3>
+                    <h4>Type:</h4>
+                    <h4>{this.props.genre}</h4>
                 </div>
             </div>
         );

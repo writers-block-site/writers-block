@@ -284,6 +284,7 @@ iframe {
 }
 
 .post {
+  background: #fcf1f1;
   padding-top: 5%;
   padding-bottom: 5%;
   min-height: 250px;
