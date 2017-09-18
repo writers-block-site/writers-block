@@ -13,13 +13,17 @@ class UserDoc extends Component {
     render() {
         if (!this.props.profileMatch) {
             return(
-                <div
-                onClick={() => {
-                    this.openPost();
-                }}
-                 className='col-md-4 user-document'>
-                    <h3>{this.props.title}</h3>
-                    <p>{this.props.type}</p>
+                <div className='col-md-4 '>
+                    <div
+                    onClick={() => {
+                        this.openPost();
+                    }}
+                    className='user-document'>
+                        <div className=''>
+                            <h3>{this.props.title}</h3>
+                            <p>{this.props.type}</p>
+                        </div>
+                    </div>
                 </div>
 
             )
