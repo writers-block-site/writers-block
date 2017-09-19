@@ -46077,7 +46077,7 @@ var UserDoc = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'a',
                         { href: 'http://cdn.filestackcontent.com/' + link },
-                        'Version ',
+                        'Download Version ',
                         index + 1
                     )
                 );
@@ -46109,39 +46109,39 @@ var UserDoc = function (_Component) {
                             'div',
                             { className: 'col-md-12' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'a',
-                                { className: 'btn btn-navbar-blue', href: '/docs/' + this.props.id + '/edit' },
-                                'Edit Post'
-                            )
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'div',
-                            { className: 'col-md-12' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'button',
-                                {
-                                    onClick: function onClick() {
-                                        _this2.props.deletePost(_this2.props.id);
-                                    },
-                                    className: 'btn btn-default' },
-                                'Delete'
-                            )
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'div',
-                            { className: 'col-md-12' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'dropdown' },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'button',
-                                    { className: 'btn btn-primary dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
-                                    'Download previous uploads',
+                                    { className: 'btn btn-navbar-blue dropdown-toggle', type: 'button', 'data-toggle': 'dropdown' },
+                                    'Options',
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'caret' })
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'ul',
                                     { className: 'dropdown-menu' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'li',
+                                        null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { type: 'button', className: '', href: '/docs/' + this.props.id + '/edit' },
+                                            'Edit Post'
+                                        )
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'li',
+                                        null,
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { type: 'button',
+                                                onClick: function onClick() {
+                                                    _this2.props.deletePost(_this2.props.id);
+                                                },
+                                                className: '' },
+                                            'Delete'
+                                        )
+                                    ),
                                     links
                                 )
                             )

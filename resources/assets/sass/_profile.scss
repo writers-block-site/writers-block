@@ -3,3 +3,11 @@
     background: #FEFEFE;
     min-height: 94vh;
 }
+
+.nopadding {
+    padding: {
+        left: 0 !important;
+        right: 0 !important;
+    }
+    margin: 0 !important;
+ }
