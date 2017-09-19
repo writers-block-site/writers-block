@@ -66,7 +66,7 @@
 
             </div>
             <div class="row">
-                <img id="flowChart"src="/css/img/flowChartCrop.png" style="display:none"alt="">
+                <img id="flowChart"src="/css/img/API_FLOWCHART2.png" style="display:none"alt="">
             </div>
         </div>
 
