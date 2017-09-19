@@ -13,7 +13,7 @@ class UserDoc extends Component {
     render() {
         if (!this.props.profileMatch) {
             return(
-                <div className='col-md-4 '>
+                <div className='col-md-6 text-center'>
                     <div
                     onClick={() => {
                         this.openPost();
@@ -36,7 +36,7 @@ class UserDoc extends Component {
         })
 
         return(
-                <div className='col-md-4 text-center'>
+                <div className='col-md-6 text-center'>
                     
                     <div
                     className=' user-document'>

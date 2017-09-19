@@ -27,6 +27,7 @@ body {
 }
 
 #home > .title-container > .title .tagline {
+  text-decoration: none;
   font-family: "Comfortaa", cursive;
   font-size: 2em;
   color: inherit;
@@ -223,8 +224,6 @@ body {
 .documents {
   height: 100%;
   background: #FEFEFE;
-  -webkit-box-shadow: 0 0 5px 0 #222 inset;
-          box-shadow: 0 0 5px 0 #222 inset;
 }
 
 .document {
@@ -251,19 +250,36 @@ iframe {
   background: #1e9cbc;
 }
 
+.search-title {
+  font-family: "Josefin Sans", sans-serif;
+}
+
 .posts-title {
   margin-top: 10vh;
 }
 
 .user-document {
+  margin-bottom: 15px;
+  background: #1e9cbc;
   word-wrap: break-word;
-  padding: 5%;
+  padding-top: 5%;
+  padding-bottom: 5%;
   min-height: 250px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-box-shadow: 0 0 5px 0 #222;
-          box-shadow: 0 0 5px 0 #222;
   cursor: pointer;
+}
+
+.user-document h3 {
+  font-family: "Comfortaa", cursive;
+  color: #FEFEFE;
+  background: #222;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.user-document p {
+  color: white;
 }
 
 .user-document button,
@@ -280,26 +296,44 @@ iframe {
   background: #005166;
 }
 
-.post-container padding {
-  left: 25px;
-  right: 25px;
+.post-container {
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .post {
-  background: #fcf1f1;
+  padding-right: 0px;
+  padding-left: 0px;
+  background: #1e9cbc;
   padding-top: 5%;
   padding-bottom: 5%;
-  min-height: 275px;
-  -webkit-box-shadow: 0 0 5px black inset;
-          box-shadow: 0 0 5px black inset;
+  min-height: 200px;
   margin-top: 10px;
   margin-bottom: 5px;
   text-align: center;
 }
 
+.post .post-title {
+  color: #FEFEFE;
+  background: #222;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-family: "Comfortaa", cursive;
+}
+
 .post h3 {
   cursor: pointer;
-  font-size: 2em;
+  font-size: 1.5em;
+}
+
+.post a {
+  color: #FEFEFE;
+  text-decoration: none;
+}
+
+.post a:hover {
+  color: #E0e0e0;
+  text-decoration: none;
 }
 
 .comments {
@@ -345,7 +379,7 @@ iframe {
 .profile {
   color: #222;
   background: #FEFEFE;
-  height: 94vh;
+  min-height: 94vh;
 }
 
 .not-found {

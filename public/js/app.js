@@ -45854,7 +45854,7 @@ var Profile = function (_Component) {
                     { className: 'profile container' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h1',
-                        null,
+                        { className: 'search-title' },
                         this.state.userProfile,
                         '\'s Profile'
                     ),
@@ -45863,7 +45863,7 @@ var Profile = function (_Component) {
                         { className: 'user-documents ' },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'h2',
-                            { className: 'posts-title' },
+                            { className: 'posts-title search-title' },
                             'Posts'
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__PartialViews_UserDocs__["a" /* default */], { profileMatch: this.state.profileMatch, userDocs: this.state.userDocs })
@@ -45875,7 +45875,7 @@ var Profile = function (_Component) {
                 { className: 'profile container' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
-                    null,
+                    { className: 'search-title' },
                     'Welcome, ',
                     this.state.userProfile,
                     '!'
@@ -45885,7 +45885,7 @@ var Profile = function (_Component) {
                     { className: 'user-documents' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h2',
-                        { className: 'posts-title' },
+                        { className: 'posts-title search-title' },
                         'Posts'
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__PartialViews_UserDocs__["a" /* default */], { getUser: this.getUser, profileMatch: this.state.profileMatch, userDocs: this.state.userDocs })
@@ -46044,7 +46044,7 @@ var UserDoc = function (_Component) {
             if (!this.props.profileMatch) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: 'col-md-4 ' },
+                    { className: 'col-md-6 text-center' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         {
@@ -46085,7 +46085,7 @@ var UserDoc = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'col-md-4 text-center' },
+                { className: 'col-md-6 text-center' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     {
@@ -46259,6 +46259,10 @@ var DocView = function (_Component) {
                 searchPage: page,
                 search: search
             }, function () {
+
+                {/*TODO: Find out why the paginate is breaking*/}
+
+                console.log('Current Page:', _this3.state.searchPage);
                 axios.get('/docs?page=' + page + '&search=' + search).then(function (results) {
                     // console.log(results)
                     _this3.setState({
@@ -46425,7 +46429,6 @@ var SearchDocuments = function (_Component) {
                 );
             }
             var documents = this.props.posts.map(function (document) {
-                console.log(document);
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__iterators_Document__["a" /* default */], {
                     user: document.user,
                     selectPost: _this2.props.selectPost,
@@ -46440,7 +46443,7 @@ var SearchDocuments = function (_Component) {
                 { className: 'container documents' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
-                    { className: 'text-center' },
+                    { className: 'text-center search-title' },
                     this.state.message
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SearchForm__["a" /* default */], {
@@ -46499,6 +46502,10 @@ var Document = function (_Component) {
         value: function render() {
             var _this2 = this;
 
+            var title = this.props.title;
+            if (title.length > 25) {
+                title = title.substring(0, 25) + '[...]';
+            }
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 {
@@ -46509,10 +46516,11 @@ var Document = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h3',
                         {
+                            className: 'post-title',
                             onClick: function onClick() {
                                 _this2.props.selectPost(_this2.props.id);
                             } },
-                        this.props.title
+                        title
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h3',

@@ -21,7 +21,6 @@ class SearchDocuments extends Component {
             )
         }
         var documents = this.props.posts.map((document) => {
-            console.log(document);
             return(
                 <Document
                 user={document.user}
@@ -35,7 +34,7 @@ class SearchDocuments extends Component {
 
         return (
             <div className='container documents'>
-                <h1 className="text-center">{this.state.message}</h1>
+                <h1 className="text-center search-title">{this.state.message}</h1>
                 <SearchForm
                     getPosts={this.props.getPosts} />
                 <div className='row'>

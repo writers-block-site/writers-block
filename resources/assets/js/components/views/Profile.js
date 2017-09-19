@@ -44,9 +44,9 @@ class Profile extends Component {
         } else if (!this.state.profileMatch) {
             return(
                 <div className='profile container'>
-                    <h1>{this.state.userProfile}'s Profile</h1>
+                    <h1 className='search-title'>{this.state.userProfile}'s Profile</h1>
                     <div className='user-documents '>
-                    <h2 className='posts-title'>Posts</h2>
+                    <h2 className='posts-title search-title'>Posts</h2>
                         <UserDocs profileMatch={this.state.profileMatch} userDocs={this.state.userDocs} />
                     </div>
                 </div>
@@ -54,9 +54,9 @@ class Profile extends Component {
         }
         return (
             <div className='profile container'>
-                <h1>Welcome, {this.state.userProfile}!</h1>
+                <h1 className='search-title'>Welcome, {this.state.userProfile}!</h1>
                 <div className='user-documents'>
-                <h2 className='posts-title'>Posts</h2>
+                    <h2 className='posts-title search-title'>Posts</h2>
                     <UserDocs getUser={this.getUser} profileMatch={this.state.profileMatch} userDocs={this.state.userDocs} />
                 </div>
             </div>
