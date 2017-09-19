@@ -429,6 +429,11 @@ iframe {
   font-size: 3rem;
 }
 
+#flowChart {
+  width: 60rem;
+  height: 40rem;
+}
+
 .pagination-center {
   display: -webkit-box;
   display: -ms-flexbox;
