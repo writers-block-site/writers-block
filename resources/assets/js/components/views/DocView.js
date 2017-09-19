@@ -39,6 +39,10 @@ class DocView extends Component {
             searchPage: page,
             search: search
         },() => {
+
+            {/*TODO: Find out why the paginate is breaking*/}
+            
+            console.log('Current Page:', this.state.searchPage)
             axios.get(`/docs?page=${page}&search=${search}`).then((results) => {
                 // console.log(results)
                 this.setState({
