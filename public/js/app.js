@@ -47275,7 +47275,7 @@ var DiffView = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'container diff-container' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_diff___default.a, { inputA: this.state.doc1, inputB: this.state.doc2, type: this.state.compareBy }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_diff___default.a, { inputA: this.state.doc2, inputB: this.state.doc1, type: this.state.compareBy }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'diff-buttons' },

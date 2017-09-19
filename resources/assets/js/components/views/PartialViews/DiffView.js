@@ -30,7 +30,7 @@ class DiffView extends Component {
         return(
             <div>
                 <div className='container diff-container'>
-                    <Diff inputA={this.state.doc1} inputB={this.state.doc2} type={this.state.compareBy} />
+                    <Diff inputA={this.state.doc2} inputB={this.state.doc1} type={this.state.compareBy} />
                     <div className='diff-buttons'>
                         <button
                         className='btn btn-primary'
