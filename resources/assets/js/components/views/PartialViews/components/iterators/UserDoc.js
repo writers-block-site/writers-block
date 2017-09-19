@@ -31,7 +31,7 @@ class UserDoc extends Component {
         var handlesArr = this.props.handle.split(',');
         var links = handlesArr.map((link,index)=>{
             return(
-                <li><a href={`http://cdn.filestackcontent.com/${link}`}>Version {index+1}</a></li>
+                <li><a href={`http://cdn.filestackcontent.com/${link}`}>Download Version {index+1}</a></li>
             )
         })
 
@@ -47,22 +47,20 @@ class UserDoc extends Component {
                         <p>{this.props.type}</p>
                         <div className='row'>
                             <div className='col-md-12'>
-                                <a className='btn btn-navbar-blue' href={`/docs/${this.props.id}/edit`}>Edit Post</a>
-                            </div>
-                            <div className='col-md-12'>
-                                <button
-                                    onClick={
-                                        () =>{
-                                            this.props.deletePost(this.props.id)
-                                        }
-                                    }
-                                    className='btn btn-default'>Delete</button>
-                            </div>
-                            <div className='col-md-12'>
                                 <div className="dropdown">
-                                    <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Download previous uploads
+                                    <button className="btn btn-navbar-blue dropdown-toggle" type="button" data-toggle="dropdown">Options
                                         <span className="caret"></span></button>
                                         <ul className="dropdown-menu">
+                                            <li><a type="button" className='' href={`/docs/${this.props.id}/edit`}>Edit Post</a></li>
+                                            <li>
+                                            <a type="button"
+                                                onClick={
+                                                    () =>{
+                                                        this.props.deletePost(this.props.id)
+                                                    }
+                                                }
+                                                className=''>Delete</a>
+                                            </li>
                                             {links}
                                         </ul>
                                 </div>
