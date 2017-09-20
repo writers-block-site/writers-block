@@ -31,7 +31,9 @@ class DiffView extends Component {
             <div>
                 <div className='container diff-container'>
                     <Diff inputA={this.state.doc2} inputB={this.state.doc1} type={this.state.compareBy} />
-                    <div className='diff-buttons'>
+                    {/*TODO: refactor to accomodate large strings*/}
+                    {/*Different filtering was lagging the website in production, will have to refactor*/}
+{/*                     <div className='diff-buttons'>
                         <button
                         className='btn btn-primary'
                         onClick={() => {
@@ -50,7 +52,7 @@ class DiffView extends Component {
                             this.compareBy('sentences')
                         }}
                         >Compare Sentences</button>
-                    </div>
+                    </div>*/}
                 </div>
             </div>
         )

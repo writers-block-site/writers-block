@@ -47275,49 +47275,13 @@ var DiffView = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
-
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'container diff-container' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_diff___default.a, { inputA: this.state.doc2, inputB: this.state.doc1, type: this.state.compareBy }),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { className: 'diff-buttons' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            {
-                                className: 'btn btn-primary',
-                                onClick: function onClick() {
-                                    _this3.compareBy('chars');
-                                }
-                            },
-                            'Compare Characters'
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            {
-                                className: 'btn btn-info',
-                                onClick: function onClick() {
-                                    _this3.compareBy('words');
-                                }
-                            },
-                            'Compare Words'
-                        ),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'button',
-                            {
-                                className: 'btn btn-warning',
-                                onClick: function onClick() {
-                                    _this3.compareBy('sentences');
-                                }
-                            },
-                            'Compare Sentences'
-                        )
-                    )
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_diff___default.a, { inputA: this.state.doc2, inputB: this.state.doc1, type: this.state.compareBy })
                 )
             );
         }
